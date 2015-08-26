@@ -175,30 +175,25 @@
 - (IBAction)adoptButtonPressed:(id)sender {
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"adopt" bundle:nil];
     id targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"adopt"];
-    [self presentViewController:targetViewController animated:false completion:nil];
-
     [self menuBtnPress:nil];
-    
+    [self.navigationController pushViewController:targetViewController animated:true];
 }
 - (IBAction)lostButtonPressed:(id)sender {
-    
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Lost" bundle:nil];
     id targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"LostMain"];
-    [self presentViewController:targetViewController animated:false completion:nil];
-     [self menuBtnPress:nil];
+    [self menuBtnPress:nil];
+    [self.navigationController pushViewController:targetViewController animated:true];
+    
     
 }
 
 
 - (IBAction)settingButtonPressed:(id)sender {
-    
-    
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Miracle" bundle:nil];
     id targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"miracleIndex"];
-    [self presentViewController:targetViewController animated:false completion:nil];
+    //    [self presentViewController:targetViewController animated:false completion:nil];
     [self menuBtnPress:nil];
-    
-
+    [self.navigationController pushViewController:targetViewController animated:true];
 }
 
 
