@@ -10,14 +10,14 @@
 	<string>TakeMeHome</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>B85FC448D8BB3BF5DB155CA5D512B99A314EF79D</key>
+		<key>0E5119FE30613500399DEFD2A65B1103A96ECD1E</key>
 		<string>https://github.com/joshlin10204/TakeMeHome.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>TakeMeHome.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>B85FC448D8BB3BF5DB155CA5D512B99A314EF79D</key>
+		<key>0E5119FE30613500399DEFD2A65B1103A96ECD1E</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>B85FC448D8BB3BF5DB155CA5D512B99A314EF79D</string>
+	<string>0E5119FE30613500399DEFD2A65B1103A96ECD1E</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>B85FC448D8BB3BF5DB155CA5D512B99A314EF79D</string>
+			<string>0E5119FE30613500399DEFD2A65B1103A96ECD1E</string>
 			<key>IDESourceControlWCCName</key>
 			<string>TakeMeHome</string>
 		</dict>
