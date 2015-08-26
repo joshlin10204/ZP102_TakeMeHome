@@ -1,0 +1,58 @@
+PODS:
+  - Bolts (1.2.0):
+    - Bolts/AppLinks (= 1.2.0)
+    - Bolts/Tasks (= 1.2.0)
+  - Bolts/AppLinks (1.2.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.2.0)
+  - BRYSerialAnimationQueue (1.0.0)
+  - DOFavoriteButton (0.0.4)
+  - FBSDKCoreKit (4.5.1):
+    - Bolts (~> 1.1)
+    - FBSDKCoreKit/arc (= 4.5.1)
+    - FBSDKCoreKit/no-arc (= 4.5.1)
+  - FBSDKCoreKit/arc (4.5.1):
+    - Bolts (~> 1.1)
+  - FBSDKCoreKit/no-arc (4.5.1):
+    - Bolts (~> 1.1)
+    - FBSDKCoreKit/arc
+  - FBSDKLoginKit (4.5.1):
+    - FBSDKCoreKit
+  - FlatUIKit (1.6.2)
+  - MBProgressHUD (0.9.1)
+  - Parse (1.8.1):
+    - Bolts/Tasks (>= 1.2.0)
+  - ParseFacebookUtilsV4 (1.8.1):
+    - Bolts/Tasks (>= 1.2.0)
+    - FBSDKCoreKit (~> 4.0)
+    - FBSDKLoginKit (~> 4.0)
+    - Parse (~> 1.8.0)
+  - SSBouncyButton (1.0.5):
+    - BRYSerialAnimationQueue (~> 1.0)
+    - UIColor-Hex (~> 0.1)
+    - UIImage+BetterAdditions (~> 2.0)
+  - UIColor-Hex (0.1.1)
+  - UIImage+BetterAdditions (2.0.2)
+
+DEPENDENCIES:
+  - DOFavoriteButton
+  - FlatUIKit
+  - MBProgressHUD (~> 0.9.1)
+  - ParseFacebookUtilsV4
+  - SSBouncyButton (~> 1.0)
+
+SPEC CHECKSUMS:
+  Bolts: d176cb1e0012175589e389a9db49b85e27787576
+  BRYSerialAnimationQueue: 75feef56345338619a6c2111f2a81de28a59c368
+  DOFavoriteButton: 866e15af173d2dd5233971a1f657a5f31d2491d5
+  FBSDKCoreKit: f335eaf6865e1e1597dee1debfb533045500da47
+  FBSDKLoginKit: 225cc9a388a92916ee3f3bb14422017b6e44b65b
+  FlatUIKit: 1b41f0d4952ce8d970d8479ce79df54a960242c4
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  Parse: 2155953b1565494095d5fa5c83b3c77f2c677c09
+  ParseFacebookUtilsV4: 2c54f1c9756f4827417984f42b64bc38571d626b
+  SSBouncyButton: 5cce51fb710695670295446aaa17b8e716bdb672
+  UIColor-Hex: 77e80f383c6b3a63c5e95a9a4a7f4a71976e38a5
+  UIImage+BetterAdditions: 0953a2a489f3db22babe507ed3615ded546d8579
+
+COCOAPODS: 0.38.2

@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "C8B3052B88A0F53B85D219306A44D6995AA13D2B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "C8B3052B88A0F53B85D219306A44D6995AA13D2B" : 0,
+    "02E1A84573529011EF3E1147FBEF880E3FE665BA" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "32F0E975-4797-45C6-867F-CB100DB8343A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "C8B3052B88A0F53B85D219306A44D6995AA13D2B" : "ZP102_TakeMeHome",
+    "02E1A84573529011EF3E1147FBEF880E3FE665BA" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "TakeMeHome",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "TakeMeHome.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/NigelJu\/trytryTakeMeHome.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "02E1A84573529011EF3E1147FBEF880E3FE665BA"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/NigelJu\/TakeMeHome",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C8B3052B88A0F53B85D219306A44D6995AA13D2B"
+    }
+  ]
+}

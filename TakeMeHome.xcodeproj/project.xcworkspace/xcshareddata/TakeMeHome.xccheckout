@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>32F0E975-4797-45C6-867F-CB100DB8343A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TakeMeHome</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>02E1A84573529011EF3E1147FBEF880E3FE665BA</key>
+		<string>https://github.com/NigelJu/trytryTakeMeHome.git</string>
+		<key>B85FC448D8BB3BF5DB155CA5D512B99A314EF79D</key>
+		<string>https://github.com/joshlin10204/TakeMeHome.git</string>
+		<key>C8B3052B88A0F53B85D219306A44D6995AA13D2B</key>
+		<string>https://github.com/NigelJu/TakeMeHome</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TakeMeHome.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>02E1A84573529011EF3E1147FBEF880E3FE665BA</key>
+		<string>../../..</string>
+		<key>B85FC448D8BB3BF5DB155CA5D512B99A314EF79D</key>
+		<string>../..</string>
+		<key>C8B3052B88A0F53B85D219306A44D6995AA13D2B</key>
+		<string>../../../ZP102_TakeMeHome</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/joshlin10204/TakeMeHome.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B85FC448D8BB3BF5DB155CA5D512B99A314EF79D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>02E1A84573529011EF3E1147FBEF880E3FE665BA</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B85FC448D8BB3BF5DB155CA5D512B99A314EF79D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>TakeMeHome</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C8B3052B88A0F53B85D219306A44D6995AA13D2B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ZP102_TakeMeHome</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>45E41B2D-FE1A-4CAB-AC68-14AE0E65ADF3</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TakeMeHome</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B85FC448D8BB3BF5DB155CA5D512B99A314EF79D</key>
+		<string>https://github.com/joshlin10204/TakeMeHome.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TakeMeHome.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B85FC448D8BB3BF5DB155CA5D512B99A314EF79D</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/joshlin10204/TakeMeHome.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B85FC448D8BB3BF5DB155CA5D512B99A314EF79D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B85FC448D8BB3BF5DB155CA5D512B99A314EF79D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>TakeMeHome</string>
+		</dict>
+	</array>
+</dict>
+</plist>
