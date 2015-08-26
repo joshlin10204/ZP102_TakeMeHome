@@ -8,6 +8,10 @@
 
 #import "navigationBtn.h"
 
+#import "indexAdoptVC.h"
+#import "LostMainController.h"
+#import "MainViewController.h"
+
 
 @implementation navigationBtn
 
@@ -84,9 +88,7 @@
 }
 
 - (void)longPressedObj:(UILongPressGestureRecognizer*)recognizer{
-    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    id targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainView"];
-    [_parentVC presentViewController:targetViewController animated:false completion:nil];
+    [self navigationPushOrPop:[MainViewController class] storyBoardName:@"Main" identifier:@"MainView"];
 }
 
 -(void)setup{
@@ -102,22 +104,38 @@
     [[self.delegate attachedViewController].view addSubview:self.naviBtn];
 }
 
+- (void)navigationPushOrPop:(Class)className storyBoardName:(NSString*)storyboardName identifier:(NSString*)identifierName{
+    
+    NSMutableArray *myNavigationC = [NSMutableArray arrayWithArray:_parentVC.navigationController.viewControllers];
+    
+    for (UIViewController *tmpVC in myNavigationC) {
+        if ([tmpVC isKindOfClass:[className class]]) {
+            //曾經去過
+            [_parentVC.navigationController popToViewController:tmpVC animated:false];
+            return;
+        }
+    }
+    
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+    id targetViewController = [storyboard instantiateViewControllerWithIdentifier:identifierName];
+    [_parentVC.navigationController pushViewController:targetViewController animated:false];
+
+
+}
+
+
 - (void)menu:(CTPopoutMenu *)menu willDismissWithSelectedItemAtIndex:(NSUInteger)index{
     
     switch (index) {
         case 0: //走失
         {
-            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            id targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"lost"];
-            [_parentVC presentViewController:targetViewController animated:false completion:nil];
+            [self navigationPushOrPop:[LostMainController class] storyBoardName:@"Lost" identifier:@"LostMain"];
             break;
         }
             
         case 1: //領養
         {
-            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"adopt" bundle:nil];
-            id targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"adopt"];
-            [_parentVC presentViewController:targetViewController animated:false completion:nil];
+            [self navigationPushOrPop:[indexAdoptVC class] storyBoardName:@"adopt" identifier:@"adopt"];
             break;
         }
             
@@ -146,7 +164,7 @@
     self.popMenu.menuStyle = MenuStyleGrid;
     id viewController = [self.delegate attachedViewController];
     [self.popMenu showMenuInParentViewController:viewController withCenter:self.parentVC.view.center];
-    NSLog(@"showGrid");
+    //NSLog(@"showGrid");
 }
 
 
@@ -225,20 +243,6 @@
     NSLog(@"dealloc");
 }
 
-//- (BOOL)NavigationBtnObjecterShoudDisplay:(UIViewController*)VC{
-//
-//    [self.parentVC = VC];
-//    [self setup];
-//
-//    return false;
-//}
-
-/*
- //    if ([self.delegate respondsToSelector:@selector(didChangeValueForKey:)]) {
- //        [self.delegate DidFinishTyping:textField.text];
- //         }
- 
- */
 
 @end
 
