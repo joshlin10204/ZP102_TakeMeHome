@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 Josh. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import <UIKit/UIKit.h>
 
 
-@interface searchVC : BaseViewController
+@interface searchVC : UIViewController
 
 @end

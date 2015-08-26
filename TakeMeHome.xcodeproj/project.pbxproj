@@ -54,11 +54,12 @@
 		A60A73551B87257200AE8847 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = A60A73541B87257200AE8847 /* heart.png */; };
 		A60A738D1B87281A00AE8847 /* btnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60A738C1B87281A00AE8847 /* btnView.swift */; };
 		A60A73901B87DE8500AE8847 /* searchOptionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A60A738F1B87DE8500AE8847 /* searchOptionVC.m */; };
+		A61E91FE1B8E239700EEE74B /* adopt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A61E91FD1B8E239700EEE74B /* adopt.storyboard */; };
+		A61E92011B8E25D200EEE74B /* indexAdoptVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A61E92001B8E25D200EEE74B /* indexAdoptVC.m */; };
 		A65527DF1B7B7B8100675D97 /* containerSearchTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A65527DE1B7B7B8100675D97 /* containerSearchTVC.m */; };
 		A67D878B1B8AEDD20081E259 /* taiwanFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = A67D878A1B8AEDD20081E259 /* taiwanFlag.png */; };
 		A69865B01B72539A0065C4E5 /* theDog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69865A91B72539A0065C4E5 /* theDog.jpg */; };
 		A69865B11B72539A0065C4E5 /* theDog2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69865AA1B72539A0065C4E5 /* theDog2.jpg */; };
-		A69865B21B72539A0065C4E5 /* adopt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A69865AB1B72539A0065C4E5 /* adopt.storyboard */; };
 		A69865B31B72539A0065C4E5 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A69865AD1B72539A0065C4E5 /* TestViewController.m */; };
 		A69865B41B72539A0065C4E5 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A69865AF1B72539A0065C4E5 /* BaseViewController.m */; };
 		A69865B81B7254530065C4E5 /* myFavoriteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A69865B71B7254530065C4E5 /* myFavoriteVC.m */; };
@@ -67,7 +68,6 @@
 		A69865C41B72549E0065C4E5 /* adoptDetailTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A69865C31B72549E0065C4E5 /* adoptDetailTableVC.m */; };
 		A69865CA1B7254C60065C4E5 /* adoptView.m in Sources */ = {isa = PBXBuildFile; fileRef = A69865C71B7254C60065C4E5 /* adoptView.m */; };
 		A69865CB1B7254C60065C4E5 /* adoptViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A69865C91B7254C60065C4E5 /* adoptViewTableViewCell.m */; };
-		A69865CF1B7254E20065C4E5 /* indexAdoptVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A69865CE1B7254E20065C4E5 /* indexAdoptVC.m */; };
 		A6D3E7201B6A6EEE0066DD7B /* CTPopOutMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D3E71F1B6A6EEE0066DD7B /* CTPopOutMenu.m */; };
 		A6D3E7251B6A6F550066DD7B /* navigationBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D3E7241B6A6F550066DD7B /* navigationBtn.m */; };
 		A6D3E7271B6A71750066DD7B /* img.png in Resources */ = {isa = PBXBuildFile; fileRef = A6D3E7261B6A71750066DD7B /* img.png */; };
@@ -180,12 +180,14 @@
 		A60A738C1B87281A00AE8847 /* btnView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = btnView.swift; sourceTree = "<group>"; };
 		A60A738E1B87DE8500AE8847 /* searchOptionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchOptionVC.h; sourceTree = "<group>"; };
 		A60A738F1B87DE8500AE8847 /* searchOptionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchOptionVC.m; sourceTree = "<group>"; };
+		A61E91FD1B8E239700EEE74B /* adopt.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = adopt.storyboard; sourceTree = "<group>"; };
+		A61E91FF1B8E25D200EEE74B /* indexAdoptVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = indexAdoptVC.h; sourceTree = "<group>"; };
+		A61E92001B8E25D200EEE74B /* indexAdoptVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = indexAdoptVC.m; sourceTree = "<group>"; };
 		A65527DD1B7B7B8100675D97 /* containerSearchTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = containerSearchTVC.h; sourceTree = "<group>"; };
 		A65527DE1B7B7B8100675D97 /* containerSearchTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = containerSearchTVC.m; sourceTree = "<group>"; };
 		A67D878A1B8AEDD20081E259 /* taiwanFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taiwanFlag.png; sourceTree = "<group>"; };
 		A69865A91B72539A0065C4E5 /* theDog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = theDog.jpg; sourceTree = "<group>"; };
 		A69865AA1B72539A0065C4E5 /* theDog2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = theDog2.jpg; sourceTree = "<group>"; };
-		A69865AB1B72539A0065C4E5 /* adopt.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = adopt.storyboard; sourceTree = "<group>"; };
 		A69865AC1B72539A0065C4E5 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		A69865AD1B72539A0065C4E5 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		A69865AE1B72539A0065C4E5 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -202,8 +204,6 @@
 		A69865C71B7254C60065C4E5 /* adoptView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = adoptView.m; sourceTree = "<group>"; };
 		A69865C81B7254C60065C4E5 /* adoptViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = adoptViewTableViewCell.h; sourceTree = "<group>"; };
 		A69865C91B7254C60065C4E5 /* adoptViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = adoptViewTableViewCell.m; sourceTree = "<group>"; };
-		A69865CD1B7254E20065C4E5 /* indexAdoptVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = indexAdoptVC.h; sourceTree = "<group>"; };
-		A69865CE1B7254E20065C4E5 /* indexAdoptVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = indexAdoptVC.m; sourceTree = "<group>"; };
 		A6D3E71E1B6A6EEE0066DD7B /* CTPopOutMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPopOutMenu.h; sourceTree = "<group>"; };
 		A6D3E71F1B6A6EEE0066DD7B /* CTPopOutMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPopOutMenu.m; sourceTree = "<group>"; };
 		A6D3E7231B6A6F550066DD7B /* navigationBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = navigationBtn.h; sourceTree = "<group>"; };
@@ -453,7 +453,7 @@
 				A67D878A1B8AEDD20081E259 /* taiwanFlag.png */,
 				A69865AA1B72539A0065C4E5 /* theDog2.jpg */,
 				A69865A91B72539A0065C4E5 /* theDog.jpg */,
-				A69865AB1B72539A0065C4E5 /* adopt.storyboard */,
+				A61E91FD1B8E239700EEE74B /* adopt.storyboard */,
 				A65527E01B7B7B8C00675D97 /* searchView */,
 				A69865B51B7254460065C4E5 /* myFavorite */,
 				A69865B91B7254610065C4E5 /* adoptProfile */,
@@ -524,8 +524,8 @@
 		A69865CC1B7254D60065C4E5 /* indexAdopt */ = {
 			isa = PBXGroup;
 			children = (
-				A69865CD1B7254E20065C4E5 /* indexAdoptVC.h */,
-				A69865CE1B7254E20065C4E5 /* indexAdoptVC.m */,
+				A61E91FF1B8E25D200EEE74B /* indexAdoptVC.h */,
+				A61E92001B8E25D200EEE74B /* indexAdoptVC.m */,
 			);
 			name = indexAdopt;
 			sourceTree = "<group>";
@@ -741,12 +741,12 @@
 				A69865B01B72539A0065C4E5 /* theDog.jpg in Resources */,
 				A6D3E7351B6A8FDE0066DD7B /* memberSetting.png in Resources */,
 				0340056D1B8DF4010052EB6D /* Lost.storyboard in Resources */,
+				A61E91FE1B8E239700EEE74B /* adopt.storyboard in Resources */,
 				03DC79EE1B6555140042E8E2 /* Main.storyboard in Resources */,
 				A67D878B1B8AEDD20081E259 /* taiwanFlag.png in Resources */,
 				A6D3E7361B6A8FDE0066DD7B /* lost.png in Resources */,
 				A6D3E7381B6A8FDE0066DD7B /* settingButton.png in Resources */,
 				037126771B724074000F546E /* Images.xcassets in Resources */,
-				A69865B21B72539A0065C4E5 /* adopt.storyboard in Resources */,
 				A69865B11B72539A0065C4E5 /* theDog2.jpg in Resources */,
 				03BD5A731B6142380054F861 /* LaunchScreen.xib in Resources */,
 				03B9E7A31B889F10002D340D /* WawaSC.otf in Resources */,
@@ -850,13 +850,13 @@
 				03BD5A651B6142380054F861 /* main.m in Sources */,
 				A6DA899C1B7B1076000F8B7B /* UIImage+MultiFormat.m in Sources */,
 				A6D6DEB91B7C786700DBCFBD /* TPKeyboardAvoidingTableView.m in Sources */,
-				A69865CF1B7254E20065C4E5 /* indexAdoptVC.m in Sources */,
 				032BF2921B8D9D18001BF5CD /* LostMoreInformationTableView.m in Sources */,
 				032566C91B7DEE4400DAD13B /* LostPostView.m in Sources */,
 				A6DA89981B7B1076000F8B7B /* SDWebImageManager.m in Sources */,
 				A6DA89951B7B1076000F8B7B /* SDWebImageDecoder.m in Sources */,
 				032BF2971B8D9D83001BF5CD /* LostMapView.m in Sources */,
 				A6D3E7251B6A6F550066DD7B /* navigationBtn.m in Sources */,
+				A61E92011B8E25D200EEE74B /* indexAdoptVC.m in Sources */,
 				A6DA89961B7B1076000F8B7B /* SDWebImageDownloader.m in Sources */,
 				A6D6DEBA1B7C786700DBCFBD /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				A6DA89A01B7B1076000F8B7B /* UIView+WebCacheOperation.m in Sources */,

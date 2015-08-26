@@ -71,16 +71,6 @@
     [self setAreaPickerView];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    adoptView *nextVC = segue.destinationViewController;
-    nextVC.getUserOptionsFilterDoneStr = filterSearchDoneStr;
-    
-}
-
-- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
-    return false;
-}
-
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     
     return 1;
@@ -181,6 +171,7 @@
 
 - (void)cancelBtnPressed:(UIButton*)button{
     //dissmiss
+    [self.parentViewController dismissViewControllerAnimated:true completion:nil];
 }
 
 - (void)OkBtnPressed:(UIButton*)button{
@@ -195,11 +186,22 @@
         
         //解出正確的NSPredicate語法
         filterSearchDoneStr = [self analyseUserOption:getUserOptionStr];
-        [self performSegueWithIdentifier:@"segueToAdoptView" sender:nil];
+
+        //do segue push to next view
+        [self navigationPushToNextView];
+        
     }
+}
+
+- (void)navigationPushToNextView{
     
-    
-    //[self showAlertView:nil];
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"adopt" bundle:nil];
+    id targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"adoptView"];
+    //adoptView *nextVC = targetViewController;
+    //nextVC.getUserOptionsFilterDoneStr = filterSearchDoneStr;
+    [self.parentViewController dismissViewControllerAnimated:false completion:nil];
+    [self.navigationController pushViewController:targetViewController animated:true];
+
 }
 
 - (NSString*)analyseUserOption:(NSString*)options{

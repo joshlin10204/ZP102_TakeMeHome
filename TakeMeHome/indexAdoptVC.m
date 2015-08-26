@@ -2,20 +2,16 @@
 //  indexAdoptVC.m
 //  TakeMeHome
 //
-//  Created by Nigel on 2015/7/30.
+//  Created by Nigel on 2015/8/26.
 //  Copyright (c) 2015年 Josh. All rights reserved.
 //
 
 #import "indexAdoptVC.h"
-#import "navigationBtn.h"
+#import "searchOptionVC.h"
 
 
-#import <Parse/Parse.h>
+@interface indexAdoptVC ()
 
-@interface indexAdoptVC ()<NavigationBtnObjecterDelegate>
-{
-    navigationBtn *naviClass;
-}
 @end
 
 @implementation indexAdoptVC
@@ -23,32 +19,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    naviClass = [navigationBtn shareInstance];
-    [self NavigationBtnObjecterShoudDisplay:self];
-    [naviClass setDelegate:self];
+
+}
+
+- (void) viewDidAppear:(BOOL)animated {
     
-    
-    
-    
-    
-    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-    testObject[@"foo"] = @"bar";
-    [testObject saveInBackground];
-    
-    
-    
+    [super viewDidAppear:animated];
     
 }
 
--(UIViewController *)attachedViewController
-{
-    return self;
-}
-- (BOOL)NavigationBtnObjecterShoudDisplay:(UIViewController*)VC{
-    naviClass.parentVC = VC;
-    return  true;
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 
+- (IBAction)searchBtnPressed:(id)sender {
+    
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"adopt" bundle:nil];
+    UIViewController *targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"searchVC"];
+    
+    targetViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    
+    [self presentViewController:targetViewController animated:true completion:nil];
+    
+}
 
 @end
