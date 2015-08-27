@@ -8,6 +8,8 @@
 
 #import "BaseViewController.h"
 
+#define USER_PRESSED_OK_BTN_NOTIFICATION @"user_pressed_ok_btn_notification"
+
 @interface indexAdoptVC : BaseViewController
 
 @end

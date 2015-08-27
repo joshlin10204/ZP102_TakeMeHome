@@ -96,10 +96,6 @@
 }
 
 
-
-- (void)dealloc{
-    NSLog(@"searchTVC die");
-}
 @end
 
 

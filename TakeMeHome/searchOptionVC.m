@@ -6,6 +6,8 @@
 //  Copyright (c) 2015年 Josh. All rights reserved.
 //
 
+#import "indexAdoptVC.h"
+
 #import "searchOptionVC.h"
 #import "adoptView.h"
 
@@ -188,20 +190,20 @@
         filterSearchDoneStr = [self analyseUserOption:getUserOptionStr];
 
         //do segue push to next view
-        [self navigationPushToNextView];
+        [self.parentViewController dismissViewControllerAnimated:false completion:^{
+            
+            [[NSNotificationCenter defaultCenter]postNotificationName:USER_PRESSED_OK_BTN_NOTIFICATION object:filterSearchDoneStr];
+            
+        }];
+
         
     }
 }
 
-- (void)navigationPushToNextView{
-    
-    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"adopt" bundle:nil];
-    id targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"adoptView"];
-    //adoptView *nextVC = targetViewController;
-    //nextVC.getUserOptionsFilterDoneStr = filterSearchDoneStr;
-    [self.parentViewController dismissViewControllerAnimated:false completion:nil];
-    [self.navigationController pushViewController:targetViewController animated:true];
 
+
+- (void)dealloc{
+    NSLog(@"searchOptionVC die");
 }
 
 - (NSString*)analyseUserOption:(NSString*)options{
