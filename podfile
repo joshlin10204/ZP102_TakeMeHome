@@ -1,7 +1,9 @@
-pod 'SSBouncyButton', '~> 1.0'
-pod 'FlatUIKit'
-pod 'DOFavoriteButton'
 pod 'MBProgressHUD', '~> 0.9.1'
 pod 'ParseFacebookUtilsV4'
+pod 'SSBouncyButton', '~> 1.0'
+pod 'DOFavoriteButton'
+pod 'FlatUIKit'
+pod 'DOFavoriteButton'
+pod 'Parse', '~>1.7'
+pod 'ParseFacebookUtilsV4'
 use_frameworks!
-
