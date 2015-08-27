@@ -42,7 +42,9 @@
         // Do something with the returned PFObject in the gameScore variable.
         //顯示寵物名字
         _lostPetNameLabel.text=lostPetsInformationData[@"LostPetsName"];
-        _lostPetNameLabel.font = [UIFont fontWithName:@"Wawati SC" size:45];
+        _lostPetNameLabel.font = [UIFont fontWithName:@"Wawati SC" size:40];
+        _lostPetNameLabel.minimumScaleFactor=.1f;
+
         
         //顯示照片
         if (lostPetsInformationData[@"LostPetsPhotoFirst"]!=nil)
