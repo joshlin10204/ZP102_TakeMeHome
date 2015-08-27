@@ -110,5 +110,10 @@
     }
 }
 
+- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
+    NSLog(@"APNS Register Fail : %@" ,error.description);
+    
+}
+
 
 @end
