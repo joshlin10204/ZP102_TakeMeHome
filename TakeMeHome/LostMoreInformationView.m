@@ -111,7 +111,8 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)closeBtnPressed:(id)sender {
-    [self.navigationController popViewControllerAnimated:true];
+    //[self.navigationController popViewControllerAnimated:true];
+    [self dismissViewControllerAnimated:false completion:nil];
 }
 
 /*

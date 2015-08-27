@@ -11,7 +11,7 @@
 #import <MapKit/MapKit.h>
 
 
-@interface LostPostLocalChoiceView ()<MKMapViewDelegate,CLLocationManagerDelegate>
+@interface LostPostLocalChoiceView ()<UITextFieldDelegate,MKMapViewDelegate,CLLocationManagerDelegate>
 {
     CLLocationManager *locationManager;
     CLLocation*currentLocation;
@@ -49,7 +49,7 @@
     [locationManager startUpdatingLocation];
    
     _lostMapView.delegate=self;
-
+    _lostAddressText.delegate=self;
     
     
 
@@ -150,19 +150,26 @@
 }
 - (IBAction)sendLocalBtnPressed:(id)sender {
 
-    [self dismissViewControllerAnimated:true completion:^{
+    [self.navigationController popViewControllerAnimated:true];
+
     
     
     [[NSNotificationCenter defaultCenter]postNotificationName:LOST_LOCALADDRESS_NOTIFICATION object:lostAddress];
     
-    
-    }];
     
 
     
 }
 - (IBAction)cancelBtnPressed:(id)sender {
  [self.navigationController popViewControllerAnimated:true];
+}
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    //當有如按下Return key 的時候
+    [textField resignFirstResponder];
+    //使用著第一個點取的元件 稱之為FirstResponder
+    //resignFirstResponder, 當使用者點選的元件是可以輸入文字的時候
+    [self searchLocalBtnPressed:nil];
+    return false;
 }
 
 

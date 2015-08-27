@@ -627,12 +627,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                             </mapView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入走失地點" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fHQ-HR-ynR">
-                                <rect key="frame" x="100" y="8" width="400" height="30.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="fHQ-HR-ynR" secondAttribute="height" multiplier="391:30" id="vN5-GU-Oru"/>
-                                </constraints>
+                                <rect key="frame" x="100" y="8" width="400" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0W8-U7-38C">
                                 <rect key="frame" x="554" y="762" width="30" height="30"/>
@@ -653,7 +650,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lS0-SL-PEd">
-                                <rect key="frame" x="502.5" y="8" width="75" height="30"/>
+                                <rect key="frame" x="502" y="8" width="75" height="40"/>
                                 <state key="normal" title="Seach">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -670,6 +667,7 @@
                             <constraint firstItem="fHQ-HR-ynR" firstAttribute="width" secondItem="9CK-Gh-Yoh" secondAttribute="width" multiplier="2/3" id="EQ7-Vm-Ujw"/>
                             <constraint firstAttribute="centerX" secondItem="fHQ-HR-ynR" secondAttribute="centerX" id="Kme-Bv-wpn"/>
                             <constraint firstItem="Tcj-Tm-jWx" firstAttribute="bottom" secondItem="vl5-YY-Hgg" secondAttribute="top" id="Prt-4J-kDX"/>
+                            <constraint firstItem="fHQ-HR-ynR" firstAttribute="height" secondItem="9CK-Gh-Yoh" secondAttribute="height" multiplier="1/20" id="Xpe-7I-mIh"/>
                             <constraint firstItem="0W8-U7-38C" firstAttribute="trailing" secondItem="9CK-Gh-Yoh" secondAttribute="trailingMargin" id="YNf-KE-hX4"/>
                             <constraint firstItem="vl5-YY-Hgg" firstAttribute="top" secondItem="48A-36-a1U" secondAttribute="bottom" constant="8" id="c4m-W9-PlF"/>
                             <constraint firstItem="lS0-SL-PEd" firstAttribute="top" secondItem="giB-Me-RGi" secondAttribute="bottom" constant="8" id="cfn-YX-80R"/>
