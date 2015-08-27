@@ -25,7 +25,8 @@
     [Parse setApplicationId:@"ZKL6eUpTZej0mt97yRNHnVGC8rNdir77sncvTMcs"
                   clientKey:@"UU0cvcAMlp3mRKAG8MP9QlF3wSgHsGiDMLDIUNzR"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-
+    
+    [self registerAPNS];
     
 //    [Parse setApplicationId:@"parseAppId" clientKey:@"parseClientKey"];
 //    [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
@@ -65,5 +66,49 @@
                                                 sourceApplication:sourceApplication
                                                        annotation:annotation];
 }
+
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // Store the deviceToken in the current installation and save it to Parse.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation saveInBackground];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [PFPush handlePush:userInfo];
+}
+
+
+- (void) registerAPNS{
+    UIApplication *app = [UIApplication sharedApplication];
+    //請問支援這個方法嗎？
+    if ([app respondsToSelector:@selector(registerForRemoteNotificationTypes:)]) {
+        
+        //iOS8 and latter
+        UIUserNotificationType type =
+        UIUserNotificationTypeAlert |  // | 就是or的意思 與||的差別在於 ||為運算符號的or
+        UIUserNotificationTypeBadge |
+        UIUserNotificationTypeSound ;
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:type categories:nil];
+        
+        [app registerUserNotificationSettings:settings];
+        [app registerForRemoteNotifications];
+        
+    }else{
+        //Before iOS8
+        
+        UIRemoteNotificationType type =
+        UIRemoteNotificationTypeAlert |  // | 就是or的意思 與||的差別在於 ||為邏輯運算符號的or
+        UIRemoteNotificationTypeBadge |
+        UIRemoteNotificationTypeSound ;
+        //有黃色警告是因為此方法apple已經停用了
+        //但是為了ios7的user 所以仍要使用
+        
+        [app registerForRemoteNotifications];
+      
+    }
+}
+
 
 @end
