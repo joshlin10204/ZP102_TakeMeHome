@@ -27,8 +27,6 @@
     NSString *fullFileName ;
     NSMutableArray * animalsArray;
 
-    CGFloat cellHeight;
-
 }
 @property (weak, nonatomic) IBOutlet UITableView *petTableView;
 @end
@@ -89,11 +87,7 @@
     cell.labelAge.text = [theCellArray valueForKey:ANIMAL_AGE_FILTER_KEY];
     NSString *imgStr = [theCellArray valueForKey:ANIMAL_ALBUM_FILE_FILTER_KEY];
     
-    
-    //getCellHeight
-    cellHeight = cell.labelType.frame.origin.y; //label position
-    cellHeight += cell.labelType.frame.size.height; //label height
-    cellHeight += cellDistance;
+
     
     
     
@@ -139,8 +133,9 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return cellHeight;
-}
+    CGSize bounds = self.view.bounds.size;
+    return bounds.height * 2/3;
+  }
 
 
 - (IBAction)backToAdoptView:(UIStoryboardSegue*)segue{

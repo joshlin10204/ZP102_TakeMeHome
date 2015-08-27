@@ -6,6 +6,8 @@
 //  Copyright (c) 2015年 Josh. All rights reserved.
 //
 
+#import "indexAdoptVC.h"
+
 #import "searchOptionVC.h"
 #import "adoptView.h"
 
@@ -69,16 +71,6 @@
     [self setOptionsBtnSettings];
     [self setOkDelBtnSettings];
     [self setAreaPickerView];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    adoptView *nextVC = segue.destinationViewController;
-    nextVC.getUserOptionsFilterDoneStr = filterSearchDoneStr;
-    
-}
-
-- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
-    return false;
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
@@ -181,6 +173,7 @@
 
 - (void)cancelBtnPressed:(UIButton*)button{
     //dissmiss
+    [self.parentViewController dismissViewControllerAnimated:true completion:nil];
 }
 
 - (void)OkBtnPressed:(UIButton*)button{
@@ -195,11 +188,22 @@
         
         //解出正確的NSPredicate語法
         filterSearchDoneStr = [self analyseUserOption:getUserOptionStr];
-        [self performSegueWithIdentifier:@"segueToAdoptView" sender:nil];
+
+        //do segue push to next view
+        [self.parentViewController dismissViewControllerAnimated:false completion:^{
+            
+            [[NSNotificationCenter defaultCenter]postNotificationName:USER_PRESSED_OK_BTN_NOTIFICATION object:filterSearchDoneStr];
+            
+        }];
+
+        
     }
-    
-    
-    //[self showAlertView:nil];
+}
+
+
+
+- (void)dealloc{
+    NSLog(@"searchOptionVC die");
 }
 
 - (NSString*)analyseUserOption:(NSString*)options{
