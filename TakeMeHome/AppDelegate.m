@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <Parse/Parse.h>
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 @interface AppDelegate ()
 
 @end
@@ -25,6 +26,7 @@
     [Parse setApplicationId:@"ZKL6eUpTZej0mt97yRNHnVGC8rNdir77sncvTMcs"
                   clientKey:@"UU0cvcAMlp3mRKAG8MP9QlF3wSgHsGiDMLDIUNzR"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+        [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
     
     [self registerAPNS];
     

@@ -78,7 +78,7 @@
 }
 
 - (IBAction)exitBtnPressed:(id)sender {
-    [self dismissViewControllerAnimated:false completion:nil];
+    [self.navigationController popViewControllerAnimated:true];
 }
 
 -(void)dealloc{
