@@ -92,8 +92,7 @@
     
 }
 - (IBAction)backBtnPressed:(id)sender {
-    [self dismissViewControllerAnimated:true completion:nil];
-
+ [self.navigationController popViewControllerAnimated:true];
 }
 
 /*

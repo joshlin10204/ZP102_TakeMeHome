@@ -466,10 +466,6 @@
     }
 }
 
--(IBAction)backLostMapView:(UIStoryboardSegue*)segue
-{
-    NSLog(@"backLostMapView");
-    }
 
 
 
