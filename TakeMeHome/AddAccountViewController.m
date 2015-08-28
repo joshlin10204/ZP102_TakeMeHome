@@ -9,6 +9,8 @@
 #import "AddAccountViewController.h"
 #import <Parse/Parse.h>
 #import "MBProgressHUD.h"
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+
 
 
 @interface AddAccountViewController ()<MBProgressHUDDelegate>

@@ -10,6 +10,9 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <Parse/Parse.h>
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+
+
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *accoundText;
 @property (weak, nonatomic) IBOutlet UITextField *passwordText;
@@ -27,14 +30,16 @@
 }
 -(void)viewDidAppear:(BOOL)animated
 {
-    //檢查判斷是否已登入
-    if ([FBSDKAccessToken currentAccessToken]) {
-        // User is logged in, do work such as go to next view controller.
-        NSLog(@"viewDidAppear 已登入");
-        [self performSegueWithIdentifier:@"goMain" sender:nil];
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser) {
+        // do stuff with the user
         
+        
+        
+    } else {
+        // show the signup or login screen
     }
-    
+
 
 }
 
@@ -45,56 +50,30 @@
 
 //按下臉書按鈕
 - (IBAction)fblogInPressed:(id)sender {
-
-    FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
     
-    if ([FBSDKAccessToken currentAccessToken]) {
-        // User is logged in, do work such as go to next view controller.
-        NSLog(@"FBSDKAccessToken 已登入");
-        
-        //轉至其它畫面...
-        [self performSegueWithIdentifier:@"goMain" sender:nil];
-
-        
-    }else{
-        
-        //未登入
-        [loginManager logInWithReadPermissions:@[@"public_profile",@"email"] handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-            //當出現錯誤
-            if (error)
-            {
-                NSLog(@"Error");
-            }
-            //當使用者按下取消
-            else if (result.isCancelled)
-            {
-                NSLog(@"Cancelled");
-            }
-            //當使用者按下同意
-            else{
-
+    
+    [PFFacebookUtils logInInBackgroundWithReadPermissions:@[@"public_profile",@"email"] block:^(PFUser *user, NSError *error) {
+        if (!user) {
+            NSLog(@"Uh oh. The user cancelled the Facebook login.");
+        } else if (user.isNew) {
+            NSLog(@"User signed up and logged in through Facebook!");
+            
             [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields":@"email,name,gender,locale"}]
              startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, NSDictionary *results, NSError *error) {
                  NSLog(@"results: %@",results);
                  NSLog(@"email:%@",[results objectForKey:@"email"]);
+                 user.username=[results objectForKey:@"email"];
+                 [user save];
                  
                  [self performSegueWithIdentifier:@"goMain" sender:nil];
                  
              }];
-            }
-            
-        }];
+        
         }
-    
-//    [PFFacebookUtils logInInBackgroundWithReadPermissions:@[@"public_profile",@"email"] block:^(PFUser *user, NSError *error) {
-//        if (!user) {
-//            NSLog(@"Uh oh. The user cancelled the Facebook login.");
-//        } else if (user.isNew) {
-//            NSLog(@"User signed up and logged in through Facebook!");
-//        } else {
-//            NSLog(@"User logged in through Facebook!");
-//        }
-//    }];
+        else {
+            NSLog(@"User logged in through Facebook!");
+        }
+    }];
 
 }
 
