@@ -11,11 +11,14 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <Parse/Parse.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
-#import "SCLAlertView.h"
+#import "HHAlertView.h"
 
 
 
 @interface ViewController ()
+{
+    UIView   *maskView;
+}
 @property (weak, nonatomic) IBOutlet UITextField *accoundText;
 @property (weak, nonatomic) IBOutlet UITextField *passwordText;
 
@@ -116,16 +119,35 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
                                     {
                                             // The login failed. Check error to see why.
                                         NSLog(@"登入失敗：%@",error);
+                                        [self.view addSubview:self.addmaskView];
+                                        [[HHAlertView shared]
+                                         showAlertWithStyle:HHAlertStyleError
+                                         inView:self.view
+                                         Title:@"登入失敗"
+                                         detail:@"You are successful!"
+                                         cancelButton:nil
+                                         Okbutton:@"Sure"
+                                         block:^(HHAlertButton buttonindex) {
+                                             [maskView removeFromSuperview];
 
-                                        SCLAlertView *alert = [[SCLAlertView alloc] init];
-                                        
-                                        [alert showSuccess:self title:@"Hello World" subTitle:@"This is a more descriptive text." closeButtonTitle:@"Done" duration:0.0f];
-                                        
-                                        // Alternative alert types
-                                        [alert showError:self title:@"Hello Error" subTitle:@"This is a more descriptive error text." closeButtonTitle:@"OK" duration:0.0f];
+                                        }
+                                         ];
+
                                         }
                                     }];
 }
+
+- (UIView *)addmaskView
+{
+    if (!maskView) {
+        maskView = [[UIView alloc] initWithFrame:self.view.bounds];
+        [maskView setBackgroundColor:[UIColor blackColor]];
+        [maskView setAlpha:0.2];
+        NSLog(@"New maskView");
+    }
+    return maskView;
+}
+
 
 
 

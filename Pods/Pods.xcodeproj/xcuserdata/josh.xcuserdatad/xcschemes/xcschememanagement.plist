@@ -34,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>HHAlertView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -77,17 +82,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0FE22B605E51E99ECFD6C7E0F48BE43E</key>
+		<key>0D59B1313245653558291F516D077D65</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1C919DDFC0021DE60809DE0F2818FC74</key>
+		<key>0E4F1E201D557D6D530DD40C2E7844B4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>381E6EFAF35D74B8F2963DA8C915A00F</key>
+		<key>384CDBFEE3AA3E5FF62B3B1BA341C0BB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,37 +102,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4FAD6A7DE4586A985324838456E459E9</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>657C84F1096D4D8BA11AB85AF32571FA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>716F05F8A74E4BB6D3AF0B7956C2231B</key>
+		<key>6E8D8EFC8E4971D6C4A961327DB59B3C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8D0C87AD508C25A8D11F9615A5DEDE86</key>
+		<key>7BB7FFB61145650A87588EA28AFE7ADF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>94BE3ABE7857E48D840F4B0FF8338DF4</key>
+		<key>805B06BFEECA8DF8BF583376FE331B5C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B476CDAA7EC56F8C8A8B41D441960C3B</key>
+		<key>9987CE863385B527B4880E787AD026E5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C79437C19F437E0913F4CE2063D1CAEB</key>
+		<key>A2963768AEB2D5640AB452DE93622DDA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -137,12 +137,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D11743E267681E140AD38C7BB6B9F5AF</key>
+		<key>CF1D03A89AC9524BB364C2410CB145E9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>D770CD19987EAE4F5A18D2169B467C15</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DEBDDB37EDA5D7152829BAF1B38941FD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FADA3B5F57FB24EB952C6EC773A20504</key>
 		<dict>
 			<key>primary</key>
 			<true/>

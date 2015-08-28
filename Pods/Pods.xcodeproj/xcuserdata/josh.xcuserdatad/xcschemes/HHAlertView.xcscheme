@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "255A61FE671A45A99E53D9B4"
-               BuildableName = "UIColor_Hex.framework"
-               BlueprintName = "UIColor-Hex"
+               BlueprintIdentifier = "678BB2934D4EB80B15321A35"
+               BuildableName = "HHAlertView.framework"
+               BlueprintName = "HHAlertView"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
