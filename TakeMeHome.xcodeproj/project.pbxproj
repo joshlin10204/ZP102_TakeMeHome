@@ -97,6 +97,8 @@
 		A6DA899E1B7B1076000F8B7B /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DA898C1B7B1076000F8B7B /* UIImageView+HighlightedWebCache.m */; };
 		A6DA899F1B7B1076000F8B7B /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DA898E1B7B1076000F8B7B /* UIImageView+WebCache.m */; };
 		A6DA89A01B7B1076000F8B7B /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DA89901B7B1076000F8B7B /* UIView+WebCacheOperation.m */; };
+		A6DCB2EE1B902C30002A3EB6 /* postViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DCB2ED1B902C30002A3EB6 /* postViewVC.m */; };
+		A6DCB2F11B902CB2002A3EB6 /* postDetailTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DCB2F01B902CB2002A3EB6 /* postDetailTVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -257,6 +259,10 @@
 		A6DA898E1B7B1076000F8B7B /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		A6DA898F1B7B1076000F8B7B /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		A6DA89901B7B1076000F8B7B /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		A6DCB2EC1B902C30002A3EB6 /* postViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = postViewVC.h; sourceTree = "<group>"; };
+		A6DCB2ED1B902C30002A3EB6 /* postViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = postViewVC.m; sourceTree = "<group>"; };
+		A6DCB2EF1B902CB2002A3EB6 /* postDetailTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = postDetailTVC.h; sourceTree = "<group>"; };
+		A6DCB2F01B902CB2002A3EB6 /* postDetailTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = postDetailTVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -454,6 +460,7 @@
 				A69865AA1B72539A0065C4E5 /* theDog2.jpg */,
 				A69865A91B72539A0065C4E5 /* theDog.jpg */,
 				A61E91FD1B8E239700EEE74B /* adopt.storyboard */,
+				A6DCB2EB1B902BDD002A3EB6 /* postView */,
 				A65527E01B7B7B8C00675D97 /* searchView */,
 				A69865B51B7254460065C4E5 /* myFavorite */,
 				A69865B91B7254610065C4E5 /* adoptProfile */,
@@ -641,6 +648,17 @@
 				A6DA89901B7B1076000F8B7B /* UIView+WebCacheOperation.m */,
 			);
 			path = SDWebImage;
+			sourceTree = "<group>";
+		};
+		A6DCB2EB1B902BDD002A3EB6 /* postView */ = {
+			isa = PBXGroup;
+			children = (
+				A6DCB2EC1B902C30002A3EB6 /* postViewVC.h */,
+				A6DCB2ED1B902C30002A3EB6 /* postViewVC.m */,
+				A6DCB2EF1B902CB2002A3EB6 /* postDetailTVC.h */,
+				A6DCB2F01B902CB2002A3EB6 /* postDetailTVC.m */,
+			);
+			name = postView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -846,6 +864,7 @@
 				032566CF1B7DEF1200DAD13B /* LostMainController.m in Sources */,
 				032566CA1B7DEE4400DAD13B /* LostPostTableView.m in Sources */,
 				A6DA899B1B7B1076000F8B7B /* UIImage+GIF.m in Sources */,
+				A6DCB2F11B902CB2002A3EB6 /* postDetailTVC.m in Sources */,
 				A6DA899E1B7B1076000F8B7B /* UIImageView+HighlightedWebCache.m in Sources */,
 				03BD5A651B6142380054F861 /* main.m in Sources */,
 				A6DA899C1B7B1076000F8B7B /* UIImage+MultiFormat.m in Sources */,
@@ -858,6 +877,7 @@
 				A6D3E7251B6A6F550066DD7B /* navigationBtn.m in Sources */,
 				A61E92011B8E25D200EEE74B /* indexAdoptVC.m in Sources */,
 				A6DA89961B7B1076000F8B7B /* SDWebImageDownloader.m in Sources */,
+				A6DCB2EE1B902C30002A3EB6 /* postViewVC.m in Sources */,
 				A6D6DEBA1B7C786700DBCFBD /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				A6DA89A01B7B1076000F8B7B /* UIView+WebCacheOperation.m in Sources */,
 				A69865C01B7254870065C4E5 /* aboutMeVC.m in Sources */,

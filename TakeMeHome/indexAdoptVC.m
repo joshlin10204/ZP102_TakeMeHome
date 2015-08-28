@@ -27,15 +27,15 @@
     
 }
 
-- (void)navigationPushView{
-    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"adopt" bundle:nil];
-    id targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"adoptView"];
-    //adoptView *nextVC = targetViewController;
-    //nextVC.getUserOptionsFilterDoneStr = filterSearchDoneStr;
-    NSLog(@"will push");
-    [self.navigationController pushViewController:targetViewController animated:true];
-
-}
+//- (void)navigationPushView{
+//    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"adopt" bundle:nil];
+//    id targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"adoptView"];
+//    //adoptView *nextVC = targetViewController;
+//    //nextVC.getUserOptionsFilterDoneStr = filterSearchDoneStr;
+//    NSLog(@"will push");
+//    [self.navigationController pushViewController:targetViewController animated:true];
+//
+//}
 
 
 - (void)UserPressedOkBtn:(NSNotification*)notify{
