@@ -11,6 +11,8 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <Parse/Parse.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+#import "SCLAlertView.h"
+
 
 
 @interface ViewController ()
@@ -115,7 +117,12 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
                                             // The login failed. Check error to see why.
                                         NSLog(@"登入失敗：%@",error);
 
+                                        SCLAlertView *alert = [[SCLAlertView alloc] init];
                                         
+                                        [alert showSuccess:self title:@"Hello World" subTitle:@"This is a more descriptive text." closeButtonTitle:@"Done" duration:0.0f];
+                                        
+                                        // Alternative alert types
+                                        [alert showError:self title:@"Hello Error" subTitle:@"This is a more descriptive error text." closeButtonTitle:@"OK" duration:0.0f];
                                         }
                                     }];
 }

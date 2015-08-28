@@ -1,4 +1,5 @@
 pod 'MBProgressHUD', '~> 0.9.1'
+pod 'SCLAlertView-Objective-C'
 pod 'ParseFacebookUtilsV4'
 pod 'SSBouncyButton', '~> 1.0'
 pod 'DOFavoriteButton'
@@ -7,3 +8,4 @@ pod 'DOFavoriteButton'
 pod 'Parse', '~>1.7'
 pod 'ParseFacebookUtilsV4'
 use_frameworks!
+

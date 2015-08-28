@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "822B28A2A40DE2C3DCEDDCE7"
-               BuildableName = "ParseFacebookUtilsV4.framework"
-               BlueprintName = "ParseFacebookUtilsV4"
+               BlueprintIdentifier = "87A35CF9DF298CC91981A610"
+               BuildableName = "SCLAlertView_Objective_C.framework"
+               BlueprintName = "SCLAlertView-Objective-C"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

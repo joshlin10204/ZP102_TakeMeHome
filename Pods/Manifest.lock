@@ -27,6 +27,7 @@ PODS:
     - FBSDKCoreKit (~> 4.0)
     - FBSDKLoginKit (~> 4.0)
     - Parse (~> 1.8.2)
+  - SCLAlertView-Objective-C (0.7.4)
   - SSBouncyButton (1.0.5):
     - BRYSerialAnimationQueue (~> 1.0)
     - UIColor-Hex (~> 0.1)
@@ -40,6 +41,7 @@ DEPENDENCIES:
   - MBProgressHUD (~> 0.9.1)
   - Parse (~> 1.7)
   - ParseFacebookUtilsV4
+  - SCLAlertView-Objective-C
   - SSBouncyButton (~> 1.0)
 
 SPEC CHECKSUMS:
@@ -52,6 +54,7 @@ SPEC CHECKSUMS:
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   Parse: 188601c6cd91fae55906badd283b513104a3a8c9
   ParseFacebookUtilsV4: 6e7415146935e1238ebabbee7e5d32d148027b2d
+  SCLAlertView-Objective-C: 15ebfdac06ca289ba1f29fe34b5a03da6bd3fe37
   SSBouncyButton: 5cce51fb710695670295446aaa17b8e716bdb672
   UIColor-Hex: 77e80f383c6b3a63c5e95a9a4a7f4a71976e38a5
   UIImage+BetterAdditions: 0953a2a489f3db22babe507ed3615ded546d8579
