@@ -25,6 +25,8 @@
 		035CD2951B665AE900AEC20B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035CD2941B665AE900AEC20B /* MapKit.framework */; };
 		035CD2971B665AFE00AEC20B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035CD2961B665AFE00AEC20B /* CoreLocation.framework */; };
 		037126771B724074000F546E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 037126761B724074000F546E /* Images.xcassets */; };
+		03A1BB0D1B90B8FD00DD2EFF /* MemberSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03A1BB0C1B90B8FD00DD2EFF /* MemberSetting.storyboard */; };
+		03A1BB101B90BAA700DD2EFF /* MemberSetVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A1BB0F1B90BAA700DD2EFF /* MemberSetVIew.m */; };
 		03B9E7A31B889F10002D340D /* WawaSC.otf in Resources */ = {isa = PBXBuildFile; fileRef = 03B9E7A21B889F10002D340D /* WawaSC.otf */; };
 		03BD5A651B6142380054F861 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BD5A641B6142380054F861 /* main.m */; };
 		03BD5A681B6142380054F861 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BD5A671B6142380054F861 /* AppDelegate.m */; };
@@ -136,7 +138,10 @@
 		035CD28C1B664D4100AEC20B /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = Framework/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		035CD2941B665AE900AEC20B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		035CD2961B665AFE00AEC20B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		037126761B724074000F546E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		037126761B724074000F546E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TakeMeHome/Images.xcassets; sourceTree = "<group>"; };
+		03A1BB0C1B90B8FD00DD2EFF /* MemberSetting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MemberSetting.storyboard; sourceTree = "<group>"; };
+		03A1BB0E1B90BAA700DD2EFF /* MemberSetVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberSetVIew.h; sourceTree = "<group>"; };
+		03A1BB0F1B90BAA700DD2EFF /* MemberSetVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberSetVIew.m; sourceTree = "<group>"; };
 		03B9E7A21B889F10002D340D /* WawaSC.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = WawaSC.otf; sourceTree = "<group>"; };
 		03BD5A5F1B6142380054F861 /* TakeMeHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakeMeHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03BD5A631B6142380054F861 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -325,6 +330,7 @@
 		035CD2981B665B4600AEC20B /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				03DC79EC1B6555140042E8E2 /* Main.storyboard */,
 				03BD5A691B6142380054F861 /* ViewController.h */,
 				03BD5A6A1B6142380054F861 /* ViewController.m */,
 				03BD5A8E1B6145880054F861 /* MainViewController.h */,
@@ -335,10 +341,22 @@
 			name = Home;
 			sourceTree = "<group>";
 		};
+		03A1BB0B1B90B8BE00DD2EFF /* MemberSetting */ = {
+			isa = PBXGroup;
+			children = (
+				03A1BB0C1B90B8FD00DD2EFF /* MemberSetting.storyboard */,
+				03A1BB0E1B90BAA700DD2EFF /* MemberSetVIew.h */,
+				03A1BB0F1B90BAA700DD2EFF /* MemberSetVIew.m */,
+			);
+			name = MemberSetting;
+			sourceTree = "<group>";
+		};
 		03BD5A561B6142380054F861 = {
 			isa = PBXGroup;
 			children = (
 				03BD5A611B6142380054F861 /* TakeMeHome */,
+				037126761B724074000F546E /* Images.xcassets */,
+				03BD5A711B6142380054F861 /* LaunchScreen.xib */,
 				03BD5A7B1B6142380054F861 /* TakeMeHomeTests */,
 				03BD5A601B6142380054F861 /* Products */,
 				0594AD0E048EB8C98DB9F789 /* Pods */,
@@ -364,13 +382,11 @@
 				035CD2981B665B4600AEC20B /* Home */,
 				035CD2931B66596200AEC20B /* Lost */,
 				A69865A81B7253830065C4E5 /* Adopt */,
-				A6D3E7221B6A6F0F0066DD7B /* guiderBtn */,
-				03DC79EC1B6555140042E8E2 /* Main.storyboard */,
-				037126761B724074000F546E /* Images.xcassets */,
-				03BD5A711B6142380054F861 /* LaunchScreen.xib */,
+				03A1BB0B1B90B8BE00DD2EFF /* MemberSetting */,
 				10384DE71B7244D200B56916 /* Setting */,
 				A6D3E7211B6A6EF40066DD7B /* library */,
 				03BD5A621B6142380054F861 /* Supporting Files */,
+				A6D3E7221B6A6F0F0066DD7B /* guiderBtn */,
 			);
 			path = TakeMeHome;
 			sourceTree = "<group>";
@@ -746,6 +762,7 @@
 				A67D878B1B8AEDD20081E259 /* taiwanFlag.png in Resources */,
 				A6D3E7361B6A8FDE0066DD7B /* lost.png in Resources */,
 				A6D3E7381B6A8FDE0066DD7B /* settingButton.png in Resources */,
+				03A1BB0D1B90B8FD00DD2EFF /* MemberSetting.storyboard in Resources */,
 				037126771B724074000F546E /* Images.xcassets in Resources */,
 				A69865B11B72539A0065C4E5 /* theDog2.jpg in Resources */,
 				03BD5A731B6142380054F861 /* LaunchScreen.xib in Resources */,
@@ -846,6 +863,7 @@
 				032566CF1B7DEF1200DAD13B /* LostMainController.m in Sources */,
 				032566CA1B7DEE4400DAD13B /* LostPostTableView.m in Sources */,
 				A6DA899B1B7B1076000F8B7B /* UIImage+GIF.m in Sources */,
+				03A1BB101B90BAA700DD2EFF /* MemberSetVIew.m in Sources */,
 				A6DA899E1B7B1076000F8B7B /* UIImageView+HighlightedWebCache.m in Sources */,
 				03BD5A651B6142380054F861 /* main.m in Sources */,
 				A6DA899C1B7B1076000F8B7B /* UIImage+MultiFormat.m in Sources */,
@@ -896,6 +914,7 @@
 				03BD5A721B6142380054F861 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			path = TakeMeHome;
 			sourceTree = "<group>";
 		};
 		03DC79EC1B6555140042E8E2 /* Main.storyboard */ = {

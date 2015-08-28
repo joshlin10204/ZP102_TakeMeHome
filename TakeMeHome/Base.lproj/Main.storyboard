@@ -226,6 +226,9 @@
                                 <state key="normal" title="MemberSettingButton" image="memberSettingButton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="MemberSettingButtonPressed:" destination="Rs4-gk-Mq4" eventType="touchUpInside" id="czJ-m6-uGS"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpD-wK-btK">
                                 <rect key="frame" x="200" y="175" width="200" height="250"/>
@@ -288,7 +291,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wKo-u6-ajJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1115" y="338"/>
+            <point key="canvasLocation" x="1299" y="594"/>
         </scene>
         <!--Add Account View Controller-->
         <scene sceneID="JIE-pH-65r">
@@ -367,6 +370,7 @@
                         <outlet property="checkPassTextWord" destination="tfm-Nb-dul" id="4K0-Q1-Muq"/>
                         <outlet property="userAccountText" destination="Pz5-3Q-iGz" id="M5g-gi-crx"/>
                         <outlet property="userPassWordText" destination="sxx-v2-dUc" id="y02-CD-aSG"/>
+                        <segue destination="Rs4-gk-Mq4" kind="show" identifier="goMain" id="53a-E7-Hgc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hIa-X1-JSh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -387,4 +391,7 @@
         <image name="settingButton" width="150" height="150"/>
         <image name="visitButton" width="236" height="236"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="oN7-Aa-G4j"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -10,6 +10,7 @@
 #import "navigationBtn.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <Parse/Parse.h>
 
 
 
@@ -48,6 +49,12 @@
     
     //
     self.fbLogOutButton.delegate = self;
+    
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser) {
+        // do stuff with the user
+        NSLog(@"currentUser: %@ ",currentUser);
+    }
     
 
     
@@ -167,8 +174,6 @@
 
 }
 
-//回到此頁
--(IBAction)backToWhite:(UIStoryboardSegue*)segue{ NSLog(@"backToWhite");}
 
 
 //前往領養寵物
@@ -185,6 +190,12 @@
     [self.navigationController pushViewController:targetViewController animated:true];
     
     
+}
+- (IBAction)MemberSettingButtonPressed:(id)sender {
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"MemberSetting" bundle:nil];
+    id targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"MemberSetting"];
+    [self menuBtnPress:nil];
+    [self.navigationController pushViewController:targetViewController animated:true];
 }
 
 

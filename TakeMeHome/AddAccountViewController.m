@@ -10,12 +10,15 @@
 #import <Parse/Parse.h>
 #import "MBProgressHUD.h"
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+#import "HHAlertView.h"
+
 
 
 
 
 @interface AddAccountViewController ()<MBProgressHUDDelegate,UITextFieldDelegate>
 {
+    UIView   *maskView;
     MBProgressHUD *HUD;
 }
 @property (weak, nonatomic) IBOutlet UITextField *userAccountText;
@@ -58,13 +61,40 @@
     
     if(![self validateEmail:_userAccountText.text]) {
         // user entered invalid email address
-        NSLog(@"信箱有錯");
+        NSLog(@"");
+        
+        [self.view addSubview:self.addmaskView];
+        [[HHAlertView shared]
+         showAlertWithStyle:HHAlertStyleWraning
+         inView:self.view
+         Title:@"提醒"
+         detail:@"信箱不正確唷！"
+         cancelButton:nil
+         Okbutton:@"關閉"
+         block:^(HHAlertButton buttonindex) {
+             [maskView removeFromSuperview];
+             
+         }
+         ];
         [HUD hide:YES];
         
     }
     else if (_userPassWordText.text.length<6)
     {
-        NSLog(@"密碼至少6位數");
+        
+        [self.view addSubview:self.addmaskView];
+        [[HHAlertView shared]
+         showAlertWithStyle:HHAlertStyleWraning
+         inView:self.view
+         Title:@"提醒"
+         detail:@"密碼至少六位數"
+         cancelButton:nil
+         Okbutton:@"關閉"
+         block:^(HHAlertButton buttonindex) {
+             [maskView removeFromSuperview];
+             
+         }
+         ];
         [HUD hide:YES];
         
     }
@@ -79,30 +109,111 @@
                     // Hooray! Let them use the app now.
                     [self dismissViewControllerAnimated:true completion:nil];
                     NSLog(@"註冊成功");
+                    [self.view addSubview:self.addmaskView];
+                    [[HHAlertView shared]
+                     showAlertWithStyle:HHAlertStyleOk
+                     inView:self.view
+                     Title:@"註冊成功"
+                     detail:@"完成註冊！"
+                     cancelButton:nil
+                     Okbutton:@"登入"
+                     block:^(HHAlertButton buttonindex) {
+                         [maskView removeFromSuperview];
+                         [self performSegueWithIdentifier:@"goMain" sender:nil];
+                         
+                     }
+                     ];
 
                     [HUD hide:YES];
 
                 }
+  
                 else
                 {
-                    NSString *errorString = [error userInfo][@"error"];
-                    NSLog(@"%@",errorString);
-                    // Show the errorString somewhere and let the user try again.
+                    NSNumber *errorString = [error userInfo][@"code"];
+                    NSNumber *error202= [NSNumber numberWithInt:202];
+                    NSNumber *error100= [NSNumber numberWithInt:100];
+                    if ([errorString isEqual:error202])
+                    {
+                        NSLog(@"error code：%@",[error userInfo][@"code"]);
+                        [self.view addSubview:self.addmaskView];
+                        [[HHAlertView shared]
+                         showAlertWithStyle:HHAlertStyleWraning
+                         inView:self.view
+                         Title:@"提醒"
+                         detail:@"此帳號已被申請，請換一個帳號"
+                         cancelButton:nil
+                         Okbutton:@"關閉"
+                         block:^(HHAlertButton buttonindex) {
+                             [maskView removeFromSuperview];
+                             
+                         }
+                         ];
+
+                    }
+                    else if ([errorString isEqual:error100])
+                    {
+
+                        [self.view addSubview:self.addmaskView];
+                        [[HHAlertView shared]
+                         showAlertWithStyle:HHAlertStyleError
+                         inView:self.view
+                         Title:@"注意"
+                         detail:@"請檢查您的網路狀態"
+                         cancelButton:nil
+                         Okbutton:@"關閉"
+                         block:^(HHAlertButton buttonindex) {
+                             [maskView removeFromSuperview];
+                             
+                         }
+                         ];
+
+                        
+                    }
+                    else
+                    {
+                        [self.view addSubview:self.addmaskView];
+                        [[HHAlertView shared]
+                         showAlertWithStyle:HHAlertStyleError
+                         inView:self.view
+                         Title:@"注意"
+                         detail:@"註冊失敗"
+                         cancelButton:nil
+                         Okbutton:@"關閉"
+                         block:^(HHAlertButton buttonindex) {
+                             [maskView removeFromSuperview];
+                             
+                         }
+                         ];
+ 
+                        
+                    }
                     [HUD hide:YES];
                 }
             }];
         }
         else
         {
-            NSLog(@"密碼不同");
+
+            [self.view addSubview:self.addmaskView];
+            [[HHAlertView shared]
+             showAlertWithStyle:HHAlertStyleWraning
+             inView:self.view
+             Title:@"提醒"
+             detail:@"兩次密碼不相同"
+             cancelButton:nil
+             Okbutton:@"關閉"
+             block:^(HHAlertButton buttonindex) {
+                 [maskView removeFromSuperview];
+                 
+             }
+             ];
+
             [HUD hide:YES];
         }
     }
 
     
-}
-- (IBAction)backBtnPressed:(id)sender {
- [self.navigationController popViewControllerAnimated:true];
 }
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
     //當有如按下Return key 的時候
@@ -111,10 +222,27 @@
     //resignFirstResponder, 當使用者點選的元件是可以輸入文字的時候
     return false;
 }
+//判斷email格式
 - (BOOL)validateEmail:(NSString *)emailStr {
     NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:emailStr];
+}
+//建立一個霧透的背景
+- (UIView *)addmaskView
+{
+    if (!maskView) {
+        maskView = [[UIView alloc] initWithFrame:self.view.bounds];
+        [maskView setBackgroundColor:[UIColor blackColor]];
+        [maskView setAlpha:0.2];
+        NSLog(@"New maskView");
+    }
+    return maskView;
+}
+
+//返回按鈕
+- (IBAction)backBtnPressed:(id)sender {
+ [self.navigationController popViewControllerAnimated:true];
 }
 /*
 #pragma mark - Navigation
