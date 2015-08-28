@@ -54,6 +54,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SCLAlertView-Objective-C.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SSBouncyButton.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -72,12 +77,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1F1FCBE9161B977347A61B2DEC6DCB92</key>
+		<key>0FE22B605E51E99ECFD6C7E0F48BE43E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>20FEADADF6034B87DB0E3032D96DC880</key>
+		<key>1C919DDFC0021DE60809DE0F2818FC74</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>381E6EFAF35D74B8F2963DA8C915A00F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,7 +97,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>576205EDB9E44397E1E361B76D6B3D23</key>
+		<key>4FAD6A7DE4586A985324838456E459E9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,42 +107,42 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>89F44BEDCA8257CAD316413AAD3D05E9</key>
+		<key>716F05F8A74E4BB6D3AF0B7956C2231B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>91B177223B2751EF669A3BE2CF8BF63A</key>
+		<key>8D0C87AD508C25A8D11F9615A5DEDE86</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>923E41A276E6E690755B4450C0B37271</key>
+		<key>94BE3ABE7857E48D840F4B0FF8338DF4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AA0AF8B07122FC423C5AA47B43F72F48</key>
+		<key>B476CDAA7EC56F8C8A8B41D441960C3B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C7537C1E200954BBD0C811A92D3F0888</key>
+		<key>C79437C19F437E0913F4CE2063D1CAEB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CC87AE09EB9C90770709069EE4D786A1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D11743E267681E140AD38C7BB6B9F5AF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>D770CD19987EAE4F5A18D2169B467C15</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DD7B919C9998B285A0B926E2829CDA1B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EBFF9385CC6DEA415775087C70982F21</key>
 		<dict>
 			<key>primary</key>
 			<true/>
