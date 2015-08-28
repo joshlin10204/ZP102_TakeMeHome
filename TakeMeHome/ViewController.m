@@ -33,13 +33,9 @@
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser) {
         // do stuff with the user
-        
-        
-        
-    } else {
-        // show the signup or login screen
+        NSLog(@"currentUser: %@ ",currentUser);
+        [self performSegueWithIdentifier:@"goMain" sender:nil];
     }
-
 
 }
 
@@ -53,16 +49,23 @@
     
     
     [PFFacebookUtils logInInBackgroundWithReadPermissions:@[@"public_profile",@"email"] block:^(PFUser *user, NSError *error) {
-        if (!user) {
+        if (!user)
+        {
             NSLog(@"Uh oh. The user cancelled the Facebook login.");
-        } else if (user.isNew) {
+        }
+        else if (user.isNew)
+        {
             NSLog(@"User signed up and logged in through Facebook!");
             
             [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields":@"email,name,gender,locale"}]
              startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, NSDictionary *results, NSError *error) {
                  NSLog(@"results: %@",results);
                  NSLog(@"email:%@",[results objectForKey:@"email"]);
+                 NSLog(@"name:%@",[results objectForKey:@"name"]);
+
                  user.username=[results objectForKey:@"email"];
+                 user[@"name"]=[results objectForKey:@"name"];
+
                  [user save];
                  
                  [self performSegueWithIdentifier:@"goMain" sender:nil];
@@ -72,6 +75,8 @@
         }
         else {
             NSLog(@"User logged in through Facebook!");
+            [self performSegueWithIdentifier:@"goMain" sender:nil];
+
         }
     }];
 
@@ -108,9 +113,9 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
                                     else
                                     {
                                             // The login failed. Check error to see why.
+                                        NSLog(@"登入失敗：%@",error);
 
-                                            NSLog(@"登入失敗：%@",error);
-                                            
+                                        
                                         }
                                     }];
 }
