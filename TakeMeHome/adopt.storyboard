@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mWz-2e-tAP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mWz-2e-tAP">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -1473,11 +1473,11 @@
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="constraints">
-                                                            <exclude reference="elA-FV-kF5"/>
-                                                            <exclude reference="mRf-gv-v0p"/>
-                                                            <exclude reference="XqM-ao-wQc"/>
-                                                            <exclude reference="imJ-hK-OfQ"/>
                                                             <exclude reference="Thj-By-aqd"/>
+                                                            <exclude reference="XqM-ao-wQc"/>
+                                                            <exclude reference="elA-FV-kF5"/>
+                                                            <exclude reference="imJ-hK-OfQ"/>
+                                                            <exclude reference="mRf-gv-v0p"/>
                                                         </mask>
                                                     </variation>
                                                 </view>

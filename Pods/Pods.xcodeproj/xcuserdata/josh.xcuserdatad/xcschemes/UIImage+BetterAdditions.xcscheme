@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "924BD85F13D8FD8EAF3D6E13"
+               BlueprintIdentifier = "CCCD753AF0A80706648E9391"
                BuildableName = "UIImage_BetterAdditions.framework"
                BlueprintName = "UIImage+BetterAdditions"
                ReferencedContainer = "container:Pods.xcodeproj">

@@ -1,18 +1,18 @@
 //
-//  MemberSetVIew.m
+//  MemberSetView.m
 //  TakeMeHome
 //
-//  Created by Josh on 2015/8/28.
+//  Created by Josh on 2015/8/29.
 //  Copyright (c) 2015年 Josh. All rights reserved.
 //
 
-#import "MemberSetVIew.h"
+#import "MemberSetView.h"
 
-@interface MemberSetVIew ()
+@interface MemberSetView ()
 
 @end
 
-@implementation MemberSetVIew
+@implementation MemberSetView
 
 - (void)viewDidLoad {
     [super viewDidLoad];

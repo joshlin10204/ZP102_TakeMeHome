@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "678BB2934D4EB80B15321A35"
+               BlueprintIdentifier = "1CF03B96C91F8A8FA749CF4A"
                BuildableName = "HHAlertView.framework"
                BlueprintName = "HHAlertView"
                ReferencedContainer = "container:Pods.xcodeproj">

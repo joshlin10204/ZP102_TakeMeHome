@@ -11,6 +11,7 @@
 #import "LostPostView.h"
 #import "MBProgressHUD.h"
 #import "LostPostLocalChoiceView.h"
+#import "HHAlertView.h"
 
 
 
@@ -27,11 +28,14 @@
     UIDatePicker*datePicker;
 
 
-    MBProgressHUD *HUD;
-    
     //走失地點
     BOOL checkLocal;
     NSString * lostAddress;
+    //Alert 的霧透背景
+    UIView   *maskView;
+    //Loading圖
+    MBProgressHUD *HUD;
+
     
     
 }
@@ -209,12 +213,26 @@
     [self.view endEditing:YES];
     
     //判斷是否有必填未寫
-    if (_lostPetNameText.text.length==0||_lostDateText.text.length==0) {
-        UIAlertController* warningAlert=[UIAlertController alertControllerWithTitle:@"注意!" message:@"請務必填寫必填欄位" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction* cancle=[UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:nil];
-        [warningAlert addAction:cancle];
-        [self presentViewController:warningAlert animated:YES completion:nil];
+    if (_lostPetNameText.text.length==0||_lostDateText.text.length==0)
+    {
+        [self.view.window addSubview:self.addmaskView];
+//        [[[[UIApplication sharedApplication] windows] firstObject] addSubview:self.addmaskView];
 
+//        [self.view.window bringSubviewToFront:self.addmaskView];
+
+        [[HHAlertView shared]
+         showAlertWithStyle:HHAlertStyleWraning
+         inView:self.view.window
+         Title:@"提醒"
+         detail:@"尚未填寫完必填欄位"
+         cancelButton:nil
+         Okbutton:@"關閉"
+         block:^(HHAlertButton buttonindex) {
+             [maskView removeFromSuperview];
+             
+         }
+         ];
+        
 
     }
     else
@@ -288,22 +306,32 @@
 
 
    
-    
+    //上傳資料及換頁
     [lostPostData saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
+        if (succeeded)
+        {
             // The object has been saved
             [lostPostData save];
             NSLog(@"Succee!!!");
             [self performSegueWithIdentifier:@"goLostMapSeguWay" sender:nil];
             [HUD hide:YES];
 
-            
-
-        } else {
-            UIAlertController* warningAlert=[UIAlertController alertControllerWithTitle:@"注意!" message:@"請檢查網路訊息" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction* cancle=[UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:nil];
-            [warningAlert addAction:cancle];
-            [self presentViewController:warningAlert animated:YES completion:nil];
+        }
+        else
+        {
+            [self.view.window addSubview:self.addmaskView];
+            [[HHAlertView shared]
+             showAlertWithStyle:HHAlertStyleWraning
+             inView:self.view.window
+             Title:@"注意"
+             detail:@"請檢查您的網路狀況"
+             cancelButton:nil
+             Okbutton:@"關閉"
+             block:^(HHAlertButton buttonindex) {
+                 [maskView removeFromSuperview];
+                 
+             }
+             ];
             [HUD hide:YES];
 
 
@@ -311,6 +339,18 @@
     }];
     }
 
+}
+//建立Alert霧透的背景
+- (UIView *)addmaskView
+{
+    if (!maskView) {
+        CGRect screenSize = [[UIScreen mainScreen] bounds];
+        maskView = [[UIView alloc] initWithFrame:screenSize];
+        [maskView setBackgroundColor:[UIColor blackColor]];
+        [maskView setAlpha:0.2];
+        NSLog(@"New maskView");
+    }
+    return maskView;
 }
 
 
