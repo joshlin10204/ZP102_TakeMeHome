@@ -10,6 +10,7 @@
 #import "navigationBtn.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <Parse/Parse.h>
 
 
 
@@ -48,6 +49,12 @@
     
     //
     self.fbLogOutButton.delegate = self;
+    
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser) {
+        // do stuff with the user
+        NSLog(@"currentUser: %@ ",currentUser);
+    }
     
 
     
@@ -160,15 +167,13 @@
 }
 
 //FBLogOutButton 按下
-- (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton{
+//- (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton{
+//
+//    [self dismissViewControllerAnimated:true completion:^{NSLog(@"backLog");}];
+//
+//
+//}
 
-    [self dismissViewControllerAnimated:true completion:^{NSLog(@"backLog");}];
-
-
-}
-
-//回到此頁
--(IBAction)backToWhite:(UIStoryboardSegue*)segue{ NSLog(@"backToWhite");}
 
 
 //前往領養寵物
@@ -178,16 +183,22 @@
     [self menuBtnPress:nil];
     [self.navigationController pushViewController:targetViewController animated:true];
 }
+//前往走失
 - (IBAction)lostButtonPressed:(id)sender {
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Lost" bundle:nil];
     id targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"LostMain"];
     [self menuBtnPress:nil];
     [self.navigationController pushViewController:targetViewController animated:true];
     
-    
 }
-
-
+//前往個人資料
+- (IBAction)MemberSettingButtonPressed:(id)sender {
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"MemberSetting" bundle:nil];
+    id targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"MemberSet"];
+    [self menuBtnPress:nil];
+    [self.navigationController pushViewController:targetViewController animated:true];
+}
+//前往設定
 - (IBAction)settingButtonPressed:(id)sender {
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Miracle" bundle:nil];
     id targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"miracleIndex"];

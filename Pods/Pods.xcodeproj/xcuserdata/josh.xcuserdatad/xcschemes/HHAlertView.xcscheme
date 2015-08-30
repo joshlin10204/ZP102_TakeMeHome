@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CCCD753AF0A80706648E9391"
-               BuildableName = "UIImage_BetterAdditions.framework"
-               BlueprintName = "UIImage+BetterAdditions"
+               BlueprintIdentifier = "1CF03B96C91F8A8FA749CF4A"
+               BuildableName = "HHAlertView.framework"
+               BlueprintName = "HHAlertView"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

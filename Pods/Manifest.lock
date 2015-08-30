@@ -19,6 +19,7 @@ PODS:
   - FBSDKLoginKit (4.5.1):
     - FBSDKCoreKit
   - FlatUIKit (1.6.2)
+  - HHAlertView (0.0.3)
   - MBProgressHUD (0.9.1)
   - Parse (1.8.2):
     - Bolts/Tasks (>= 1.2.1)
@@ -38,6 +39,7 @@ PODS:
 DEPENDENCIES:
   - DOFavoriteButton
   - FlatUIKit
+  - HHAlertView (~> 0.0.3)
   - MBProgressHUD (~> 0.9.1)
   - Parse (~> 1.7)
   - ParseFacebookUtilsV4
@@ -51,6 +53,7 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: f335eaf6865e1e1597dee1debfb533045500da47
   FBSDKLoginKit: 225cc9a388a92916ee3f3bb14422017b6e44b65b
   FlatUIKit: 1b41f0d4952ce8d970d8479ce79df54a960242c4
+  HHAlertView: 9df9c94a7aca79902ef6d7f12966e0861d4e68c8
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   Parse: 188601c6cd91fae55906badd283b513104a3a8c9
   ParseFacebookUtilsV4: 6e7415146935e1238ebabbee7e5d32d148027b2d

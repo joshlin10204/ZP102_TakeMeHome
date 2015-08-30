@@ -12,8 +12,8 @@
 	<dict>
 		<key>02E1A84573529011EF3E1147FBEF880E3FE665BA</key>
 		<string>https://github.com/NigelJu/trytryTakeMeHome.git</string>
-		<key>B85FC448D8BB3BF5DB155CA5D512B99A314EF79D</key>
-		<string>https://github.com/joshlin10204/TakeMeHome.git</string>
+		<key>0E5119FE30613500399DEFD2A65B1103A96ECD1E</key>
+		<string>https://github.com/joshlin10204/ZP102_TakeMeHome.git</string>
 		<key>C8B3052B88A0F53B85D219306A44D6995AA13D2B</key>
 		<string>https://github.com/NigelJu/TakeMeHome</string>
 	</dict>
@@ -23,17 +23,17 @@
 	<dict>
 		<key>02E1A84573529011EF3E1147FBEF880E3FE665BA</key>
 		<string>../../..</string>
-		<key>B85FC448D8BB3BF5DB155CA5D512B99A314EF79D</key>
+		<key>0E5119FE30613500399DEFD2A65B1103A96ECD1E</key>
 		<string>../..</string>
 		<key>C8B3052B88A0F53B85D219306A44D6995AA13D2B</key>
 		<string>../../../ZP102_TakeMeHome</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/joshlin10204/TakeMeHome.git</string>
+	<string>https://github.com/joshlin10204/ZP102_TakeMeHome.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>B85FC448D8BB3BF5DB155CA5D512B99A314EF79D</string>
+	<string>0E5119FE30613500399DEFD2A65B1103A96ECD1E</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -48,7 +48,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>B85FC448D8BB3BF5DB155CA5D512B99A314EF79D</string>
+			<string>0E5119FE30613500399DEFD2A65B1103A96ECD1E</string>
 			<key>IDESourceControlWCCName</key>
 			<string>TakeMeHome</string>
 		</dict>

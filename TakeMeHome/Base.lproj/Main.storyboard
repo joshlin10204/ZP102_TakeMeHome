@@ -41,7 +41,7 @@
                                     <constraint firstAttribute="width" secondItem="bAp-OS-WpM" secondAttribute="height" multiplier="20:3" id="kEu-I7-VRc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入帳號" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WXy-VE-Dt8">
                                 <rect key="frame" x="200" y="236" width="200" height="30"/>
@@ -112,7 +112,7 @@
                                 </variation>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.36078431372549019" green="0.91764705882352937" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="0.92549019607843142" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="HEL-P9-Mo9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="36" id="28K-Gp-OBS"/>
                             <constraint firstItem="9oQ-NM-6FH" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="1/8" id="8wZ-ZE-qDj"/>
@@ -158,21 +158,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hhk-jS-RiN" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="16" y="550" width="103" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Hhk-jS-RiN" secondAttribute="height" multiplier="103:30" id="OtQ-gT-AJ0"/>
-                                    <constraint firstAttribute="width" secondItem="Hhk-jS-RiN" secondAttribute="height" multiplier="103:30" id="dLs-yY-uxt"/>
-                                </constraints>
-                                <state key="normal" title="FBButton">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="dLs-yY-uxt"/>
-                                    </mask>
-                                </variation>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="we7-6T-rzH">
                                 <rect key="frame" x="225" y="225" width="150" height="150"/>
                                 <constraints>
@@ -226,6 +211,9 @@
                                 <state key="normal" title="MemberSettingButton" image="memberSettingButton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="MemberSettingButtonPressed:" destination="Rs4-gk-Mq4" eventType="touchUpInside" id="czJ-m6-uGS"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpD-wK-btK">
                                 <rect key="frame" x="200" y="175" width="200" height="250"/>
@@ -252,7 +240,6 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="oEq-A9-fIJ" firstAttribute="top" secondItem="H0M-u5-WH6" secondAttribute="bottom" constant="72" id="21g-Ut-wHc"/>
-                            <constraint firstItem="oEq-A9-fIJ" firstAttribute="top" secondItem="Hhk-jS-RiN" secondAttribute="bottom" constant="20" id="3AR-bj-KcH"/>
                             <constraint firstAttribute="centerX" secondItem="AAE-so-7Ys" secondAttribute="centerX" id="3g6-4a-aNF"/>
                             <constraint firstAttribute="centerX" secondItem="MLm-aZ-Ok5" secondAttribute="centerX" id="CBp-Cv-2ZK"/>
                             <constraint firstAttribute="centerY" secondItem="we7-6T-rzH" secondAttribute="centerY" id="CFT-9S-0XK"/>
@@ -262,7 +249,6 @@
                             <constraint firstAttribute="width" secondItem="H0M-u5-WH6" secondAttribute="width" multiplier="3/1" id="L25-zw-C0i"/>
                             <constraint firstAttribute="centerX" secondItem="mpD-wK-btK" secondAttribute="centerX" id="M9H-uw-3om"/>
                             <constraint firstAttribute="trailingMargin" secondItem="H0M-u5-WH6" secondAttribute="trailing" constant="26" id="Mtz-v2-9wS"/>
-                            <constraint firstItem="Hhk-jS-RiN" firstAttribute="leading" secondItem="WcY-H7-sjV" secondAttribute="leadingMargin" id="Okx-D6-qGt"/>
                             <constraint firstAttribute="width" secondItem="AAE-so-7Ys" secondAttribute="width" multiplier="4/1" id="Rhk-cJ-VLv"/>
                             <constraint firstAttribute="centerX" secondItem="57x-U2-t5U" secondAttribute="centerX" id="TRF-Xy-N4q"/>
                             <constraint firstAttribute="width" secondItem="gxm-KM-zGw" secondAttribute="width" multiplier="4/1" id="Uib-sz-2F4"/>
@@ -278,7 +264,6 @@
                     </view>
                     <connections>
                         <outlet property="adoptButton" destination="we7-6T-rzH" id="YF8-cc-U15"/>
-                        <outlet property="fbLogOutButton" destination="Hhk-jS-RiN" id="Epg-rq-t3D"/>
                         <outlet property="lifeButton" destination="MLm-aZ-Ok5" id="RdZ-JL-CRo"/>
                         <outlet property="lostButton" destination="57x-U2-t5U" id="3iX-ze-7Eq"/>
                         <outlet property="memberSettingButton" destination="AAE-so-7Ys" id="7oE-DD-gJu"/>
@@ -288,7 +273,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wKo-u6-ajJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1115" y="338"/>
+            <point key="canvasLocation" x="1299" y="594"/>
         </scene>
         <!--Add Account View Controller-->
         <scene sceneID="JIE-pH-65r">
@@ -367,6 +352,7 @@
                         <outlet property="checkPassTextWord" destination="tfm-Nb-dul" id="4K0-Q1-Muq"/>
                         <outlet property="userAccountText" destination="Pz5-3Q-iGz" id="M5g-gi-crx"/>
                         <outlet property="userPassWordText" destination="sxx-v2-dUc" id="y02-CD-aSG"/>
+                        <segue destination="Rs4-gk-Mq4" kind="show" identifier="goMain" id="53a-E7-Hgc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hIa-X1-JSh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -387,4 +373,7 @@
         <image name="settingButton" width="150" height="150"/>
         <image name="visitButton" width="236" height="236"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="oN7-Aa-G4j"/>
+    </inferredMetricsTieBreakers>
 </document>

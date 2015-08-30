@@ -8,6 +8,8 @@
 
 #import "LostMapView.h"
 #import "SDWebImage/UIImageView+WebCache.h"
+#import "HHAlertView.h"
+
 
 @interface LostMapView ()<UITableViewDelegate, UITableViewDataSource,MKMapViewDelegate,CLLocationManagerDelegate,MBProgressHUDDelegate>
 {
@@ -37,8 +39,11 @@
     
     //判斷搜尋範圍
     NSInteger choiceSeachRange;
-    
+    //傳送給LostMoreInformationView的資料
     NSString *objectId;
+    //Alert 的霧透背景
+    UIView   *maskView;
+
 
 
 }
@@ -438,11 +443,19 @@
         }
         else
         {
-            NSLog(@"下載資料失敗");
-            UIAlertController* warningAlert=[UIAlertController alertControllerWithTitle:@"注意!" message:@"請檢查網路訊息" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction* cancle=[UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:nil];
-            [warningAlert addAction:cancle];
-            [self presentViewController:warningAlert animated:YES completion:nil];
+            [self.view.window addSubview:self.addmaskView];
+            [[HHAlertView shared]
+             showAlertWithStyle:HHAlertStyleWraning
+             inView:self.view.window
+             Title:@"注意"
+             detail:@"請檢查您的網路狀況"
+             cancelButton:nil
+             Okbutton:@"關閉"
+             block:^(HHAlertButton buttonindex) {
+                 [maskView removeFromSuperview];
+                 
+             }
+             ];
             [HUD hide:YES];
             NSLog(@"something happens :%@",[error userInfo]);
         }
@@ -467,6 +480,18 @@
 }
 
 
+//建立Alert霧透的背景
+- (UIView *)addmaskView
+{
+    if (!maskView) {
+        CGRect screenSize = [[UIScreen mainScreen] bounds];
+        maskView = [[UIView alloc] initWithFrame:screenSize];
+        [maskView setBackgroundColor:[UIColor blackColor]];
+        [maskView setAlpha:0.2];
+        NSLog(@"New maskView");
+    }
+    return maskView;
+}
 
 
 @end

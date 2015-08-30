@@ -25,6 +25,7 @@
 		035CD2951B665AE900AEC20B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035CD2941B665AE900AEC20B /* MapKit.framework */; };
 		035CD2971B665AFE00AEC20B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035CD2961B665AFE00AEC20B /* CoreLocation.framework */; };
 		037126771B724074000F546E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 037126761B724074000F546E /* Images.xcassets */; };
+		03A1BB0D1B90B8FD00DD2EFF /* MemberSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03A1BB0C1B90B8FD00DD2EFF /* MemberSetting.storyboard */; };
 		03B9E7A31B889F10002D340D /* WawaSC.otf in Resources */ = {isa = PBXBuildFile; fileRef = 03B9E7A21B889F10002D340D /* WawaSC.otf */; };
 		03BD5A651B6142380054F861 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BD5A641B6142380054F861 /* main.m */; };
 		03BD5A681B6142380054F861 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BD5A671B6142380054F861 /* AppDelegate.m */; };
@@ -45,6 +46,7 @@
 		03D204C11B7303E3003457CA /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D204C01B7303E3003457CA /* libsqlite3.dylib */; };
 		03D204C31B7303F2003457CA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D204C21B7303F2003457CA /* libz.dylib */; };
 		03DC79EE1B6555140042E8E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03DC79EC1B6555140042E8E2 /* Main.storyboard */; };
+		03F5A68C1B90E5B3003F22A9 /* MemberSetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F5A68B1B90E5B3003F22A9 /* MemberSetView.m */; };
 		10384DEA1B72485800B56916 /* BroadcastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10384DE91B72485800B56916 /* BroadcastViewController.m */; };
 		10384DED1B72489C00B56916 /* PushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10384DEC1B72489C00B56916 /* PushViewController.m */; };
 		10384DF31B72499600B56916 /* settingIndexVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 10384DF21B72499600B56916 /* settingIndexVC.m */; };
@@ -138,7 +140,8 @@
 		035CD28C1B664D4100AEC20B /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = Framework/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		035CD2941B665AE900AEC20B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		035CD2961B665AFE00AEC20B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		037126761B724074000F546E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		037126761B724074000F546E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TakeMeHome/Images.xcassets; sourceTree = "<group>"; };
+		03A1BB0C1B90B8FD00DD2EFF /* MemberSetting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MemberSetting.storyboard; sourceTree = "<group>"; };
 		03B9E7A21B889F10002D340D /* WawaSC.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = WawaSC.otf; sourceTree = "<group>"; };
 		03BD5A5F1B6142380054F861 /* TakeMeHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakeMeHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03BD5A631B6142380054F861 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -166,6 +169,8 @@
 		03D204C01B7303E3003457CA /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		03D204C21B7303F2003457CA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		03DC79ED1B6555140042E8E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		03F5A68A1B90E5B3003F22A9 /* MemberSetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberSetView.h; sourceTree = "<group>"; };
+		03F5A68B1B90E5B3003F22A9 /* MemberSetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberSetView.m; sourceTree = "<group>"; };
 		0DD7E369118AE94F66771E86 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		10384DE81B72485800B56916 /* BroadcastViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BroadcastViewController.h; sourceTree = "<group>"; };
 		10384DE91B72485800B56916 /* BroadcastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BroadcastViewController.m; sourceTree = "<group>"; };
@@ -331,6 +336,7 @@
 		035CD2981B665B4600AEC20B /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				03DC79EC1B6555140042E8E2 /* Main.storyboard */,
 				03BD5A691B6142380054F861 /* ViewController.h */,
 				03BD5A6A1B6142380054F861 /* ViewController.m */,
 				03BD5A8E1B6145880054F861 /* MainViewController.h */,
@@ -341,10 +347,22 @@
 			name = Home;
 			sourceTree = "<group>";
 		};
+		03A1BB0B1B90B8BE00DD2EFF /* MemberSetting */ = {
+			isa = PBXGroup;
+			children = (
+				03A1BB0C1B90B8FD00DD2EFF /* MemberSetting.storyboard */,
+				03F5A68A1B90E5B3003F22A9 /* MemberSetView.h */,
+				03F5A68B1B90E5B3003F22A9 /* MemberSetView.m */,
+			);
+			name = MemberSetting;
+			sourceTree = "<group>";
+		};
 		03BD5A561B6142380054F861 = {
 			isa = PBXGroup;
 			children = (
 				03BD5A611B6142380054F861 /* TakeMeHome */,
+				037126761B724074000F546E /* Images.xcassets */,
+				03BD5A711B6142380054F861 /* LaunchScreen.xib */,
 				03BD5A7B1B6142380054F861 /* TakeMeHomeTests */,
 				03BD5A601B6142380054F861 /* Products */,
 				0594AD0E048EB8C98DB9F789 /* Pods */,
@@ -370,13 +388,11 @@
 				035CD2981B665B4600AEC20B /* Home */,
 				035CD2931B66596200AEC20B /* Lost */,
 				A69865A81B7253830065C4E5 /* Adopt */,
-				A6D3E7221B6A6F0F0066DD7B /* guiderBtn */,
-				03DC79EC1B6555140042E8E2 /* Main.storyboard */,
-				037126761B724074000F546E /* Images.xcassets */,
-				03BD5A711B6142380054F861 /* LaunchScreen.xib */,
+				03A1BB0B1B90B8BE00DD2EFF /* MemberSetting */,
 				10384DE71B7244D200B56916 /* Setting */,
 				A6D3E7211B6A6EF40066DD7B /* library */,
 				03BD5A621B6142380054F861 /* Supporting Files */,
+				A6D3E7221B6A6F0F0066DD7B /* guiderBtn */,
 			);
 			path = TakeMeHome;
 			sourceTree = "<group>";
@@ -764,6 +780,7 @@
 				A67D878B1B8AEDD20081E259 /* taiwanFlag.png in Resources */,
 				A6D3E7361B6A8FDE0066DD7B /* lost.png in Resources */,
 				A6D3E7381B6A8FDE0066DD7B /* settingButton.png in Resources */,
+				03A1BB0D1B90B8FD00DD2EFF /* MemberSetting.storyboard in Resources */,
 				037126771B724074000F546E /* Images.xcassets in Resources */,
 				A69865B11B72539A0065C4E5 /* theDog2.jpg in Resources */,
 				03BD5A731B6142380054F861 /* LaunchScreen.xib in Resources */,
@@ -844,6 +861,7 @@
 				A69865B81B7254530065C4E5 /* myFavoriteVC.m in Sources */,
 				A69865B31B72539A0065C4E5 /* TestViewController.m in Sources */,
 				10384DED1B72489C00B56916 /* PushViewController.m in Sources */,
+				03F5A68C1B90E5B3003F22A9 /* MemberSetView.m in Sources */,
 				A6DA89931B7B1076000F8B7B /* SDImageCache.m in Sources */,
 				A6DA89921B7B1076000F8B7B /* NSData+ImageContentType.m in Sources */,
 				A6D6BC4F1B7CCB2A007162BE /* searchVC.m in Sources */,
@@ -916,6 +934,7 @@
 				03BD5A721B6142380054F861 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			path = TakeMeHome;
 			sourceTree = "<group>";
 		};
 		03DC79EC1B6555140042E8E2 /* Main.storyboard */ = {
