@@ -29,41 +29,29 @@
 @end
 
 @implementation adoptDetailTableVC
+{
+
+    NSArray *animalProfileArray;
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.labelId.text = self.getID;
-    
-    
-    
-    //http://data.coa.gov.tw/Service/OpenData/AnimalOpenData .aspx?$top={top}&$skip={skip}&$filter={filter}
-    //http://data.coa.gov.tw/Service/OpenData/AnimalOpenData.aspx?$filter=animal_id+like+10406290201003
-    /*
-     top   取最前筆數   如:將{top} 代換成 20
-     
-     skip  跳過筆數    如:將{skip} 代換成 100
-     */
-    NSString *urlStr = @"http://data.coa.gov.tw/Service/OpenData/AnimalOpenData.aspx?$filter=animal_id+like+";
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",urlStr,[self getID]]];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    NSInputStream *inStream = [[NSInputStream alloc]initWithData:data];
-    [inStream open];
-    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithStream:inStream options:NSJSONReadingAllowFragments error:nil];
-    [inStream close];
-    
-    //不知道為什麼會不只一筆囧...
-    jsonArray = [jsonArray objectAtIndex:0];
-    
-    _labelBodyType.text = [jsonArray valueForKey:@"animal_bodytype"];
-    _labelColor.text = [jsonArray valueForKey:@"animal_colour"];
-    _labelSterilization.text = [jsonArray valueForKey:@"animal_sterilization"];
-    _labelBacterin.text = [jsonArray valueForKey:@"animal_bacterin"];
-    _labelFoundPlace.text = [jsonArray valueForKey:@"animal_foundplace"];
-    _labelShelterName.text = [jsonArray valueForKey:@"shelter_name"];
-    _labelNowPlace.text = [jsonArray valueForKey:@"animal_place"];
-    _labelOpendate.text = [jsonArray valueForKey:@"animal_opendate"];
-    _labelCloseDate.text = [jsonArray valueForKey:@"animal_closeddate"];
-    _labelAge.text = [jsonArray valueForKey:@"animal_age"];
+        
+    _labelId.text =[animalProfileArray valueForKey:ANIMAL_ID_FILTER_KEY];
+    _labelBodyType.text = [animalProfileArray valueForKey:ANIMAL_BODYTYPE_FILTER_KEY];
+    _labelColor.text = [animalProfileArray valueForKey:@"animal_colour"];
+    _labelSterilization.text = [animalProfileArray valueForKey:@"animal_sterilization"];
+    _labelBacterin.text = [animalProfileArray valueForKey:@"animal_bacterin"];
+    _labelFoundPlace.text = [animalProfileArray valueForKey:@"animal_foundplace"];
+    _labelShelterName.text = [animalProfileArray valueForKey:@"shelter_name"];
+    _labelNowPlace.text = [animalProfileArray valueForKey:@"animal_place"];
+    _labelOpendate.text = [animalProfileArray valueForKey:@"animal_opendate"];
+    _labelCloseDate.text = [animalProfileArray valueForKey:@"animal_closeddate"];
+    _labelAge.text = [animalProfileArray valueForKey:ANIMAL_AGE_FILTER_KEY];
 }
 
+- (void)setAnimalProfile:(NSArray*)animalProfile{
+    animalProfileArray = animalProfile;
+}
 @end

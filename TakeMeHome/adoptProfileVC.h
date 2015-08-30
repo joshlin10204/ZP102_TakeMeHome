@@ -13,4 +13,7 @@
 
 
 - (void)getLabelID:(NSString*)Id;
+
+- (void)setAnimalProfile:(NSArray*)animalProfile;
+
 @end

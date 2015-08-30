@@ -17,9 +17,9 @@
 #import <Parse/Parse.h>
 
 @interface postDetailTVC ()
-<UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
+<UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate,MBProgressHUDDelegate>
 {
-
+	MBProgressHUD *HUD;
     UIPickerView *areaPickView;
     NSArray *areaArray ;
     NSString *getAreaNumStr;
@@ -76,7 +76,13 @@
         _howToContactTxtField.text.length == 0) {
         [self doAlert];
     }else{
-        [self pushDataToParse];
+        HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+        [self.navigationController.view addSubview:HUD];
+        
+        HUD.delegate = self;
+        HUD.labelText = @"Loading";
+        
+        [HUD showWhileExecuting:@selector(pushDataToParse) onTarget:self withObject:nil animated:YES];
     }
 
 }
@@ -95,6 +101,9 @@
     postAdopt[HOW_TO_CONTACT_PARSE_TITLE] = _howToContactTxtField.text;
     postAdopt[FOUND_PARSE_TITLE] = _foundTxtFiled.text;
     postAdopt[TRAIT_PARSE_TITLE] = _traitTxtField.text;
+
+    
+    
     [postAdopt saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             // push to other view

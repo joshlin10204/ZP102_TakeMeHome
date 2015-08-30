@@ -12,6 +12,7 @@
 import UIKit
 
 @IBDesignable
+
 public class DOFavoriteButton: UIButton {
 
     private var imageShape: CAShapeLayer!

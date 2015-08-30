@@ -768,17 +768,18 @@
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W9N-BP-813" customClass="DOFavoriteButton" customModule="DOFavoriteButton">
-                                                            <rect key="frame" x="412" y="131" width="76" height="76"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W9N-BP-813" customClass="FUIButton">
+                                                            <rect key="frame" x="424" y="139" width="76" height="76"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="W9N-BP-813" secondAttribute="height" multiplier="1:1" id="9HW-pe-Ljl"/>
                                                             </constraints>
-                                                            <state key="normal">
+                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                            <state key="normal" title="♡">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="image" keyPath="image" value="heart.png"/>
-                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="addFavoriteBtnPressed:" destination="EOp-W2-DAG" eventType="touchUpInside" id="Vcm-Ca-VeC"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -792,7 +793,7 @@
                                                         <constraint firstItem="zAP-ea-FDr" firstAttribute="centerY" secondItem="ZRA-B3-LUj" secondAttribute="centerY" id="Dw7-P5-Tpo"/>
                                                         <constraint firstAttribute="width" secondItem="BQ4-Cz-4Vx" secondAttribute="width" multiplier="5" id="E6r-bf-TMi"/>
                                                         <constraint firstItem="opB-WD-bH0" firstAttribute="width" secondItem="eGf-xt-4BF" secondAttribute="width" multiplier="4/5" id="GYE-PD-M3k"/>
-                                                        <constraint firstItem="W9N-BP-813" firstAttribute="trailing" secondItem="opB-WD-bH0" secondAttribute="trailing" constant="-20" id="HV4-rc-Hqy"/>
+                                                        <constraint firstItem="W9N-BP-813" firstAttribute="trailing" secondItem="opB-WD-bH0" secondAttribute="trailing" constant="-8" id="HV4-rc-Hqy"/>
                                                         <constraint firstItem="opB-WD-bH0" firstAttribute="top" secondItem="1s3-do-xyO" secondAttribute="bottom" constant="10" id="Q1M-Sk-gaG"/>
                                                         <constraint firstItem="ZRA-B3-LUj" firstAttribute="trailing" secondItem="opB-WD-bH0" secondAttribute="trailing" id="Ugi-nb-V98"/>
                                                         <constraint firstItem="iGJ-9M-ryI" firstAttribute="bottom" secondItem="zAP-ea-FDr" secondAttribute="bottom" id="VuC-pY-Upv"/>
@@ -801,7 +802,7 @@
                                                         <constraint firstItem="zAP-ea-FDr" firstAttribute="width" secondItem="KAD-jV-s1L" secondAttribute="width" id="g75-X2-T4s"/>
                                                         <constraint firstItem="zAP-ea-FDr" firstAttribute="leading" secondItem="opB-WD-bH0" secondAttribute="leading" id="hXg-xA-Qng"/>
                                                         <constraint firstItem="KAD-jV-s1L" firstAttribute="top" secondItem="zAP-ea-FDr" secondAttribute="top" id="kTQ-1s-THk"/>
-                                                        <constraint firstItem="W9N-BP-813" firstAttribute="top" secondItem="opB-WD-bH0" secondAttribute="top" id="mM6-qe-eSi"/>
+                                                        <constraint firstItem="W9N-BP-813" firstAttribute="top" secondItem="opB-WD-bH0" secondAttribute="top" constant="8" id="mM6-qe-eSi"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="1s3-do-xyO" secondAttribute="trailing" constant="10" id="mk8-db-LDD"/>
                                                         <constraint firstItem="iGJ-9M-ryI" firstAttribute="top" secondItem="zAP-ea-FDr" secondAttribute="top" id="qLh-ff-HU8"/>
                                                         <constraint firstItem="BQ4-Cz-4Vx" firstAttribute="leading" secondItem="eGf-xt-4BF" secondAttribute="leadingMargin" id="tc2-ZP-zEs"/>
@@ -821,7 +822,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.97254908084869385" green="0.67058825492858887" blue="0.68235296010971069" alpha="1" colorSpace="deviceRGB"/>
                                         <connections>
-                                            <outlet property="btnAddLove" destination="ZRA-B3-LUj" id="wrL-qg-xKg"/>
+                                            <outlet property="btnFavirite" destination="W9N-BP-813" id="Xxk-sf-U9P"/>
                                             <outlet property="imgViewIcon" destination="BQ4-Cz-4Vx" id="XXs-Sv-pIr"/>
                                             <outlet property="imgViewPhoto" destination="opB-WD-bH0" id="1is-dZ-zAN"/>
                                             <outlet property="labelAge" destination="KAD-jV-s1L" id="rnL-Et-GNc"/>
@@ -1538,11 +1539,11 @@
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="constraints">
-                                                            <exclude reference="mc1-Se-bte"/>
-                                                            <exclude reference="nPW-hc-X0b"/>
-                                                            <exclude reference="Ij1-Nw-0Aq"/>
                                                             <exclude reference="F8z-Mb-N4f"/>
                                                             <exclude reference="ILk-3b-fn7"/>
+                                                            <exclude reference="Ij1-Nw-0Aq"/>
+                                                            <exclude reference="mc1-Se-bte"/>
+                                                            <exclude reference="nPW-hc-X0b"/>
                                                         </mask>
                                                     </variation>
                                                 </view>
@@ -2031,10 +2032,45 @@
             </objects>
             <point key="canvasLocation" x="2251" y="-754"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="6lj-oy-1fY">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Mrb-Ce-wF2" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AKQ-F8-zxN"/>
+                        <viewControllerLayoutGuide type="bottom" id="Kf3-J6-rMA"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="f7b-V6-7YX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ps0-Mf-u1v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="gW5-TQ-5uy">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="cHa-eH-bJx" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aDu-G0-ZXS"/>
+                        <viewControllerLayoutGuide type="bottom" id="lOE-3Q-bbq"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Yv1-4q-zMG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rf4-oY-QLk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
         <image name="addPhotoBtn" width="200" height="200"/>
-        <image name="heart.png" width="128" height="128"/>
         <image name="taiwanFlag.png" width="250" height="250"/>
         <image name="theDog.jpg" width="538" height="650"/>
     </resources>

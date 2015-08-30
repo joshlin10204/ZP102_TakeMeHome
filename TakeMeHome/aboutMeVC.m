@@ -14,26 +14,25 @@
 @end
 
 @implementation aboutMeVC
+{
+
+    NSArray *animalProfileArray;
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    NSString *urlStr = @"http://data.coa.gov.tw/Service/OpenData/AnimalOpenData.aspx?$filter=animal_id+like+";
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",urlStr,[self getID]]];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    NSInputStream *inStream = [[NSInputStream alloc]initWithData:data];
-    [inStream open];
-    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithStream:inStream options:NSJSONReadingAllowFragments error:nil];
-    [inStream close];
-    
-    //不知道為什麼會不只一筆囧...
-    jsonArray = [jsonArray objectAtIndex:0];
-    _txtViewAboutMe.text = [jsonArray valueForKey:@"animal_remark"];
+
+    _txtViewAboutMe.text = [animalProfileArray valueForKey:@"animal_remark"];
     if ([_txtViewAboutMe.text isEqualToString:@""]){
         _txtViewAboutMe.text = @"目前沒有關於我的資料  歡迎電洽或是現場來看我哦^__^";
     }
 }
 
+
+- (void)setAnimalProfile:(NSArray*)animalProfile{
+    animalProfileArray = animalProfile;
+}
 
 @end
