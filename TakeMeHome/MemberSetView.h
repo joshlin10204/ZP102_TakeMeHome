@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface MemberSetView : UIViewController
+
+@interface MemberSetView : BaseViewController
 
 @end

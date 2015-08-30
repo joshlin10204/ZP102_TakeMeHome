@@ -1,0 +1,1 @@
+../../../MXSegmentedPager/MXSegmentedPager/MXSegmentedPager+ParallaxHeader.h

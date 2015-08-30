@@ -45,8 +45,14 @@
 		03D204BF1B7303D5003457CA /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D204BE1B7303D5003457CA /* Social.framework */; };
 		03D204C11B7303E3003457CA /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D204C01B7303E3003457CA /* libsqlite3.dylib */; };
 		03D204C31B7303F2003457CA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D204C21B7303F2003457CA /* libz.dylib */; };
+		03D2A0141B9321FC001A7567 /* adoptInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D2A0121B9321FC001A7567 /* adoptInfoCell.m */; };
+		03D2A0151B9321FC001A7567 /* adoptInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03D2A0131B9321FC001A7567 /* adoptInfoCell.xib */; };
+		03D2A0181B93366D001A7567 /* UserInfoTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D2A0171B93366D001A7567 /* UserInfoTableView.m */; };
 		03DC79EE1B6555140042E8E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03DC79EC1B6555140042E8E2 /* Main.storyboard */; };
 		03F5A68C1B90E5B3003F22A9 /* MemberSetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F5A68B1B90E5B3003F22A9 /* MemberSetView.m */; };
+		03F5A68F1B91F409003F22A9 /* MemberSetViewTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F5A68E1B91F409003F22A9 /* MemberSetViewTableView.m */; };
+		03F5A6991B921753003F22A9 /* LostInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F5A6971B921753003F22A9 /* LostInfoCell.m */; };
+		03F5A69A1B921753003F22A9 /* LostInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03F5A6981B921753003F22A9 /* LostInfoCell.xib */; };
 		10384DEA1B72485800B56916 /* BroadcastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10384DE91B72485800B56916 /* BroadcastViewController.m */; };
 		10384DED1B72489C00B56916 /* PushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10384DEC1B72489C00B56916 /* PushViewController.m */; };
 		10384DF31B72499600B56916 /* settingIndexVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 10384DF21B72499600B56916 /* settingIndexVC.m */; };
@@ -168,9 +174,19 @@
 		03D204BE1B7303D5003457CA /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		03D204C01B7303E3003457CA /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		03D204C21B7303F2003457CA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		03D2A0111B9321FC001A7567 /* adoptInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = adoptInfoCell.h; sourceTree = "<group>"; };
+		03D2A0121B9321FC001A7567 /* adoptInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = adoptInfoCell.m; sourceTree = "<group>"; };
+		03D2A0131B9321FC001A7567 /* adoptInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = adoptInfoCell.xib; sourceTree = "<group>"; };
+		03D2A0161B93366D001A7567 /* UserInfoTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoTableView.h; sourceTree = "<group>"; };
+		03D2A0171B93366D001A7567 /* UserInfoTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoTableView.m; sourceTree = "<group>"; };
 		03DC79ED1B6555140042E8E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		03F5A68A1B90E5B3003F22A9 /* MemberSetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberSetView.h; sourceTree = "<group>"; };
 		03F5A68B1B90E5B3003F22A9 /* MemberSetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberSetView.m; sourceTree = "<group>"; };
+		03F5A68D1B91F408003F22A9 /* MemberSetViewTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberSetViewTableView.h; sourceTree = "<group>"; };
+		03F5A68E1B91F409003F22A9 /* MemberSetViewTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberSetViewTableView.m; sourceTree = "<group>"; };
+		03F5A6961B921753003F22A9 /* LostInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostInfoCell.h; sourceTree = "<group>"; };
+		03F5A6971B921753003F22A9 /* LostInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LostInfoCell.m; sourceTree = "<group>"; };
+		03F5A6981B921753003F22A9 /* LostInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LostInfoCell.xib; sourceTree = "<group>"; };
 		0DD7E369118AE94F66771E86 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		10384DE81B72485800B56916 /* BroadcastViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BroadcastViewController.h; sourceTree = "<group>"; };
 		10384DE91B72485800B56916 /* BroadcastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BroadcastViewController.m; sourceTree = "<group>"; };
@@ -353,6 +369,16 @@
 				03A1BB0C1B90B8FD00DD2EFF /* MemberSetting.storyboard */,
 				03F5A68A1B90E5B3003F22A9 /* MemberSetView.h */,
 				03F5A68B1B90E5B3003F22A9 /* MemberSetView.m */,
+				03D2A0161B93366D001A7567 /* UserInfoTableView.h */,
+				03D2A0171B93366D001A7567 /* UserInfoTableView.m */,
+				03F5A68D1B91F408003F22A9 /* MemberSetViewTableView.h */,
+				03F5A68E1B91F409003F22A9 /* MemberSetViewTableView.m */,
+				03D2A0111B9321FC001A7567 /* adoptInfoCell.h */,
+				03D2A0121B9321FC001A7567 /* adoptInfoCell.m */,
+				03D2A0131B9321FC001A7567 /* adoptInfoCell.xib */,
+				03F5A6961B921753003F22A9 /* LostInfoCell.h */,
+				03F5A6971B921753003F22A9 /* LostInfoCell.m */,
+				03F5A6981B921753003F22A9 /* LostInfoCell.xib */,
 			);
 			name = MemberSetting;
 			sourceTree = "<group>";
@@ -386,9 +412,9 @@
 				03BD5A671B6142380054F861 /* AppDelegate.m */,
 				A6D3E71B1B6A694E0066DD7B /* framework */,
 				035CD2981B665B4600AEC20B /* Home */,
+				03A1BB0B1B90B8BE00DD2EFF /* MemberSetting */,
 				035CD2931B66596200AEC20B /* Lost */,
 				A69865A81B7253830065C4E5 /* Adopt */,
-				03A1BB0B1B90B8BE00DD2EFF /* MemberSetting */,
 				10384DE71B7244D200B56916 /* Setting */,
 				A6D3E7211B6A6EF40066DD7B /* library */,
 				03BD5A621B6142380054F861 /* Supporting Files */,
@@ -779,9 +805,11 @@
 				03DC79EE1B6555140042E8E2 /* Main.storyboard in Resources */,
 				A67D878B1B8AEDD20081E259 /* taiwanFlag.png in Resources */,
 				A6D3E7361B6A8FDE0066DD7B /* lost.png in Resources */,
+				03F5A69A1B921753003F22A9 /* LostInfoCell.xib in Resources */,
 				A6D3E7381B6A8FDE0066DD7B /* settingButton.png in Resources */,
 				03A1BB0D1B90B8FD00DD2EFF /* MemberSetting.storyboard in Resources */,
 				037126771B724074000F546E /* Images.xcassets in Resources */,
+				03D2A0151B9321FC001A7567 /* adoptInfoCell.xib in Resources */,
 				A69865B11B72539A0065C4E5 /* theDog2.jpg in Resources */,
 				03BD5A731B6142380054F861 /* LaunchScreen.xib in Resources */,
 				03B9E7A31B889F10002D340D /* WawaSC.otf in Resources */,
@@ -882,12 +910,15 @@
 				032566CF1B7DEF1200DAD13B /* LostMainController.m in Sources */,
 				032566CA1B7DEE4400DAD13B /* LostPostTableView.m in Sources */,
 				A6DA899B1B7B1076000F8B7B /* UIImage+GIF.m in Sources */,
+				03F5A68F1B91F409003F22A9 /* MemberSetViewTableView.m in Sources */,
 				A6DCB2F11B902CB2002A3EB6 /* postDetailTVC.m in Sources */,
 				A6DA899E1B7B1076000F8B7B /* UIImageView+HighlightedWebCache.m in Sources */,
 				03BD5A651B6142380054F861 /* main.m in Sources */,
+				03D2A0181B93366D001A7567 /* UserInfoTableView.m in Sources */,
 				A6DA899C1B7B1076000F8B7B /* UIImage+MultiFormat.m in Sources */,
 				A6D6DEB91B7C786700DBCFBD /* TPKeyboardAvoidingTableView.m in Sources */,
 				032BF2921B8D9D18001BF5CD /* LostMoreInformationTableView.m in Sources */,
+				03D2A0141B9321FC001A7567 /* adoptInfoCell.m in Sources */,
 				032566C91B7DEE4400DAD13B /* LostPostView.m in Sources */,
 				A6DA89981B7B1076000F8B7B /* SDWebImageManager.m in Sources */,
 				A6DA89951B7B1076000F8B7B /* SDWebImageDecoder.m in Sources */,
@@ -906,6 +937,7 @@
 				03BD5A901B6145880054F861 /* MainViewController.m in Sources */,
 				A60A73901B87DE8500AE8847 /* searchOptionVC.m in Sources */,
 				032566C71B7DEE4400DAD13B /* LostListCell.m in Sources */,
+				03F5A6991B921753003F22A9 /* LostInfoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
