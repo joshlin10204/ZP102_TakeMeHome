@@ -160,13 +160,7 @@
                 [nextVC setAnimalProfile:tmpArray];
             }
         }
-        
-        
-        
-      
-        
     }
-   
 }
 
 - (void)dealloc{
@@ -227,7 +221,7 @@
 
 - (void)saveJsonFileToPlistFile:(NSArray*)array{
     //Get Document Path
-   
+    
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     
@@ -295,47 +289,30 @@
         button.buttonColor = [UIColor alizarinColor];
         button.shadowColor = [UIColor pomegranateColor];
         [button setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
-        [[plistArray objectAtIndex:index]setValue:@"Y" forKey:ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY];
          [[filtterArray objectAtIndex:index]setValue:@"Y" forKey:ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY];
+        NSString *selectAnimalId = [[filtterArray objectAtIndex:index]valueForKey:ANIMAL_ID_FILTER_KEY];
+        for (NSDictionary *tmp in plistArray) {
+            if ([tmp[ANIMAL_ID_FILTER_KEY] isEqualToString:selectAnimalId]) {
+                [tmp setValue:@"Y" forKey:ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY];
+            }
+        }
+        
+        
     }else{
         //取消最愛
         button.buttonColor = [UIColor cloudsColor];
         button.shadowColor = [UIColor silverColor];
         [button setTitleColor:[UIColor alizarinColor] forState:UIControlStateNormal];
-        [[plistArray objectAtIndex:index]setValue:@"N" forKey:ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY];
-        [[filtterArray objectAtIndex:index]setValue:@"N" forKey:ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY];    }
-    [plistArray writeToFile:SAVE_PLIST_FILE_NAME atomically:YES];
+        [[filtterArray objectAtIndex:index]setValue:@"N" forKey:ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY];
+        NSString *selectAnimalId = [[filtterArray objectAtIndex:index]valueForKey:ANIMAL_ID_FILTER_KEY];
+        for (NSDictionary *tmp in plistArray) {
+            if ([tmp[ANIMAL_ID_FILTER_KEY] isEqualToString:selectAnimalId]) {
+                [tmp setValue:@"N" forKey:ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY];
+            }
+        }
+    }
     
-/*
- PFObject *postAdopt = [PFObject objectWithClassName:ADOPT_PETS_PARSE_TABLE_NAME];
- postAdopt[AREA_PARSE_TITLE] = _areaTxtField.text;
- postAdopt[TYPE_PARSE_TITLE] = _typeTxtField.text;
- postAdopt[SEX_PARSE_TITLE] = _sexTxtField.text;
- postAdopt[AGE_PARSE_TITLE] = _ageTxtField.text;
- postAdopt[MIX_TYPE_PARSE_TITLE] = _mixTypeTxtField.text;
- postAdopt[COLOR_PARSE_TITLE] = _colorTxtField.text;
- postAdopt[STERILIZATION_PARSE_TITLE] = _sterilizationTxtField.text;
- postAdopt[BACTERIN_PARSE_TITLE] = _bacterinTxtField.text;
- postAdopt[CONTACT_PARSE_TITLE] = _contactTxtField.text;
- postAdopt[HOW_TO_CONTACT_PARSE_TITLE] = _howToContactTxtField.text;
- postAdopt[FOUND_PARSE_TITLE] = _foundTxtFiled.text;
- postAdopt[TRAIT_PARSE_TITLE] = _traitTxtField.text;
- 
- 
- 
- [postAdopt saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
- if (succeeded) {
- // push to other view
- adoptView *nextVC = [self.storyboard instantiateViewControllerWithIdentifier:@"adoptView"];
- nextVC.getUserOptionsFilterDoneStr = [NSString stringWithFormat:@"(animal_area_pkid == '%@') AND (animal_kind == '%@') AND (animal_sex == '%@') AND (animal_age == '%@')",_areaTxtField.text,_typeTxtField.text,_sexTxtField.text,_ageTxtField.text];
- [self.navigationController pushViewController:nextVC animated:true];
- } else {
- // stay here and do alert
- }
- }];
-
- */
-
+    [plistArray writeToFile:fullFileName atomically:YES];
 }
 
 
