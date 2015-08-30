@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "adoptView.h"
 
 @interface adoptDetailTableVC : UITableViewController
 
-
 @property (strong, nonatomic)NSString *getID;
+
+- (void)setAnimalProfile:(NSArray*)animalProfile;
 
 @end

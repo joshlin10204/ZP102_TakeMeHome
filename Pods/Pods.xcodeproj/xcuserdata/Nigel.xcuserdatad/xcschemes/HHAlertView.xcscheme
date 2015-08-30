@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "160668B94F2C412402E3CB87"
-               BuildableName = "FBSDKLoginKit.framework"
-               BlueprintName = "FBSDKLoginKit"
+               BlueprintIdentifier = "2BA37453EF52D2E4C1896C92"
+               BuildableName = "HHAlertView.framework"
+               BlueprintName = "HHAlertView"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

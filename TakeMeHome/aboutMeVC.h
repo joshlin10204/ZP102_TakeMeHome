@@ -12,4 +12,5 @@
 @property (strong, nonatomic)NSString *getID;
 
 
+- (void)setAnimalProfile:(NSArray*)animalProfile;
 @end

@@ -16,7 +16,6 @@
 
 #define cellDistance 50
 #define JSON_GET_HTTP_WEBSITE @"http://data.coa.gov.tw/Service/OpenData/AnimalOpenData.aspx"
-#define SAVE_PLIST_FILE_NAME @"getAdoptJsonFile.plist"
 #define DOWNLOAD_JSON_SUCCESS_NOTIFICATION @"downloadJsonSuccessNotification"
 
 
@@ -85,28 +84,32 @@
     cell.labelSex.text = [theCellArray valueForKey:ANIMAL_SEX_FILTER_KEY];
     cell.labelType.text = [theCellArray valueForKey:ANIMAL_BODYTYPE_FILTER_KEY];
     cell.labelAge.text = [theCellArray valueForKey:ANIMAL_AGE_FILTER_KEY];
+    
     NSString *imgStr = [theCellArray valueForKey:ANIMAL_ALBUM_FILE_FILTER_KEY];
     
+    cell.btnFavirite.tag = indexPath.row;
+    if ([[theCellArray valueForKey:ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY]isEqualToString:@"N"]) {
+        //預設
+        cell.btnFavirite.buttonColor = [UIColor cloudsColor];
+        cell.btnFavirite.shadowColor = [UIColor silverColor];
+        [cell.btnFavirite setTitleColor:[UIColor alizarinColor] forState:UIControlStateNormal];
+    }else{
+        //加入最愛後
+        cell.btnFavirite.buttonColor = [UIColor alizarinColor];
+        cell.btnFavirite.shadowColor = [UIColor pomegranateColor];
+        [cell.btnFavirite setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
 
+    }
     
     
-    
-    //圓角
-    cell.imgViewPhoto.layer.cornerRadius = 10;
-    cell.imgViewPhoto.layer.masksToBounds = true;
-    
-    cell.viewBound.layer.cornerRadius = 10;
-    cell.viewBound.layer.masksToBounds = true;
-    
-    cell.imgViewIcon.layer.cornerRadius = 10;
-    cell.imgViewIcon.layer.masksToBounds = true;
     cell.imgViewIcon.image = [UIImage imageNamed:@"taiwanFlag.png"];
     
     
     [cell.imgViewPhoto sd_setImageWithURL:[NSURL URLWithString:imgStr]
                              placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
 
-    
+
+
     /*
     //要在背景執行抓圖
     //[cell.imgViewPhoto setImage:nil];
@@ -132,6 +135,7 @@
 }
 
 
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     CGSize bounds = self.view.bounds.size;
     return bounds.height * 2/3;
@@ -144,15 +148,19 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ( !([segue.identifier isEqualToString:@"searchSegue"])) {
         adoptProfileVC *nextVC = [segue destinationViewController];
+        
         NSIndexPath *indexPath = [_petTableView indexPathForSelectedRow];
         
         NSArray *selectArray = [filtterArray objectAtIndex:indexPath.row];
+        NSString *selectIdNum = [selectArray valueForKey:ANIMAL_ID_FILTER_KEY];
         
-        [nextVC getLabelID:[selectArray valueForKey:ANIMAL_ID_FILTER_KEY]];
-        
-        
+        for (NSArray *tmpArray in plistArray) {
+            if ([[tmpArray valueForKey:ANIMAL_ID_FILTER_KEY] isEqualToString:selectIdNum]) {
+                [nextVC getLabelID:[selectArray valueForKey:ANIMAL_ID_FILTER_KEY]];
+                [nextVC setAnimalProfile:tmpArray];
+            }
+        }
     }
-   
 }
 
 - (void)dealloc{
@@ -198,9 +206,11 @@
 - (NSArray*)analysieJsonFile:(NSArray*)array{
     NSMutableArray *modifyArray = [NSMutableArray new];
 
-    for (NSDictionary *animal in array) {
+    for (NSMutableDictionary *animal in array) {
         NSString *getAnimalId = animal[ANIMAL_ID_FILTER_KEY];
         if (!([[modifyArray valueForKey:ANIMAL_ID_FILTER_KEY] containsObject:getAnimalId])) {
+            //新增 最愛欄位
+            [animal setValue:@"N" forKey:ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY];
             [modifyArray addObject:animal];
         }
     }
@@ -211,7 +221,7 @@
 
 - (void)saveJsonFileToPlistFile:(NSArray*)array{
     //Get Document Path
-   
+    
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     
@@ -239,6 +249,7 @@
         myAnimal.album_file = [[plistArray objectAtIndex:i]valueForKey:ANIMAL_ALBUM_FILE_FILTER_KEY];
         myAnimal.animal_kind = [[plistArray objectAtIndex:i]valueForKey:ANIMAL_KIND_FILTER_KEY];
         myAnimal.animal_place = [[plistArray objectAtIndex:i]valueForKey:ANIMAL_PLACE_FILTER_KEY];
+        myAnimal.animal_favorite = [[plistArray objectAtIndex:i]valueForKey:ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY];
         
         [animalsArray addObject:myAnimal];
         //myAnimal.resourceStr = [[plistArray objectAtIndex:i]valueForKey:@"animal_age"];
@@ -268,8 +279,41 @@
     
 }
 
-
-
+- (IBAction)addFavoriteBtnPressed:(FUIButton *)button {
+    UIColor *btnColor = button.buttonColor;
+    
+    NSInteger index = button.tag;
+    
+    if (btnColor == [UIColor cloudsColor]) {
+        //加入最愛
+        button.buttonColor = [UIColor alizarinColor];
+        button.shadowColor = [UIColor pomegranateColor];
+        [button setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+         [[filtterArray objectAtIndex:index]setValue:@"Y" forKey:ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY];
+        NSString *selectAnimalId = [[filtterArray objectAtIndex:index]valueForKey:ANIMAL_ID_FILTER_KEY];
+        for (NSDictionary *tmp in plistArray) {
+            if ([tmp[ANIMAL_ID_FILTER_KEY] isEqualToString:selectAnimalId]) {
+                [tmp setValue:@"Y" forKey:ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY];
+            }
+        }
+        
+        
+    }else{
+        //取消最愛
+        button.buttonColor = [UIColor cloudsColor];
+        button.shadowColor = [UIColor silverColor];
+        [button setTitleColor:[UIColor alizarinColor] forState:UIControlStateNormal];
+        [[filtterArray objectAtIndex:index]setValue:@"N" forKey:ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY];
+        NSString *selectAnimalId = [[filtterArray objectAtIndex:index]valueForKey:ANIMAL_ID_FILTER_KEY];
+        for (NSDictionary *tmp in plistArray) {
+            if ([tmp[ANIMAL_ID_FILTER_KEY] isEqualToString:selectAnimalId]) {
+                [tmp setValue:@"N" forKey:ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY];
+            }
+        }
+    }
+    
+    [plistArray writeToFile:fullFileName atomically:YES];
+}
 
 
 @end

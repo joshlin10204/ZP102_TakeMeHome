@@ -20,6 +20,7 @@
 @property (nonatomic , strong) NSString *album_file;
 @property (nonatomic , strong) NSString *animal_id;
 @property (nonatomic , strong) NSString *animal_place;
+@property (nonatomic , strong) NSString *animal_favorite;
 
 
 @end

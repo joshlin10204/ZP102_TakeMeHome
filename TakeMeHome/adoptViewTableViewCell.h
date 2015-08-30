@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "UIColor+FlatUI.h"
-#import "SSBouncyButton.h"
+#import "FUIButton.h"
+
+
+//@class DOFavoriteButton;
+
 
 @interface adoptViewTableViewCell : UITableViewCell
 
@@ -19,9 +23,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *labelSex;
 @property (strong, nonatomic) IBOutlet UILabel *labelAge;
 @property (strong, nonatomic) IBOutlet UILabel *labelType;
-@property (strong, nonatomic) IBOutlet SSBouncyButton *btnAddLove;
+@property (strong, nonatomic) IBOutlet FUIButton *btnFavirite;
 
 
-
+//- (DOFavoriteButton *)returnSwiftClassInstance;
 
 @end

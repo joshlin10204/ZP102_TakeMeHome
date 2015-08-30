@@ -8,8 +8,6 @@
 
 #import "adoptViewTableViewCell.h"
 
-
-
 #import <QuartzCore/QuartzCore.h>
 @implementation adoptViewTableViewCell
 
@@ -25,28 +23,33 @@
     self.labelSex.layer.cornerRadius = 10;
     self.labelSex.layer.masksToBounds = true;
     
-    _btnAddLove.adjustsImageWhenHighlighted = NO;
-    _btnAddLove.tintColor = [UIColor alizarinColor];
-    _btnAddLove.cornerRadius = SSBouncyButtonDefaultCornerRadius;
-    _btnAddLove.titleLabel.font = [UIFont systemFontOfSize:SSBouncyButtonDefaultTitleLabelFontSize];
-    [_btnAddLove setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-    [_btnAddLove setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected | UIControlStateHighlighted];
 
     
-    [_btnAddLove setTitle:@"加入收藏" forState:UIControlStateNormal];
-    [_btnAddLove setTitle:@"取消收藏" forState:UIControlStateSelected];
-    [_btnAddLove addTarget:self action:@selector(btnAddLovePressed:) forControlEvents:UIControlEventTouchUpInside];
+
+    //圓角
+    _imgViewPhoto.layer.cornerRadius = 10;
+    _imgViewPhoto.layer.masksToBounds = true;
+    
+    _viewBound.layer.cornerRadius = 10;
+    _viewBound.layer.masksToBounds = true;
+    
+    _imgViewIcon.layer.cornerRadius = 10;
+    _imgViewIcon.layer.masksToBounds = true;
+    
+    
+    
+    
+    _btnFavirite.buttonColor = [UIColor cloudsColor];
+    _btnFavirite.shadowColor = [UIColor silverColor];
+    _btnFavirite.shadowHeight = 5.0f;
+    _btnFavirite.cornerRadius = 10.0f;
+    
+    [_btnFavirite setTitleColor:[UIColor alizarinColor] forState:UIControlStateNormal];
+    [_btnFavirite setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
+    
     
 }
 
-- (void)btnAddLovePressed:(UIButton*)button{
-    button.selected = !button.selected;
-}
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
 
 @end

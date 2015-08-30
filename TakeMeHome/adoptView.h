@@ -16,6 +16,9 @@
 #define ANIMAL_KIND_FILTER_KEY @"animal_kind"
 #define ANIMAL_ID_FILTER_KEY @"animal_id"
 #define ANIMAL_PLACE_FILTER_KEY @"animal_place"
+#define ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY @"animal_favorite"
+
+#define SAVE_PLIST_FILE_NAME @"getAdoptJsonFile.plist"
 
 @interface adoptView : BaseViewController
 
