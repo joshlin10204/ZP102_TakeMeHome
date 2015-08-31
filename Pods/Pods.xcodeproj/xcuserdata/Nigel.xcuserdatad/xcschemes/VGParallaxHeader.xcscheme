@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8BFC10EC020B1A66BA24DCA7"
-               BuildableName = "SSBouncyButton.framework"
-               BlueprintName = "SSBouncyButton"
+               BlueprintIdentifier = "65E3406A69D142B701D3C988"
+               BuildableName = "VGParallaxHeader.framework"
+               BlueprintName = "VGParallaxHeader"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
