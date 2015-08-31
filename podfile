@@ -8,5 +8,6 @@ pod 'DOFavoriteButton'
 pod 'Parse', '~>1.7'
 pod 'ParseFacebookUtilsV4'
 pod 'HHAlertView', '~> 0.0.3'
+pod 'MXSegmentedPager'
 use_frameworks!
 

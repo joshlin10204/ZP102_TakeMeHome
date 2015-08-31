@@ -12,6 +12,8 @@
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "Animal.h"
 
+#import "MXSegmentedPager.h"
+
 #import <QuartzCore/QuartzCore.h>
 
 #define cellDistance 50
@@ -19,15 +21,17 @@
 #define DOWNLOAD_JSON_SUCCESS_NOTIFICATION @"downloadJsonSuccessNotification"
 
 
-@interface adoptView ()<UITableViewDataSource,UITableViewDelegate>
+@interface adoptView ()<UITableViewDataSource,UITableViewDelegate,MXSegmentedPagerDelegate, MXSegmentedPagerDataSource>
 {
     NSArray *plistArray;
     NSMutableArray *filtterArray;
     NSString *fullFileName ;
     NSMutableArray * animalsArray;
+    UIRefreshControl *refresh;
 
 }
-@property (weak, nonatomic) IBOutlet UITableView *petTableView;
+@property (strong, nonatomic) IBOutlet UITableView *petTableView;
+@property (nonatomic, strong) MXSegmentedPager  * segmentedPager;
 @end
 
 @implementation adoptView
@@ -35,6 +39,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
+    //tableView settings
+    [self tableControlSetting];
+    
+    self.view.backgroundColor = UIColor.whiteColor;
+    
+    [self.view addSubview:self.segmentedPager];
+    self.segmentedPager.segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
+    self.segmentedPager.segmentedControl.selectionIndicatorColor = [UIColor orangeColor];
+    self.segmentedPager.segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;
+    self.segmentedPager.segmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName : [UIColor orangeColor]};
+    
+    //Register UItableView as page
+    [self.segmentedPager.pager registerClass:[UITextView class] forPageReuseIdentifier:@"TextPage"];
+////////////////////////////////////////////////////
+    
+    
+    
     //如果有存檔 就讀存檔
     //如果有更新  就提醒user要更新 <<---政府api沒有提供此功能  也許每2天重新再載
     NSFileManager *manager = [NSFileManager defaultManager];
@@ -53,6 +74,71 @@
     
 }
 
+
+- (void)viewWillLayoutSubviews {
+    self.segmentedPager.frame = (CGRect){
+        .origin.x       = 0.f,
+        .origin.y       = 64.f,
+        .size.width     = self.view.frame.size.width,
+        .size.height    = self.view.frame.size.height - 64.f
+    };
+    [super viewWillLayoutSubviews];
+}
+
+
+
+#pragma -mark Properties
+
+- (MXSegmentedPager *)segmentedPager {
+    if (!_segmentedPager) {
+        
+        // Set a segmented pager
+        _segmentedPager = [[MXSegmentedPager alloc] init];
+        _segmentedPager.delegate    = self;
+        _segmentedPager.dataSource  = self;
+    }
+    return _segmentedPager;
+}
+
+- (UITableView *)tableView {
+    if (!self.petTableView) {
+        //Add a table page
+        _petTableView = [[UITableView alloc] init];
+    }
+    return _petTableView;
+}
+
+
+
+#pragma -mark <MXSegmentedPagerDelegate>
+
+- (void)segmentedPager:(MXSegmentedPager *)segmentedPager didSelectViewWithTitle:(NSString *)title {
+    NSLog(@"%@ page selected.", title);
+}
+
+#pragma -mark <MXSegmentedPagerDataSource>
+
+- (NSInteger)numberOfPagesInSegmentedPager:(MXSegmentedPager *)segmentedPager {
+    return 2;
+}
+
+- (NSString *)segmentedPager:(MXSegmentedPager *)segmentedPager titleForSectionAtIndex:(NSInteger)index {
+
+    return [@[@"1", @"2"] objectAtIndex:index];
+  
+}
+
+- (UIView *)segmentedPager:(MXSegmentedPager *)segmentedPager viewForPageAtIndex:(NSInteger)index {
+
+    return [@[self.tableView, self.tableView] objectAtIndex:index];
+    
+    
+   
+}
+
+
+
+
 - (void)showUserFilterDoneResult{
     filtterArray = [self getFilterDoneArray];
     //table view reload
@@ -60,6 +146,18 @@
 }
 
 
+- (void)tableControlSetting{
+    refresh = [[UIRefreshControl alloc]init];
+    refresh.attributedTitle = [[NSAttributedString alloc]initWithString:@"讀取最新資料..."];
+    refresh.tintColor = [UIColor tangerineColor];
+    [refresh addTarget:self action:@selector(pullRefresh) forControlEvents:UIControlEventValueChanged];
+    [self.petTableView addSubview:refresh];
+}
+
+- (void)pullRefresh{
+    [self.petTableView reloadData];
+    [refresh endRefreshing];
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
 
@@ -315,5 +413,17 @@
     [plistArray writeToFile:fullFileName atomically:YES];
 }
 
+- (IBAction)favoriteBtnPressed:(id)sender {
+    
+    //load file
+    plistArray =[[NSArray alloc]initWithContentsOfFile:fullFileName];
+    filtterArray = [NSMutableArray new];
+    for (NSDictionary *tmp in plistArray) {
+        if ([tmp[ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY] isEqualToString:@"Y"]) {
+            [filtterArray addObject:tmp];
+        }
+    }
+    [_petTableView reloadData];
+}
 
 @end
