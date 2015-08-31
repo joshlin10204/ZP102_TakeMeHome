@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ADBF6F464D71E860CC46E09C"
-               BuildableName = "DOFavoriteButton.framework"
-               BlueprintName = "DOFavoriteButton"
+               BlueprintIdentifier = "1222F76BC7BB964517865DEA"
+               BuildableName = "MXSegmentedPager.framework"
+               BlueprintName = "MXSegmentedPager"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

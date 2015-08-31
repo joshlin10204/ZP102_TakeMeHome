@@ -18,6 +18,11 @@
 
 @interface LostPostTableView ()<UITextFieldDelegate,MKMapViewDelegate,CLLocationManagerDelegate,MBProgressHUDDelegate>
 {
+    //目前使用者
+    PFUser *currentUser;
+
+    
+    
     CLLocationManager *locationManager;
     CLLocation*currentLocation;
     
@@ -56,6 +61,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //目前使用者資料
+    currentUser = [PFUser currentUser];
+    NSString *name=currentUser[@"name"];
+    NSString *phone=currentUser[@"userPhone"];
+    NSString *email=currentUser[@"email"];
+
+    if (name.length!=0)
+    {
+        _contactNameText.text=name;
+    }
+    if (phone.length!=0)
+    {
+        _contactPhoneNumber.text=phone;
+    }
+    if (email.length!=0)
+    {
+        _contactEmail.text=email;
+    }
+
+    
+    
     _lostOtherText.layer.borderWidth = 0.25;
     _lostOtherText.layer.cornerRadius=10.0f;
     _lostOtherText.layer.borderColor=[[UIColor lightGrayColor] CGColor];
@@ -213,13 +240,11 @@
     [self.view endEditing:YES];
     
     //判斷是否有必填未寫
-    if (_lostPetNameText.text.length==0||_lostDateText.text.length==0)
+    if (_lostPetNameText.text.length==0||_lostDateText.text.length==0||
+        _contactNameText.text.length==0||_contactPhoneNumber.text.length==0||
+        _contactEmail.text.length==0)
     {
         [self.view.window addSubview:self.addmaskView];
-//        [[[[UIApplication sharedApplication] windows] firstObject] addSubview:self.addmaskView];
-
-//        [self.view.window bringSubviewToFront:self.addmaskView];
-
         [[HHAlertView shared]
          showAlertWithStyle:HHAlertStyleWraning
          inView:self.view.window
@@ -312,6 +337,12 @@
         {
             // The object has been saved
             [lostPostData save];
+            
+            //與使用者建立關聯
+            PFRelation *relation = [currentUser relationForKey:@"lostPost"];
+            [relation addObject:lostPostData];
+            [currentUser saveInBackground];
+
             NSLog(@"Succee!!!");
             [self performSegueWithIdentifier:@"goLostMapSeguWay" sender:nil];
             [HUD hide:YES];

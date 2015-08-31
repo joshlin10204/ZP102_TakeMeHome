@@ -75,6 +75,7 @@
                  user.username=[results objectForKey:@"email"];
                  user[@"name"]=[results objectForKey:@"name"];
                  user[@"userPhoto"]=userPhoto;
+                 user[@"email"]=[results objectForKey:@"email"];
                  
                  
                 [user saveInBackground];

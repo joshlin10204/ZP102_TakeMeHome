@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ADBF6F464D71E860CC46E09C"
-               BuildableName = "DOFavoriteButton.framework"
-               BlueprintName = "DOFavoriteButton"
+               BlueprintIdentifier = "3AF891E05500CDC41FA393B5"
+               BuildableName = "HMSegmentedControl.framework"
+               BlueprintName = "HMSegmentedControl"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

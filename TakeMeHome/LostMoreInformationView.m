@@ -49,7 +49,7 @@
         //顯示照片
         if (lostPetsInformationData[@"LostPetsPhotoFirst"]!=nil)
         {
-            
+            NSLog(@"%@",lostPetsInformationData);
             PFFile *lostPetsPhoto = lostPetsInformationData[@"LostPetsPhotoFirst"];
             [lostPetsPhoto getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)
              {

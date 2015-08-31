@@ -11,6 +11,8 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <Parse/Parse.h>
+#import "HHAlertView.h"
+
 
 
 
@@ -33,6 +35,8 @@
 @implementation MainViewController
 {
     navigationBtn *naviClass;
+    UIView   *maskView;
+
 }
 
 
@@ -193,10 +197,35 @@
 }
 //前往個人資料
 - (IBAction)MemberSettingButtonPressed:(id)sender {
-    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"MemberSetting" bundle:nil];
-    id targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"MemberSet"];
-    [self menuBtnPress:nil];
-    [self.navigationController pushViewController:targetViewController animated:true];
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser)
+    {
+        // do stuff with the user
+        UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"MemberSetting" bundle:nil];
+        id targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"MemberSet"];
+        [self menuBtnPress:nil];
+        [self.navigationController pushViewController:targetViewController animated:true];
+    }
+    else
+    {
+        [self menuBtnPress:nil];
+        [self.view addSubview:self.addmaskView];
+        [[HHAlertView shared]
+         showAlertWithStyle:HHAlertStyleWraning
+         inView:self.view
+         Title:@"提醒"
+         detail:@"訪客無法使用"
+         cancelButton:nil
+         Okbutton:@"關閉"
+         block:^(HHAlertButton buttonindex) {
+             [maskView removeFromSuperview];
+             
+         }
+         ];
+
+    
+    }
+
 }
 //前往設定
 - (IBAction)settingButtonPressed:(id)sender {
@@ -208,6 +237,16 @@
 }
 
 
-
+//建立一個霧透的背景
+- (UIView *)addmaskView
+{
+    if (!maskView) {
+        maskView = [[UIView alloc] initWithFrame:self.view.bounds];
+        [maskView setBackgroundColor:[UIColor blackColor]];
+        [maskView setAlpha:0.2];
+        NSLog(@"New maskView");
+    }
+    return maskView;
+}
 
 @end

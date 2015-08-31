@@ -1,5 +1,5 @@
 //
-//  MemberSetView.h
+//  MemberSetViewTableView.h
 //  TakeMeHome
 //
 //  Created by Josh on 2015/8/29.
@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseViewController.h"
 
-
-@interface MemberSetView : BaseViewController
+@interface MemberSetViewTableView : UIViewController
 
 @end

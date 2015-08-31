@@ -55,6 +55,7 @@
     PFUser *user = [PFUser user];
     user.username = _userAccountText.text;
     user.password = _userPassWordText.text;
+    user[@"email"] = _userAccountText.text;
     NSString*password=_userPassWordText.text;
     NSString*checkPassword=_checkPassTextWord.text;
     // other fields can be set just like with PFObject

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ADBF6F464D71E860CC46E09C"
-               BuildableName = "DOFavoriteButton.framework"
-               BlueprintName = "DOFavoriteButton"
+               BlueprintIdentifier = "E23B1C7F49E6B7245C649298"
+               BuildableName = "VGParallaxHeader.framework"
+               BlueprintName = "VGParallaxHeader"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

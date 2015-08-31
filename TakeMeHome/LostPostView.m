@@ -45,7 +45,6 @@
     
     UIAlertController *alertController = [UIAlertController new];
     imagePicker = [UIImagePickerController new];
-    lostPhotoBtnTag = ((UIView*)sender).tag;
 
     
     //使用相機選項

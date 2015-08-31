@@ -7,10 +7,15 @@
 //
 
 #import "LostMainController.h"
+#import <Parse/Parse.h>
+#import "HHAlertView.h"
 
 
 @interface LostMainController ()
+{
+    UIView   *maskView;
 
+}
 
 @end
 
@@ -24,6 +29,45 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)lostPostBtnPressed:(id)sender
+{
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser)
+    {
+
+        [self performSegueWithIdentifier:@"goLostPost" sender:nil];
+    }
+    else
+    {
+        [self.view addSubview:self.addmaskView];
+        [[HHAlertView shared]
+         showAlertWithStyle:HHAlertStyleWraning
+         inView:self.view
+         Title:@"提醒"
+         detail:@"訪客無法使用"
+         cancelButton:nil
+         Okbutton:@"關閉"
+         block:^(HHAlertButton buttonindex) {
+             [maskView removeFromSuperview];
+             
+         }
+         ];
+        
+        
+    }
+
+}
+//建立一個霧透的背景
+- (UIView *)addmaskView
+{
+    if (!maskView) {
+        maskView = [[UIView alloc] initWithFrame:self.view.bounds];
+        [maskView setBackgroundColor:[UIColor blackColor]];
+        [maskView setAlpha:0.2];
+        NSLog(@"New maskView");
+    }
+    return maskView;
 }
 
 /*
