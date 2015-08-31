@@ -47,6 +47,8 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    
+    //判斷使用者
     currentUser = [PFUser currentUser];
     if (currentUser)
     {

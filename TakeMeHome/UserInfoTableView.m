@@ -30,6 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //判斷當前使用者
     currentUser = [PFUser currentUser];
     if (currentUser)
     {
