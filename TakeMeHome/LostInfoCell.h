@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface LostInfoCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *testLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lostPetName;
+@property (weak, nonatomic) IBOutlet UIImageView *lostPetPhotoImage;
 
 @end

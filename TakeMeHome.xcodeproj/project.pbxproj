@@ -25,6 +25,7 @@
 		035CD2951B665AE900AEC20B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035CD2941B665AE900AEC20B /* MapKit.framework */; };
 		035CD2971B665AFE00AEC20B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035CD2961B665AFE00AEC20B /* CoreLocation.framework */; };
 		037126771B724074000F546E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 037126761B724074000F546E /* Images.xcassets */; };
+		037D04CE1B94C2330079E806 /* LostInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 037D04CD1B94C2330079E806 /* LostInfoView.m */; };
 		03A1BB0D1B90B8FD00DD2EFF /* MemberSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03A1BB0C1B90B8FD00DD2EFF /* MemberSetting.storyboard */; };
 		03B9E7A31B889F10002D340D /* WawaSC.otf in Resources */ = {isa = PBXBuildFile; fileRef = 03B9E7A21B889F10002D340D /* WawaSC.otf */; };
 		03BD5A651B6142380054F861 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BD5A641B6142380054F861 /* main.m */; };
@@ -45,8 +46,6 @@
 		03D204BF1B7303D5003457CA /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D204BE1B7303D5003457CA /* Social.framework */; };
 		03D204C11B7303E3003457CA /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D204C01B7303E3003457CA /* libsqlite3.dylib */; };
 		03D204C31B7303F2003457CA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D204C21B7303F2003457CA /* libz.dylib */; };
-		03D2A0141B9321FC001A7567 /* adoptInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D2A0121B9321FC001A7567 /* adoptInfoCell.m */; };
-		03D2A0151B9321FC001A7567 /* adoptInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03D2A0131B9321FC001A7567 /* adoptInfoCell.xib */; };
 		03D2A0181B93366D001A7567 /* UserInfoTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D2A0171B93366D001A7567 /* UserInfoTableView.m */; };
 		03DC79EE1B6555140042E8E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03DC79EC1B6555140042E8E2 /* Main.storyboard */; };
 		03F5A68C1B90E5B3003F22A9 /* MemberSetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F5A68B1B90E5B3003F22A9 /* MemberSetView.m */; };
@@ -147,6 +146,8 @@
 		035CD2941B665AE900AEC20B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		035CD2961B665AFE00AEC20B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		037126761B724074000F546E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TakeMeHome/Images.xcassets; sourceTree = "<group>"; };
+		037D04CC1B94C2330079E806 /* LostInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostInfoView.h; sourceTree = "<group>"; };
+		037D04CD1B94C2330079E806 /* LostInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LostInfoView.m; sourceTree = "<group>"; };
 		03A1BB0C1B90B8FD00DD2EFF /* MemberSetting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MemberSetting.storyboard; sourceTree = "<group>"; };
 		03B9E7A21B889F10002D340D /* WawaSC.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = WawaSC.otf; sourceTree = "<group>"; };
 		03BD5A5F1B6142380054F861 /* TakeMeHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakeMeHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,9 +175,6 @@
 		03D204BE1B7303D5003457CA /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		03D204C01B7303E3003457CA /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		03D204C21B7303F2003457CA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		03D2A0111B9321FC001A7567 /* adoptInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = adoptInfoCell.h; sourceTree = "<group>"; };
-		03D2A0121B9321FC001A7567 /* adoptInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = adoptInfoCell.m; sourceTree = "<group>"; };
-		03D2A0131B9321FC001A7567 /* adoptInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = adoptInfoCell.xib; sourceTree = "<group>"; };
 		03D2A0161B93366D001A7567 /* UserInfoTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoTableView.h; sourceTree = "<group>"; };
 		03D2A0171B93366D001A7567 /* UserInfoTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoTableView.m; sourceTree = "<group>"; };
 		03DC79ED1B6555140042E8E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -363,22 +361,29 @@
 			name = Home;
 			sourceTree = "<group>";
 		};
+		037D04C41B94AA6B0079E806 /* LostInfo */ = {
+			isa = PBXGroup;
+			children = (
+				03F5A6961B921753003F22A9 /* LostInfoCell.h */,
+				03F5A6971B921753003F22A9 /* LostInfoCell.m */,
+				03F5A6981B921753003F22A9 /* LostInfoCell.xib */,
+				037D04CC1B94C2330079E806 /* LostInfoView.h */,
+				037D04CD1B94C2330079E806 /* LostInfoView.m */,
+			);
+			name = LostInfo;
+			sourceTree = "<group>";
+		};
 		03A1BB0B1B90B8BE00DD2EFF /* MemberSetting */ = {
 			isa = PBXGroup;
 			children = (
 				03A1BB0C1B90B8FD00DD2EFF /* MemberSetting.storyboard */,
 				03F5A68A1B90E5B3003F22A9 /* MemberSetView.h */,
 				03F5A68B1B90E5B3003F22A9 /* MemberSetView.m */,
-				03D2A0161B93366D001A7567 /* UserInfoTableView.h */,
-				03D2A0171B93366D001A7567 /* UserInfoTableView.m */,
 				03F5A68D1B91F408003F22A9 /* MemberSetViewTableView.h */,
 				03F5A68E1B91F409003F22A9 /* MemberSetViewTableView.m */,
-				03D2A0111B9321FC001A7567 /* adoptInfoCell.h */,
-				03D2A0121B9321FC001A7567 /* adoptInfoCell.m */,
-				03D2A0131B9321FC001A7567 /* adoptInfoCell.xib */,
-				03F5A6961B921753003F22A9 /* LostInfoCell.h */,
-				03F5A6971B921753003F22A9 /* LostInfoCell.m */,
-				03F5A6981B921753003F22A9 /* LostInfoCell.xib */,
+				03D2A0161B93366D001A7567 /* UserInfoTableView.h */,
+				03D2A0171B93366D001A7567 /* UserInfoTableView.m */,
+				037D04C41B94AA6B0079E806 /* LostInfo */,
 			);
 			name = MemberSetting;
 			sourceTree = "<group>";
@@ -809,7 +814,6 @@
 				A6D3E7381B6A8FDE0066DD7B /* settingButton.png in Resources */,
 				03A1BB0D1B90B8FD00DD2EFF /* MemberSetting.storyboard in Resources */,
 				037126771B724074000F546E /* Images.xcassets in Resources */,
-				03D2A0151B9321FC001A7567 /* adoptInfoCell.xib in Resources */,
 				A69865B11B72539A0065C4E5 /* theDog2.jpg in Resources */,
 				03BD5A731B6142380054F861 /* LaunchScreen.xib in Resources */,
 				03B9E7A31B889F10002D340D /* WawaSC.otf in Resources */,
@@ -898,6 +902,7 @@
 				A6DA89911B7B1076000F8B7B /* MKAnnotationView+WebCache.m in Sources */,
 				A69865B41B72539A0065C4E5 /* BaseViewController.m in Sources */,
 				A6DA899F1B7B1076000F8B7B /* UIImageView+WebCache.m in Sources */,
+				037D04CE1B94C2330079E806 /* LostInfoView.m in Sources */,
 				A69865CA1B7254C60065C4E5 /* adoptView.m in Sources */,
 				032BF2911B8D9D18001BF5CD /* LostMoreInformationView.m in Sources */,
 				A69865CB1B7254C60065C4E5 /* adoptViewTableViewCell.m in Sources */,
@@ -918,7 +923,6 @@
 				A6DA899C1B7B1076000F8B7B /* UIImage+MultiFormat.m in Sources */,
 				A6D6DEB91B7C786700DBCFBD /* TPKeyboardAvoidingTableView.m in Sources */,
 				032BF2921B8D9D18001BF5CD /* LostMoreInformationTableView.m in Sources */,
-				03D2A0141B9321FC001A7567 /* adoptInfoCell.m in Sources */,
 				032566C91B7DEE4400DAD13B /* LostPostView.m in Sources */,
 				A6DA89981B7B1076000F8B7B /* SDWebImageManager.m in Sources */,
 				A6DA89951B7B1076000F8B7B /* SDWebImageDecoder.m in Sources */,
