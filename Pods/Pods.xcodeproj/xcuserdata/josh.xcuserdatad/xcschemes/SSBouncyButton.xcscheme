@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "24BD3857CC77BA1B223BEA50"
+               BlueprintIdentifier = "1511755A2BC6AA87C1BDEEFD"
                BuildableName = "SSBouncyButton.framework"
                BlueprintName = "SSBouncyButton"
                ReferencedContainer = "container:Pods.xcodeproj">

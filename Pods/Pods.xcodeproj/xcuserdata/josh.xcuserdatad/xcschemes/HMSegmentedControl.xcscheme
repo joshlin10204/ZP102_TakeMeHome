@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E56D43CA5ADC787EEC135987"
+               BlueprintIdentifier = "3AF891E05500CDC41FA393B5"
                BuildableName = "HMSegmentedControl.framework"
                BlueprintName = "HMSegmentedControl"
                ReferencedContainer = "container:Pods.xcodeproj">
