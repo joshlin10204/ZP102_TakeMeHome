@@ -39,8 +39,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self setSegmentedControlSettings];
-    [self setProfileAndAboutView];
+    //[self setSegmentedControlSettings];
+    //[self setProfileAndAboutView];
     [self btnSettings];
     
 //    _detailVC.hidden = YES;
@@ -78,68 +78,68 @@
     [_closeBtn setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
 }
 
-#pragma mark - UIScrollViewDelegate
+//#pragma mark - UIScrollViewDelegate
+//
+//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+//    CGFloat pageWidth = scrollView.frame.size.width;
+//    NSInteger page = scrollView.contentOffset.x / pageWidth;
+//    
+//    [self.segmentedControl setSelectedSegmentIndex:page animated:YES];
+//}
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    CGFloat pageWidth = scrollView.frame.size.width;
-    NSInteger page = scrollView.contentOffset.x / pageWidth;
-    
-    [self.segmentedControl setSelectedSegmentIndex:page animated:YES];
-}
-
-
-- (void)setProfileAndAboutView{
-    
-    NSLog(@"%f",self.scrollView.contentSize.width);
-    CGFloat viewWidth = CGRectGetWidth(self.view.frame);
-    CGFloat viewHeight = CGRectGetHeight(self.view.frame);
-    
-    
-    _detailVC.frame = CGRectMake(0, 0, viewWidth, viewHeight);
-    [self.scrollView addSubview:_detailVC];
-    UIView * view = [[UIView alloc] initWithFrame:self.detailVC.frame];
-    [view setBackgroundColor:[UIColor greenColor]];
-    [view addSubview:self.detailVC];
-    [self.scrollView addSubview:view];
-    
-    _aboutMeVC.frame = CGRectMake(viewWidth, 0, viewWidth, viewHeight);
-    [self.scrollView addSubview:_aboutMeVC];
-    NSLog(@"%f",self.scrollView.contentSize.width);
-    
-    //?????????????
-}
-
-- (void)setSegmentedControlSettings{
-    CGFloat viewWidth = CGRectGetWidth(self.view.frame);
-    CGFloat viewHeight = CGRectGetHeight(self.view.frame);
-    self.segmentedControl = [[HMSegmentedControl alloc] initWithFrame:CGRectMake(0, viewHeight/2-20, viewWidth, 50)];
-    self.segmentedControl.sectionTitles = @[@"基本資料", @"關於我"];
-    self.segmentedControl.selectedSegmentIndex = 0;
-    self.segmentedControl.backgroundColor = [UIColor colorWithRed:0.1 green:0.4 blue:0.8 alpha:1];
-    self.segmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
-    self.segmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName : [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1]};
-    self.segmentedControl.selectionIndicatorColor = [UIColor colorWithRed:0.5 green:0.8 blue:1 alpha:1];
-    self.segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleBox;
-    self.segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
-    self.segmentedControl.tag = 1000;
-    
-    __weak typeof(self) weakSelf = self;
-    [self.segmentedControl setIndexChangeBlock:^(NSInteger index) {
-        [weakSelf.scrollView scrollRectToVisible:CGRectMake(viewWidth * index, 0, viewWidth, 200) animated:YES];
-    }];
-    
-    [self.view addSubview:self.segmentedControl];
-    
-    
-    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, viewHeight/2+30, viewWidth, viewHeight)];
-    self.scrollView.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1];
-    self.scrollView.pagingEnabled = YES;
-    self.scrollView.showsHorizontalScrollIndicator = NO;
-    self.scrollView.contentSize = CGSizeMake(viewWidth * 2, viewHeight);
-    self.scrollView.delegate = self;
-    [self.scrollView scrollRectToVisible:CGRectMake(viewWidth, 0, viewWidth, viewHeight) animated:NO];
-    [self.view addSubview:self.scrollView];
-}
+//
+//- (void)setProfileAndAboutView{
+//    
+//    NSLog(@"%f",self.scrollView.contentSize.width);
+//    CGFloat viewWidth = CGRectGetWidth(self.view.frame);
+//    CGFloat viewHeight = CGRectGetHeight(self.view.frame);
+//    
+//    
+//    _detailVC.frame = CGRectMake(0, 0, viewWidth, viewHeight);
+//    [self.scrollView addSubview:_detailVC];
+//    UIView * view = [[UIView alloc] initWithFrame:self.detailVC.frame];
+//    [view setBackgroundColor:[UIColor greenColor]];
+//    [view addSubview:self.detailVC];
+//    [self.scrollView addSubview:view];
+//    
+//    _aboutMeVC.frame = CGRectMake(viewWidth, 0, viewWidth, viewHeight);
+//    [self.scrollView addSubview:_aboutMeVC];
+//    NSLog(@"%f",self.scrollView.contentSize.width);
+//    
+//    //?????????????
+//}
+//
+//- (void)setSegmentedControlSettings{
+//    CGFloat viewWidth = CGRectGetWidth(self.view.frame);
+//    CGFloat viewHeight = CGRectGetHeight(self.view.frame);
+//    self.segmentedControl = [[HMSegmentedControl alloc] initWithFrame:CGRectMake(0, viewHeight/2-20, viewWidth, 50)];
+//    self.segmentedControl.sectionTitles = @[@"基本資料", @"關於我"];
+//    self.segmentedControl.selectedSegmentIndex = 0;
+//    self.segmentedControl.backgroundColor = [UIColor colorWithRed:0.1 green:0.4 blue:0.8 alpha:1];
+//    self.segmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+//    self.segmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName : [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1]};
+//    self.segmentedControl.selectionIndicatorColor = [UIColor colorWithRed:0.5 green:0.8 blue:1 alpha:1];
+//    self.segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleBox;
+//    self.segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
+//    self.segmentedControl.tag = 1000;
+//    
+//    __weak typeof(self) weakSelf = self;
+//    [self.segmentedControl setIndexChangeBlock:^(NSInteger index) {
+//        [weakSelf.scrollView scrollRectToVisible:CGRectMake(viewWidth * index, 0, viewWidth, 200) animated:YES];
+//    }];
+//    
+//    [self.view addSubview:self.segmentedControl];
+//    
+//    
+//    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, viewHeight/2+30, viewWidth, viewHeight)];
+//    self.scrollView.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1];
+//    self.scrollView.pagingEnabled = YES;
+//    self.scrollView.showsHorizontalScrollIndicator = NO;
+//    self.scrollView.contentSize = CGSizeMake(viewWidth * 2, viewHeight);
+//    self.scrollView.delegate = self;
+//    [self.scrollView scrollRectToVisible:CGRectMake(viewWidth, 0, viewWidth, viewHeight) animated:NO];
+//    [self.view addSubview:self.scrollView];
+//}
 
 
 - (IBAction)segmentChange:(id)sender {
