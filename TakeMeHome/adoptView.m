@@ -12,6 +12,8 @@
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "Animal.h"
 #import <QuartzCore/QuartzCore.h>
+#import <Parse/Parse.h>
+#import "postDetailTVC.h"
 
 
 #define JSON_GET_HTTP_WEBSITE @"http://data.coa.gov.tw/Service/OpenData/AnimalOpenData.aspx"
@@ -53,6 +55,65 @@
     }
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(doFilter) name:DOWNLOAD_JSON_SUCCESS_NOTIFICATION object:nil];
+    
+    //get Parse File
+    [self downloadParseFile];
+    //
+    
+}
+
+- (void)downloadParseFile{
+    //
+    NSMutableArray *saveParseArray = [[NSMutableArray alloc]initWithArray:plistArray];
+    NSMutableDictionary *saveDictionary = [NSMutableDictionary new];
+    
+    PFQuery *query = [PFQuery queryWithClassName:ADOPT_PETS_PARSE_TABLE_NAME];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+
+            for (NSDictionary *tmp in objects) {
+                //[saveDictionary setObject:tmp[@"objectId"] forKey:@"animal_id"];
+                [saveDictionary setObject:tmp[MIX_TYPE_PARSE_TITLE] forKey:ANIMAL_BODYTYPE_FILTER_KEY];
+                [saveDictionary setObject:tmp[SEX_PARSE_TITLE] forKey:ANIMAL_SEX_FILTER_KEY];
+                [saveDictionary setObject:tmp[AREA_PARSE_TITLE] forKey:ANIMAL_AREA_PKID_FILTER_KEY];
+                [saveDictionary setObject:tmp[TYPE_PARSE_TITLE] forKey:ANIMAL_KIND_FILTER_KEY];
+                [saveDictionary setObject:tmp[AGE_PARSE_TITLE] forKey:ANIMAL_AGE_FILTER_KEY];
+                [saveDictionary setObject:tmp[COLOR_PARSE_TITLE] forKey:@"animal_colour"];
+                [saveDictionary setObject:tmp[STERILIZATION_PARSE_TITLE] forKey:@"animal_sterilization"];
+                [saveDictionary setObject:tmp[BACTERIN_PARSE_TITLE] forKey:@"animal_bacterin"];
+                [saveDictionary setObject:tmp[FOUND_PARSE_TITLE] forKey:@"animal_foundplace"];
+                [saveDictionary setObject:tmp[TRAIT_PARSE_TITLE] forKey:@"animal_remark"];
+                [saveDictionary setObject:tmp[CONTACT_PARSE_TITLE] forKey:ANIMAL_CONTACT];
+                [saveDictionary setObject:tmp[HOW_TO_CONTACT_PARSE_TITLE] forKey:ANIMAL_HOW_TO_CONTACT];
+                [saveDictionary setObject:tmp[USER_ICON_PARSE_TITLE] forKey:ANIMAL_USER_POST_ICON];
+                
+                [saveParseArray insertObject:saveDictionary atIndex:0];
+            }
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+        
+        [saveParseArray writeToFile:fullFileName atomically:true];
+    }];
+    
+   
+    /*
+     #define ANIMAL_SEX_FILTER_KEY @"animal_sex"
+     #define ANIMAL_BODYTYPE_FILTER_KEY @"animal_bodytype"
+     #define ANIMAL_AGE_FILTER_KEY @"animal_age"
+     #define ANIMAL_ALBUM_FILE_FILTER_KEY @"album_file"
+     #define ANIMAL_AREA_PKID_FILTER_KEY @"animal_area_pkid"
+     #define ANIMAL_KIND_FILTER_KEY @"animal_kind"
+     #define ANIMAL_ID_FILTER_KEY @"animal_id"
+     #define ANIMAL_PLACE_FILTER_KEY @"animal_place"
+     #define ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY @"animal_favorite"
+     
+     
+     */
+    
+
+    //
 }
 
 
@@ -111,6 +172,21 @@
     cell.labelAge.text = [theCellArray valueForKey:ANIMAL_AGE_FILTER_KEY];
     
     NSString *imgStr = [theCellArray valueForKey:ANIMAL_ALBUM_FILE_FILTER_KEY];
+    
+    if ([cell.labelSex.text isEqualToString:@"M"]) {
+        cell.labelSex.text = @"公";
+    }else if ([cell.labelSex.text isEqualToString:@"F"]){
+        cell.labelSex.text = @"母";
+    }else{
+        cell.labelSex.text = @"未填";
+    }
+    
+    if ([cell.labelAge.text isEqualToString:@"CHILD"]) {
+        cell.labelAge.text = @"幼年";
+    }else{
+        cell.labelAge.text = @"成年";
+    }
+    
     
     cell.btnFavirite.tag = indexPath.row;
     if ([[theCellArray valueForKey:ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY]isEqualToString:@"N"]) {
@@ -246,6 +322,19 @@
     //Prepare full path
     NSString *fullFilePathName = [documentsDirectory stringByAppendingPathComponent:SAVE_PLIST_FILE_NAME];
     NSMutableArray *getJsonArray = [NSMutableArray arrayWithArray:array];
+    
+    //整理下載下來的json file
+    for (NSDictionary *tmp in array) {
+        if ([tmp[@"animal_bodytype"] isEqualToString:@"MINI"]) {
+            [tmp setValue:@"迷你" forKey:@"animal_bodytype"];
+        }else if ([tmp[@"animal_bodytype"] isEqualToString:@"SMALL"]){
+            [tmp setValue:@"小型" forKey:@"animal_bodytype"];
+        }else if ([tmp[@"animal_bodytype"] isEqualToString:@"MEDIUM"]){
+            [tmp setValue:@"中型" forKey:@"animal_bodytype"];
+        }else if ([tmp[@"animal_bodytype"] isEqualToString:@"BIG"]){
+            [tmp setValue:@"大型" forKey:@"animal_bodytype"];
+        }
+    }
     
     //save file
     [getJsonArray writeToFile:fullFilePathName atomically:true];

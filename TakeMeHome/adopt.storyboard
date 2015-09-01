@@ -39,7 +39,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="kbr-Uq-blR" kind="show" id="obl-g5-NAY"/>
+                                    <action selector="postBtnPressed:" destination="mWz-2e-tAP" eventType="touchUpInside" id="EZ4-HG-ibR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -621,7 +621,7 @@
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="704" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="pjz-Wa-lGQ">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.97254908080000002" green="0.67058825489999996" blue="0.68235296010000002" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.97254908080000002" green="0.67058825489999996" blue="0.68235296010000002" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="sectionIndexTrackingBackgroundColor" red="0.97254908080000002" green="0.67058825489999996" blue="0.68235296010000002" alpha="1" colorSpace="deviceRGB"/>
                                 <prototypes>
@@ -1269,7 +1269,7 @@
         <!--Post ViewVC-->
         <scene sceneID="8Yz-Te-VD0">
             <objects>
-                <viewController id="kbr-Uq-blR" customClass="postViewVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="postViewVC" id="kbr-Uq-blR" customClass="postViewVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ASZ-jM-DbO"/>
                         <viewControllerLayoutGuide type="bottom" id="B0V-3E-zTL"/>
@@ -1295,7 +1295,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Nhk-z7-ZgK" secondAttribute="height" multiplier="1:1" id="r14-SW-E7p"/>
                                 </constraints>
-                                <state key="normal" title="Button" backgroundImage="addPhotoBtn">
+                                <state key="normal" backgroundImage="addPhotoBtn">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1307,7 +1307,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="KLf-Vs-JDU" secondAttribute="height" multiplier="1:1" id="KHB-8Q-GPO"/>
                                 </constraints>
-                                <state key="normal" title="Button" backgroundImage="addPhotoBtn">
+                                <state key="normal" backgroundImage="addPhotoBtn">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1558,13 +1558,13 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8zl-YO-ZHb">
                                                     <rect key="frame" x="8" y="8" width="584" height="27"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="品種" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="1h8-6y-o5m">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="體型" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="1h8-6y-o5m">
                                                             <rect key="frame" x="10" y="3" width="146" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="（選填）" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BDe-e9-6Jn">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="大、中、小（選填）" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BDe-e9-6Jn">
                                                             <rect key="frame" x="166" y="-1" width="408" height="30"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>

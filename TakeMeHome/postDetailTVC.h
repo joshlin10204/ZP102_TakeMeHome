@@ -21,7 +21,7 @@
 #define HOW_TO_CONTACT_PARSE_TITLE @"howToContact"
 #define FOUND_PARSE_TITLE @"found"
 #define TRAIT_PARSE_TITLE @"trait"
-
+#define USER_ICON_PARSE_TITLE @"user_Icon"
 
 
 @interface postDetailTVC : UITableViewController

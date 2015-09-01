@@ -17,6 +17,9 @@
 #define ANIMAL_ID_FILTER_KEY @"animal_id"
 #define ANIMAL_PLACE_FILTER_KEY @"animal_place"
 #define ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY @"animal_favorite"
+#define ANIMAL_CONTACT @"animal_contact"
+#define ANIMAL_HOW_TO_CONTACT @"animal_how_to_contact"
+#define ANIMAL_USER_POST_ICON @"animal_user_post_icon"
 
 #define SAVE_PLIST_FILE_NAME @"getAdoptJsonFile.plist"
 

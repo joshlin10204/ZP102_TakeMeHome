@@ -43,7 +43,7 @@
     [self setProfileAndAboutView];
     [self btnSettings];
     
-    _detailVC.hidden = false;
+//    _detailVC.hidden = YES;
     _aboutMeVC.hidden = false;
     
     NSString *urlStr = [getAnimailProfile valueForKey:ANIMAL_ALBUM_FILE_FILTER_KEY];
@@ -89,15 +89,23 @@
 
 
 - (void)setProfileAndAboutView{
+    
     NSLog(@"%f",self.scrollView.contentSize.width);
     CGFloat viewWidth = CGRectGetWidth(self.view.frame);
     CGFloat viewHeight = CGRectGetHeight(self.view.frame);
+    
+    
     _detailVC.frame = CGRectMake(0, 0, viewWidth, viewHeight);
     [self.scrollView addSubview:_detailVC];
+    UIView * view = [[UIView alloc] initWithFrame:self.detailVC.frame];
+    [view setBackgroundColor:[UIColor greenColor]];
+    [view addSubview:self.detailVC];
+    [self.scrollView addSubview:view];
     
     _aboutMeVC.frame = CGRectMake(viewWidth, 0, viewWidth, viewHeight);
     [self.scrollView addSubview:_aboutMeVC];
     NSLog(@"%f",self.scrollView.contentSize.width);
+    
     //?????????????
 }
 

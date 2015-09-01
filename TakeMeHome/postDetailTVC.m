@@ -12,6 +12,7 @@
 #import "FUIAlertView.h"
 #import "MBProgressHUD.h"
 #import "adoptView.h"
+#import "HHAlertView.h"
 
 
 #import <Parse/Parse.h>
@@ -23,6 +24,7 @@
     UIPickerView *areaPickView;
     NSArray *areaArray ;
     NSString *getAreaNumStr;
+    UIView   *maskView;
     
 }
 @property (weak, nonatomic) IBOutlet UITextField *areaTxtField;
@@ -101,8 +103,19 @@
     postAdopt[HOW_TO_CONTACT_PARSE_TITLE] = _howToContactTxtField.text;
     postAdopt[FOUND_PARSE_TITLE] = _foundTxtFiled.text;
     postAdopt[TRAIT_PARSE_TITLE] = _traitTxtField.text;
-
+    postAdopt[USER_ICON_PARSE_TITLE] = @"img";
     
+    if ([_sexTxtField.text isEqualToString:@"公"]) {//公
+        _sexTxtField.text = @"M";
+    }else{
+        _sexTxtField.text = @"F";
+    }
+    
+    if ([_ageTxtField.text isEqualToString:@"成年"]) {
+        _ageTxtField.text = @"ADULT";
+    }else{
+        _ageTxtField.text = @"CHILD";
+    }
     
     [postAdopt saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
@@ -116,7 +129,33 @@
     }];
 }
 
+
+
+//建立一個霧透的背景
+- (UIView *)addmaskView
+{
+    if (!maskView) {
+        maskView = [[UIView alloc] initWithFrame:self.view.window.frame];
+        [maskView setBackgroundColor:[UIColor blackColor]];
+        [maskView setAlpha:0.2];
+    }
+    return maskView;
+    
+}
+
 - (void)doAlert{
+    [self.view.window addSubview:self.addmaskView];
+    [[HHAlertView shared]showAlertWithStyle:HHAlertStyleWraning
+                                     inView:self.view.window
+                                      Title:nil
+                                     detail:@"請確認必填欄位"
+                               cancelButton:nil
+                                   Okbutton:@"確定"
+                                    block:^(HHAlertButton buttonindex) {
+                                        [maskView removeFromSuperview];
+                                    }
+     ];
+    /*
     FUIAlertView *alertView = [[FUIAlertView alloc] initWithTitle:@"請確認必填欄位"
                                                           message:nil
                                                          delegate:nil cancelButtonTitle:@"確定"
@@ -129,6 +168,7 @@
     alertView.defaultButtonShadowColor = [UIColor asbestosColor];
     alertView.defaultButtonTitleColor = [UIColor asbestosColor];
     [alertView show];
+     */
 }
 
 - (void)setAreaPickerVIew{

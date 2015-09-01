@@ -13,6 +13,7 @@
 
 #import "FUIButton.h"
 #import "FUIAlertView.h"
+#import "HHAlertView.h"
 #import "UIColor+FlatUI.h"
 #import "UIFont+FlatUI.h"
 #import "UIColor+Hex.h"
@@ -27,7 +28,8 @@
 
 @interface searchOptionVC ()<UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate>
 {
-
+    
+    UIView *maskView;
     UIPickerView *areaPickView;
     NSArray *areaArray ;
     NSString *getAreaNumStr;
@@ -309,15 +311,39 @@
             return false;
         }
         userOptionsStr = [NSString stringWithFormat:@"%@%@",userOptionsStr,[getUserOptionsArray objectAtIndex:i - BUTTON_OPTIONS_TAG + 1]];
-        
-        
+
     }
     
     
     return userOptionsStr;
 }
 
+- (UIView *)addmaskView
+{
+    if (!maskView) {
+        maskView = [[UIView alloc] initWithFrame:self.view.window.frame];
+        [maskView setBackgroundColor:[UIColor blackColor]];
+        [maskView setAlpha:0.2];
+    }
+    return maskView;
+    
+}
+
+
 - (void)showAlertView:(NSString*)msg{
+    [self.view.window addSubview:self.addmaskView];
+    [[HHAlertView shared]showAlertWithStyle:HHAlertStyleWraning
+                                     inView:self.view.window
+                                      Title:nil
+                                     detail:@"請確認欄位是否有勾選"
+                               cancelButton:nil
+                                   Okbutton:@"確定"
+                                      block:^(HHAlertButton buttonindex) {
+                                          [maskView removeFromSuperview];
+                                      }
+     ];
+
+    /*
     FUIAlertView *alertView = [[FUIAlertView alloc] initWithTitle:@"有資料沒填到哦"
                                                           message:msg
                                                          delegate:nil
@@ -334,6 +360,7 @@
     alertView.defaultButtonFont = [UIFont boldFlatFontOfSize:16];
     alertView.defaultButtonTitleColor = [UIColor asbestosColor];
     [alertView show];
+     */
 }
 
 - (void)setAreaPickerView{
