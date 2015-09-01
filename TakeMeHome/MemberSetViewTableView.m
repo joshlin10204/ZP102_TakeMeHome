@@ -10,29 +10,59 @@
 #import "MXSegmentedPager.h"
 #import "LostInfoCell.h"
 #import <Parse/Parse.h>
+#import "SDWebImage/UIImageView+WebCache.h"
+#import "LostInfoView.h"
+
 
 
 @interface MemberSetViewTableView ()<MXSegmentedPagerDelegate,MXSegmentedPagerDataSource,UITableViewDelegate,UITableViewDataSource>
+{
+    PFUser *currentUser ;
+    //走失文章資料
+    NSArray * lostPostData;
+    
+    NSArray * choicelostPost;
+
+}
 @property (nonatomic, strong) MXSegmentedPager  * segmentedPager;
 @property (nonatomic, strong) UITableView       * userInfoTableView;
 @property (nonatomic, strong) UITableView       * lostInfoTableView;
 @property (nonatomic, strong) UITableView       * adoptInfoTableView;
-
 @end
 
 @implementation MemberSetViewTableView
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    PFUser *currentUser = [PFUser currentUser];
+    currentUser = [PFUser currentUser];
     if (currentUser) {
         // do stuff with the user
         NSLog(@"currentUser: %@ ",currentUser);
     }
     
+    //Parse關聯 取得使用者PO的走失文章
+    PFRelation *relation = [currentUser relationForKey:@"lostPost"];
+    PFQuery *quert=[relation query];
+    [quert  orderByDescending:@"createdAt"];
+    //依照createdAt的最新時間排序
+    [quert findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            // There was an error
+            NSLog(@"error:%@",error);
+        } else {
+            // objects has all the Posts the current user liked.
+            [[relation query]  orderByDescending:@"createdAt"];
+            lostPostData=objects;
+            NSLog(@"Success!! :  %@",[objects objectAtIndex:0]);
+            NSLog(@"objects!! :  %@",objects[0]);
+            [_lostInfoTableView reloadData];//重新載入Tableview
+        }
+    }];
+    
 
-    
-    
+
+
+
     self.view.backgroundColor = UIColor.whiteColor;
     [self.view addSubview:self.segmentedPager];
     self.segmentedPager.segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
@@ -120,28 +150,20 @@
 #pragma -mark <MXSegmentedPagerDataSource>
 
 - (NSInteger)numberOfPagesInSegmentedPager:(MXSegmentedPager *)segmentedPager {
-    return 3;
+    return 2;
 }
 
 - (NSString *)segmentedPager:(MXSegmentedPager *)segmentedPager titleForSectionAtIndex:(NSInteger)index {
-    if (index < 3) {
-        return [@[@"個人資料", @"領養文章", @"走失文章"] objectAtIndex:index];
+    if (index < 2) {
+        return [@[@"領養文章", @"走失文章"] objectAtIndex:index];
     }
     return [NSString stringWithFormat:@"Page %li", (long) index];
 }
 
-- (UIView *)segmentedPager:(MXSegmentedPager *)segmentedPager viewForPageAtIndex:(NSInteger)index {
-//    if (index < 3)
-//    {
-        return [@[self.userInfoTableView, self.adoptInfoTableView, self.lostInfoTableView] objectAtIndex:index];
-//    }
-    
-//    //Dequeue reusable page
-//    UITextView *page = [segmentedPager.pager dequeueReusablePageWithIdentifier:@"TextPage"];
-//    NSString *filePath = [[NSBundle mainBundle]pathForResource:@"LongText" ofType:@"txt"];
-//    page.text = [[NSString alloc]initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-//
-//    return page;
+- (UIView *)segmentedPager:(MXSegmentedPager *)segmentedPager viewForPageAtIndex:(NSInteger)index
+{
+
+        return [@[self.adoptInfoTableView, self.lostInfoTableView] objectAtIndex:index];
 }
 
 #pragma -mark <UITableViewDelegate>
@@ -150,18 +172,39 @@
 //    
 //    NSInteger index = (indexPath.row % 2) + 1;
 //    [self.segmentedPager scrollToPageAtIndex:index animated:YES];
+    if([tableView isEqual:_adoptInfoTableView])
+    {
+        NSLog(@" _adoptInfoTableView 選擇 ：%ld" ,(long)indexPath.row);
+
+    }
+    else
+    {
+        NSLog(@" _lostInfoTableView 選擇 ：%ld" ,(long)indexPath.row);
+        choicelostPost=lostPostData[indexPath.row];
+        [self performSegueWithIdentifier:@"golostPostInfo" sender:nil];
+        NSLog(@"choicelostPostInfo:%@",choicelostPost);
+    
+    }
+
+    
+}
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqual:@"golostPostInfo"])
+    {
+        id aa=segue.destinationViewController;
+        [aa setValue:choicelostPost forKey:@"lostPostInfo"];
+        
+    }
+    
 }
 
 #pragma -mark <UITableViewDataSource>
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if ([tableView isEqual:_userInfoTableView])
-    {
+
     
-        return 2;
-    }
-    
-    else if([tableView isEqual:_adoptInfoTableView])
+    if([tableView isEqual:_adoptInfoTableView])
     {
     
         return 5;
@@ -169,8 +212,7 @@
     
     else
     {
-        
-        return 3;
+        return lostPostData.count ;
     }
 }
 
@@ -184,19 +226,7 @@
     static NSString *lostCellID = @"LostInfoCell";
     LostInfoCell *lostCell = [tableView dequeueReusableCellWithIdentifier:lostCellID];
     
-    if ([tableView isEqual:_userInfoTableView])
-    {
-        if (cell == nil)
-        {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        }
-        
-        cell.textLabel.text=@"user";
-        return cell;
-        
-    }
-    
-    else if([tableView isEqual:_adoptInfoTableView])
+    if([tableView isEqual:_adoptInfoTableView])
     {
         if (cell == nil)
         {
@@ -218,11 +248,29 @@
 
             
         }
+
         _lostInfoTableView.rowHeight = lostCell.frame.size.height;
-        lostCell.testLabel.text=@"測試";
+        lostCell.lostPetName.text=lostPostData[indexPath.row][@"LostPetsName"];
+
+        PFFile *lostPetsPhoto = lostPostData[indexPath.row][@"LostPetsPhotoFirst"];
+        if (lostPetsPhoto==nil) {
+            
+            lostCell.lostPetPhotoImage.image=[UIImage imageNamed:@"noPhotoImage"];
+            
+            
+        }
+        else
+        {
+            
+            [lostCell.lostPetPhotoImage sd_setImageWithURL:(NSURL*)((PFFile*)lostPetsPhoto).url  placeholderImage:[UIImage imageNamed:@"noPhotoImage"]];
+            
+        }
+        
+            
+            
+        
         return lostCell;
-    
-    
+
     }
 //    cell.textLabel.text = (indexPath.row % 2)? @"Text": @"Web";
 
