@@ -32,7 +32,7 @@ PODS:
     - FBSDKCoreKit (~> 4.0)
     - FBSDKLoginKit (~> 4.0)
     - Parse (~> 1.8.2)
-  - PureLayout (3.0.0)
+  - PureLayout (3.0.1)
   - SCLAlertView-Objective-C (0.7.4)
   - SSBouncyButton (1.0.5):
     - BRYSerialAnimationQueue (~> 1.0)
@@ -67,7 +67,7 @@ SPEC CHECKSUMS:
   MXSegmentedPager: 80a19d4f72e39da48a8da2038f1240476b3f1c33
   Parse: 188601c6cd91fae55906badd283b513104a3a8c9
   ParseFacebookUtilsV4: 6e7415146935e1238ebabbee7e5d32d148027b2d
-  PureLayout: 270dfee2236f697ab1d5e2771c2e5c248495fa0d
+  PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
   SCLAlertView-Objective-C: 15ebfdac06ca289ba1f29fe34b5a03da6bd3fe37
   SSBouncyButton: 5cce51fb710695670295446aaa17b8e716bdb672
   UIColor-Hex: 77e80f383c6b3a63c5e95a9a4a7f4a71976e38a5

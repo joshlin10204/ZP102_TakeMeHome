@@ -107,6 +107,7 @@
 		A6DA89A01B7B1076000F8B7B /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DA89901B7B1076000F8B7B /* UIView+WebCacheOperation.m */; };
 		A6DCB2EE1B902C30002A3EB6 /* postViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DCB2ED1B902C30002A3EB6 /* postViewVC.m */; };
 		A6DCB2F11B902CB2002A3EB6 /* postDetailTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DCB2F01B902CB2002A3EB6 /* postDetailTVC.m */; };
+		A6F18FF41B949C73001760E7 /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F18FF31B949C73001760E7 /* HMSegmentedControl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -284,6 +285,8 @@
 		A6DCB2ED1B902C30002A3EB6 /* postViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = postViewVC.m; sourceTree = "<group>"; };
 		A6DCB2EF1B902CB2002A3EB6 /* postDetailTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = postDetailTVC.h; sourceTree = "<group>"; };
 		A6DCB2F01B902CB2002A3EB6 /* postDetailTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = postDetailTVC.m; sourceTree = "<group>"; };
+		A6F18FF21B949C73001760E7 /* HMSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSegmentedControl.h; sourceTree = "<group>"; };
+		A6F18FF31B949C73001760E7 /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSegmentedControl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -608,6 +611,7 @@
 		A6D3E7211B6A6EF40066DD7B /* library */ = {
 			isa = PBXGroup;
 			children = (
+				A6F18FF11B949C50001760E7 /* HMSegmentedControl */,
 				A6DA896F1B7B1076000F8B7B /* SDWebImage */,
 				A6D6DEB21B7C784900DBCFBD /* keyboard */,
 			);
@@ -701,6 +705,15 @@
 				A6DCB2F01B902CB2002A3EB6 /* postDetailTVC.m */,
 			);
 			name = postView;
+			sourceTree = "<group>";
+		};
+		A6F18FF11B949C50001760E7 /* HMSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				A6F18FF21B949C73001760E7 /* HMSegmentedControl.h */,
+				A6F18FF31B949C73001760E7 /* HMSegmentedControl.m */,
+			);
+			name = HMSegmentedControl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -912,6 +925,7 @@
 				A6DA899B1B7B1076000F8B7B /* UIImage+GIF.m in Sources */,
 				03F5A68F1B91F409003F22A9 /* MemberSetViewTableView.m in Sources */,
 				A6DCB2F11B902CB2002A3EB6 /* postDetailTVC.m in Sources */,
+				A6F18FF41B949C73001760E7 /* HMSegmentedControl.m in Sources */,
 				A6DA899E1B7B1076000F8B7B /* UIImageView+HighlightedWebCache.m in Sources */,
 				03BD5A651B6142380054F861 /* main.m in Sources */,
 				03D2A0181B93366D001A7567 /* UserInfoTableView.m in Sources */,

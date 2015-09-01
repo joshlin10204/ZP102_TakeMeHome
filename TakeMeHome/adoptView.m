@@ -11,17 +11,14 @@
 #import "adoptProfileVC.h"
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "Animal.h"
-
-#import "MXSegmentedPager.h"
-
 #import <QuartzCore/QuartzCore.h>
 
-#define cellDistance 50
+
 #define JSON_GET_HTTP_WEBSITE @"http://data.coa.gov.tw/Service/OpenData/AnimalOpenData.aspx"
 #define DOWNLOAD_JSON_SUCCESS_NOTIFICATION @"downloadJsonSuccessNotification"
 
 
-@interface adoptView ()<UITableViewDataSource,UITableViewDelegate,MXSegmentedPagerDelegate, MXSegmentedPagerDataSource>
+@interface adoptView ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSArray *plistArray;
     NSMutableArray *filtterArray;
@@ -31,7 +28,6 @@
 
 }
 @property (strong, nonatomic) IBOutlet UITableView *petTableView;
-@property (nonatomic, strong) MXSegmentedPager  * segmentedPager;
 @end
 
 @implementation adoptView
@@ -41,20 +37,6 @@
    
     //tableView settings
     [self tableControlSetting];
-    
-    self.view.backgroundColor = UIColor.whiteColor;
-    
-    [self.view addSubview:self.segmentedPager];
-    self.segmentedPager.segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
-    self.segmentedPager.segmentedControl.selectionIndicatorColor = [UIColor orangeColor];
-    self.segmentedPager.segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;
-    self.segmentedPager.segmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName : [UIColor orangeColor]};
-    
-    //Register UItableView as page
-    [self.segmentedPager.pager registerClass:[UITextView class] forPageReuseIdentifier:@"TextPage"];
-////////////////////////////////////////////////////
-    
-    
     
     //如果有存檔 就讀存檔
     //如果有更新  就提醒user要更新 <<---政府api沒有提供此功能  也許每2天重新再載
@@ -70,74 +52,19 @@
         [self showUserFilterDoneResult];
     }
     
-
-    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(doFilter) name:DOWNLOAD_JSON_SUCCESS_NOTIFICATION object:nil];
 }
 
 
-- (void)viewWillLayoutSubviews {
-    self.segmentedPager.frame = (CGRect){
-        .origin.x       = 0.f,
-        .origin.y       = 64.f,
-        .size.width     = self.view.frame.size.width,
-        .size.height    = self.view.frame.size.height - 64.f
-    };
-    [super viewWillLayoutSubviews];
+- (void)doFilter{
+    [self showUserFilterDoneResult];
 }
 
 
-
-#pragma -mark Properties
-
-- (MXSegmentedPager *)segmentedPager {
-    if (!_segmentedPager) {
-        
-        // Set a segmented pager
-        _segmentedPager = [[MXSegmentedPager alloc] init];
-        _segmentedPager.delegate    = self;
-        _segmentedPager.dataSource  = self;
-    }
-    return _segmentedPager;
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    [self showUserFilterDoneResult];
 }
-
-- (UITableView *)tableView {
-    if (!self.petTableView) {
-        //Add a table page
-        _petTableView = [[UITableView alloc] init];
-    }
-    return _petTableView;
-}
-
-
-
-#pragma -mark <MXSegmentedPagerDelegate>
-
-- (void)segmentedPager:(MXSegmentedPager *)segmentedPager didSelectViewWithTitle:(NSString *)title {
-    NSLog(@"%@ page selected.", title);
-}
-
-#pragma -mark <MXSegmentedPagerDataSource>
-
-- (NSInteger)numberOfPagesInSegmentedPager:(MXSegmentedPager *)segmentedPager {
-    return 2;
-}
-
-- (NSString *)segmentedPager:(MXSegmentedPager *)segmentedPager titleForSectionAtIndex:(NSInteger)index {
-
-    return [@[@"1", @"2"] objectAtIndex:index];
-  
-}
-
-- (UIView *)segmentedPager:(MXSegmentedPager *)segmentedPager viewForPageAtIndex:(NSInteger)index {
-
-    return [@[self.tableView, self.tableView] objectAtIndex:index];
-    
-    
-   
-}
-
-
-
 
 - (void)showUserFilterDoneResult{
     filtterArray = [self getFilterDoneArray];
@@ -239,10 +166,6 @@
     return bounds.height * 2/3;
   }
 
-
-- (IBAction)backToAdoptView:(UIStoryboardSegue*)segue{
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ( !([segue.identifier isEqualToString:@"searchSegue"])) {
         adoptProfileVC *nextVC = [segue destinationViewController];
@@ -254,7 +177,7 @@
         
         for (NSArray *tmpArray in plistArray) {
             if ([[tmpArray valueForKey:ANIMAL_ID_FILTER_KEY] isEqualToString:selectIdNum]) {
-                [nextVC getLabelID:[selectArray valueForKey:ANIMAL_ID_FILTER_KEY]];
+                //[nextVC getLabelID:[selectArray valueForKey:ANIMAL_ID_FILTER_KEY]];
                 [nextVC setAnimalProfile:tmpArray];
             }
         }
@@ -291,9 +214,6 @@
         
         //array改為由local端讀取
         plistArray =[[NSArray alloc]initWithContentsOfFile:fullFileName];
-        
-        
-        
         
         //table view 重新reload
         [_petTableView reloadData];
