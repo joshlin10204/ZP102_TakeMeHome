@@ -21,7 +21,7 @@
 #define HOW_TO_CONTACT_PARSE_TITLE @"howToContact"
 #define FOUND_PARSE_TITLE @"found"
 #define TRAIT_PARSE_TITLE @"trait"
-#define USER_POST_IMG_PHOTO @"user_takePhoto"
+#define USER_POST_IMG_PHOTO_PARSE_TITLE @"user_takePhoto"
 #define USER_ICON_PARSE_TITLE @"user_Icon"
 
 #define USER_POST_PHOTO_NOTIFICATION @"userPostPhotoNotification"

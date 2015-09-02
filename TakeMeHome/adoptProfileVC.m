@@ -15,6 +15,7 @@
 #import "UIColor+FlatUI.h"
 #import "adoptView.h"
 
+#import <Parse/Parse.h>
 #import <QuartzCore/QuartzCore.h>
 
 @interface adoptProfileVC ()<UIScrollViewDelegate>
@@ -46,8 +47,17 @@
     _detailVC.hidden = false;
     _aboutMeVC.hidden = true;
     
+    //NSString *urlStr;
+//    if ([[getAnimailProfile valueForKey:ANIMAL_RESOURCE_FILTER_KEY]isEqualToString:Non_GOVERNMENT_SRC_KEY]) {
+//        PFFile *photoImg = [getAnimailProfile valueForKey:ANIMAL_ALBUM_FILE_FILTER_KEY];
+//        urlStr = photoImg.url;
+//    }else{
+//        urlStr = [getAnimailProfile valueForKey:ANIMAL_ALBUM_FILE_FILTER_KEY];
+//    }
+    
+    
     NSString *urlStr = [getAnimailProfile valueForKey:ANIMAL_ALBUM_FILE_FILTER_KEY];
-
+    
     [self.petImgView sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:nil];
     
 }

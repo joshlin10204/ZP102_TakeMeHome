@@ -42,6 +42,10 @@
 
 - (IBAction)myPhotoImgLeft:(UIButton*)sender {
 
+//    if ([sender isEqual:self.leftCamera]) {
+//        [sender setTag:1];
+//        [self userChoosePhotoType];
+//    }
     if (sender.tag == LEFT_BTN_TAG) {
         [self userChoosePhotoType];
         btnPressedTag = LEFT_BTN_TAG + BTN_PRESSED_TAG;
@@ -88,7 +92,11 @@
         
     }];
     
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        //
+        UIButton *pressedBtn = (UIButton*)[self.view viewWithTag:btnPressedTag];
+        pressedBtn.tag = btnPressedTag - BTN_PRESSED_TAG;
+    }];
     
     [alertController addAction:pickCamera];
     [alertController addAction:pickPhoto];

@@ -27,6 +27,7 @@
     UIView   *maskView;
     NSMutableArray *getphotoImgArray;
     PFFile *imageFile;
+    PFUser *currentUser;
     
 }
 @property (weak, nonatomic) IBOutlet UITextField *areaTxtField;
@@ -51,9 +52,23 @@
     [super viewDidLoad];
     //btn setting
     [self BtnsSetting];
-    getphotoImgArray = [NSMutableArray new];
+    
+    currentUser = [PFUser currentUser];
+    NSString *userName = currentUser[@"name"];
+    NSString *userContactMethod = currentUser[@"email"];
+    _contactTxtField.text = userName;
+    _howToContactTxtField.text = userContactMethod;
+
+    
+    //NSLog(@"currentUser: %@",currentUser);
+    //getphotoImgArray = [NSMutableArray new];
+    
+    
     //如果user有放照片 則觸發此notification
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(addImgData:) name:USER_POST_PHOTO_NOTIFICATION object:nil];
+    
+    
+    
 }
 
 - (void)addImgData:(NSNotification*)notify{
@@ -90,7 +105,7 @@
 }
 
 - (IBAction)submitBtn:(UIButton*)button {
-    button.selected = !button.selected;
+    //button.selected = !button.selected;
     
     //必填沒填 -> 跳警告
     //必填正常 -> 上傳資料
@@ -124,9 +139,10 @@
     }else{
         _ageTxtField.text = @"CHILD";
     }
+    //拿po文者的大頭貼
+    PFFile *userIcon = currentUser[@"userPhoto"];
     
-    //PFObject *postAdopt = [PFObject objectWithClassName:ADOPT_PETS_PARSE_TABLE_NAME];
-    PFObject *postAdopt = [PFObject objectWithClassName:@"testAdoptPhotoSetting3"];
+    PFObject *postAdopt = [PFObject objectWithClassName:ADOPT_PETS_PARSE_TABLE_NAME];
     postAdopt[AREA_PARSE_TITLE] = getAreaNumStr;
     postAdopt[TYPE_PARSE_TITLE] = _typeTxtField.text;
     postAdopt[SEX_PARSE_TITLE] = _sexTxtField.text;
@@ -139,22 +155,31 @@
     postAdopt[HOW_TO_CONTACT_PARSE_TITLE] = _howToContactTxtField.text;
     postAdopt[FOUND_PARSE_TITLE] = _foundTxtFiled.text;
     postAdopt[TRAIT_PARSE_TITLE] = _traitTxtField.text;
-    postAdopt[USER_POST_IMG_PHOTO] = imageFile;
-    postAdopt[USER_ICON_PARSE_TITLE] = @"";
-    //postAdopt[USER_ICON_PARSE_TITLE] = @"1";
+    if (imageFile != nil) {
+        postAdopt[USER_ICON_PARSE_TITLE] =  userIcon;
+    }
+    if (imageFile != nil) {
+        postAdopt[USER_POST_IMG_PHOTO_PARSE_TITLE] = imageFile;
+    }
     
-
     
-    [postAdopt saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    [postAdopt saveInBackgroundWithBlock:^(BOOL succeeded, NSError * error){
         if (succeeded) {
-            // push to other view
+            NSLog(@"succeed:%@",postAdopt);
+            
+            PFRelation *relation = [currentUser relationForKey:@"myAdoptPost"];
+            [relation addObject:postAdopt];
+            [currentUser save];
+            
             adoptView *nextVC = [self.storyboard instantiateViewControllerWithIdentifier:@"adoptView"];
             nextVC.getUserOptionsFilterDoneStr = [NSString stringWithFormat:@"(animal_area_pkid == '%@') AND (animal_kind == '%@') AND (animal_sex == '%@') AND (animal_age == '%@')",getAreaNumStr,_typeTxtField.text,_sexTxtField.text,_ageTxtField.text];
             [self.navigationController pushViewController:nextVC animated:true];
+            
         } else {
-            // stay here and do alert
+            NSLog(@"error happens:%@",error.userInfo);
         }
     }];
+    
 }
 
 
