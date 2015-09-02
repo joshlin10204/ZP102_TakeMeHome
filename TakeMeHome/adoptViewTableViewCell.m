@@ -36,7 +36,7 @@
     _viewBound.layer.cornerRadius = 10;
     _viewBound.layer.masksToBounds = true;
     
-    _imgViewIcon.layer.cornerRadius = 10;
+    _imgViewIcon.layer.cornerRadius = 28;
     _imgViewIcon.layer.masksToBounds = true;
     
     _labelType.layer.cornerRadius = 10;
