@@ -23,6 +23,8 @@
 #define TRAIT_PARSE_TITLE @"trait"
 #define USER_ICON_PARSE_TITLE @"user_Icon"
 
+#define USER_POST_PHOTO_NOTIFICATION @"userPostPhotoNotification"
+
 
 @interface postDetailTVC : UITableViewController
 

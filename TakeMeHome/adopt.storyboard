@@ -1302,7 +1302,7 @@
                                     <action selector="myPhotoImgLeft:" destination="kbr-Uq-blR" eventType="touchUpInside" id="Xmc-6G-ujI"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="2000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLf-Vs-JDU">
+                            <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLf-Vs-JDU">
                                 <rect key="frame" x="325" y="43" width="225" height="225"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="KLf-Vs-JDU" secondAttribute="height" multiplier="1:1" id="KHB-8Q-GPO"/>

@@ -7,8 +7,24 @@
 //
 
 #import "postViewVC.h"
+#import "postDetailTVC.h"
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <AssetsLibrary/AssetsLibrary.h>
+#import <QuartzCore/QuartzCore.h>
 
-@interface postViewVC ()
+
+#define LEFT_BTN_TAG 1000
+#define RIGHT_BTN_TAG 1001
+#define BTN_PRESSED_TAG 2000
+
+@interface postViewVC ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+{
+
+    UIImagePickerController *imagePicker;
+    NSMutableArray* toBeSavedImages;
+    UIImage *photoImg;
+    NSInteger btnPressedTag;
+}
 
 @end
 
@@ -25,14 +41,128 @@
 }
 
 - (IBAction)myPhotoImgLeft:(UIButton*)sender {
-    if (sender.tag == 1000) {//left btn
-        //do select take photo or switch photo
-        NSLog(@"left");
-    }else{//right btn
-        NSLog(@"right");
+
+    if (sender.tag == LEFT_BTN_TAG) {
+        [self userChoosePhotoType];
+        btnPressedTag = LEFT_BTN_TAG + BTN_PRESSED_TAG;
+        sender.tag = btnPressedTag;
+        
+    }else if (sender.tag == RIGHT_BTN_TAG){
+        [self userChoosePhotoType];
+        btnPressedTag = RIGHT_BTN_TAG + BTN_PRESSED_TAG;
+        sender.tag = btnPressedTag;
     }
 }
 
+
+- (void)userChoosePhotoType{
+    UIAlertController *alertController = [UIAlertController new];
+    imagePicker = [UIImagePickerController new];
+    
+    
+    //使用相機選項
+    UIAlertAction *pickCamera=[UIAlertAction actionWithTitle:@"使用相機" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //判斷是否有支援相機功能
+        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
+            //使用相機拍照
+            imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            imagePicker.allowsEditing=true;
+            imagePicker.delegate = self;
+            [self presentViewController:imagePicker animated:YES completion:nil];
+        }
+        
+        
+        
+    }];
+    //使用相簿裡的照片
+    UIAlertAction *pickPhoto=[UIAlertAction actionWithTitle:@"從選擇相簿" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //開啟相簿
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePicker.mediaTypes = @[(NSString*)kUTTypeImage];
+        //只開啟照片
+        imagePicker.allowsEditing=true;
+        //選擇完可以做編輯
+        imagePicker.delegate=self;
+        [self presentViewController:imagePicker animated:true completion:nil];
+        
+        
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertController addAction:pickCamera];
+    [alertController addAction:pickPhoto];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+}
+
+
+
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage* editedImage=info[UIImagePickerControllerEditedImage];
+    
+    //取得照片
+    
+    //呈現剛剛在相簿中編輯過後的照片
+    
+
+    UIButton *pressedBtn = (UIButton*)[self.view viewWithTag:btnPressedTag];
+    photoImg = editedImage;
+    [pressedBtn setBackgroundImage:photoImg forState:UIControlStateNormal];
+    pressedBtn.layer.cornerRadius = 10;
+    pressedBtn.layer.masksToBounds = true;
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:USER_POST_PHOTO_NOTIFICATION object:photoImg];
+    
+    
+    toBeSavedImages=[NSMutableArray arrayWithObjects:editedImage,nil];
+    [self processSaveImage];
+    pressedBtn.tag = btnPressedTag - BTN_PRESSED_TAG;
+    
+    [picker dismissViewControllerAnimated:true completion:nil];
+    
+}
+-(void)processSaveImage{
+    if (toBeSavedImages.count ==0) {
+        return;
+    }
+    UIImage*targetImage=toBeSavedImages[0];
+    //取出toBeSavedImages裏頭第一個資料
+    [toBeSavedImages removeObjectAtIndex:0];
+    //刪除第一個資料
+    
+    
+    //儲存到手機的資料庫中
+    NSString *documents=NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory,
+                                                            NSUserDomainMask, true)[0];
+    
+    NSString *fileName=[NSString stringWithFormat:@"%ld.png",(unsigned long)targetImage.hash];
+    //儲存到資料庫的檔名
+    //為了不讓檔名重複，利用hash， 他會依照 targetImage 的內容算出一個數字
+    NSString *fileNamePath=[documents stringByAppendingPathComponent:fileName];;
+    NSData *datas=UIImagePNGRepresentation(targetImage);
+    [datas writeToFile:fileNamePath atomically:false];
+    
+    
+    ALAssetsLibrary *library=[ALAssetsLibrary new];
+    [library writeImageToSavedPhotosAlbum:targetImage.CGImage
+                              orientation:(ALAssetOrientation)targetImage.imageOrientation
+                          completionBlock:^(NSURL *assetURL, NSError *error)
+     //照片儲存需要時間，所以利用^ ，等存檔後再進行之後的動作
+     //orientation 存的照片的方向（直的橫的）
+     {
+         if (toBeSavedImages.count>0) {
+             [self processSaveImage];
+             return ;
+         }
+         NSLog(@"已存檔");
+     }];
+    
+}
 
 
 @end

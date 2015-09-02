@@ -25,6 +25,7 @@
     NSArray *areaArray ;
     NSString *getAreaNumStr;
     UIView   *maskView;
+    NSMutableArray *getphotoImgArray;
     
 }
 @property (weak, nonatomic) IBOutlet UITextField *areaTxtField;
@@ -49,7 +50,21 @@
     [super viewDidLoad];
     //btn setting
     [self BtnsSetting];
+    getphotoImgArray = [NSMutableArray new];
+    //如果user有放照片 則觸發此notification
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(addImgData:) name:USER_POST_PHOTO_NOTIFICATION object:nil];
 }
+
+- (void)addImgData:(NSNotification*)notify{
+    [getphotoImgArray insertObject:notify.object atIndex:0];
+    if (getphotoImgArray.count >= 2) {
+        //僅能放2張img 之前po過的就del掉
+        [getphotoImgArray removeObjectAtIndex:2];
+    }
+    
+    //NSLog(@"%@",notify.object);
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -90,20 +105,6 @@
 }
 
 - (void)pushDataToParse{
-    PFObject *postAdopt = [PFObject objectWithClassName:ADOPT_PETS_PARSE_TABLE_NAME];
-    postAdopt[AREA_PARSE_TITLE] = _areaTxtField.text;
-    postAdopt[TYPE_PARSE_TITLE] = _typeTxtField.text;
-    postAdopt[SEX_PARSE_TITLE] = _sexTxtField.text;
-    postAdopt[AGE_PARSE_TITLE] = _ageTxtField.text;
-    postAdopt[MIX_TYPE_PARSE_TITLE] = _mixTypeTxtField.text;
-    postAdopt[COLOR_PARSE_TITLE] = _colorTxtField.text;
-    postAdopt[STERILIZATION_PARSE_TITLE] = _sterilizationTxtField.text;
-    postAdopt[BACTERIN_PARSE_TITLE] = _bacterinTxtField.text;
-    postAdopt[CONTACT_PARSE_TITLE] = _contactTxtField.text;
-    postAdopt[HOW_TO_CONTACT_PARSE_TITLE] = _howToContactTxtField.text;
-    postAdopt[FOUND_PARSE_TITLE] = _foundTxtFiled.text;
-    postAdopt[TRAIT_PARSE_TITLE] = _traitTxtField.text;
-    postAdopt[USER_ICON_PARSE_TITLE] = @"img";
     
     if ([_sexTxtField.text isEqualToString:@"公"]) {//公
         _sexTxtField.text = @"M";
@@ -117,11 +118,29 @@
         _ageTxtField.text = @"CHILD";
     }
     
+    PFObject *postAdopt = [PFObject objectWithClassName:ADOPT_PETS_PARSE_TABLE_NAME];
+    postAdopt[AREA_PARSE_TITLE] = getAreaNumStr;
+    postAdopt[TYPE_PARSE_TITLE] = _typeTxtField.text;
+    postAdopt[SEX_PARSE_TITLE] = _sexTxtField.text;
+    postAdopt[AGE_PARSE_TITLE] = _ageTxtField.text;
+    postAdopt[MIX_TYPE_PARSE_TITLE] = _mixTypeTxtField.text;
+    postAdopt[COLOR_PARSE_TITLE] = _colorTxtField.text;
+    postAdopt[STERILIZATION_PARSE_TITLE] = _sterilizationTxtField.text;
+    postAdopt[BACTERIN_PARSE_TITLE] = _bacterinTxtField.text;
+    postAdopt[CONTACT_PARSE_TITLE] = _contactTxtField.text;
+    postAdopt[HOW_TO_CONTACT_PARSE_TITLE] = _howToContactTxtField.text;
+    postAdopt[FOUND_PARSE_TITLE] = _foundTxtFiled.text;
+    postAdopt[TRAIT_PARSE_TITLE] = _traitTxtField.text;
+    //postAdopt[USER_ICON_PARSE_TITLE] = getphotoImgArray;
+    postAdopt[USER_ICON_PARSE_TITLE] = @"1";
+    
+
+    
     [postAdopt saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             // push to other view
             adoptView *nextVC = [self.storyboard instantiateViewControllerWithIdentifier:@"adoptView"];
-            nextVC.getUserOptionsFilterDoneStr = [NSString stringWithFormat:@"(animal_area_pkid == '%@') AND (animal_kind == '%@') AND (animal_sex == '%@') AND (animal_age == '%@')",_areaTxtField.text,_typeTxtField.text,_sexTxtField.text,_ageTxtField.text];
+            nextVC.getUserOptionsFilterDoneStr = [NSString stringWithFormat:@"(animal_area_pkid == '%@') AND (animal_kind == '%@') AND (animal_sex == '%@') AND (animal_age == '%@')",getAreaNumStr,_typeTxtField.text,_sexTxtField.text,_ageTxtField.text];
             [self.navigationController pushViewController:nextVC animated:true];
         } else {
             // stay here and do alert

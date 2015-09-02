@@ -219,6 +219,7 @@
     NSString *typeStr;
     NSString *sexStr;
     NSString *ageStr;
+    NSString *srcStr;
     
     NSInteger searchIndex;
     
@@ -234,10 +235,13 @@
     }
     
     
+    //前面兩項動物以及公母皆是兩個字   後兩項年齡及來源為4字
     for (int i = searchIndex ; i <= (options.length - 2); i+=2) {
+  
         NSString *subStr = [options substringWithRange:NSMakeRange(i, 2)];
         NSString *firstStr = [subStr substringWithRange:NSMakeRange(0, 1)];
         NSString *secondStr = [subStr substringWithRange:NSMakeRange(1, 1)];
+
         
         //種類
         if ([subStr containsString:@"貓"] || [subStr containsString:@"狗"]) {
@@ -270,10 +274,23 @@
                 secondStr = @"CHILD";
             }
             ageStr = [NSString stringWithFormat:@"((%@ == '%@') OR (%@ == '%@'))",ANIMAL_AGE_FILTER_KEY,firstStr,ANIMAL_AGE_FILTER_KEY,secondStr];
+        
+        //政府或是一般民眾
+        }else if ([options containsString:@"民"] || [options containsString:@"政"]){
+            if ([options containsString:@"民"]) {
+                firstStr = Non_GOVERNMENT_SRC_KEY;
+            }
+            if ([options containsString:@"政"]) {
+                secondStr = GOVERNMENT_SRC_KEY;
+            }
+            srcStr =  [NSString stringWithFormat:@"((%@ == '%@') OR (%@ == '%@'))",ANIMAL_RESOURCE_FILTER_KEY,firstStr,ANIMAL_RESOURCE_FILTER_KEY,secondStr];
         }
+
+        
     }
 
-    filterDoneStr = [NSString stringWithFormat:@"%@ AND %@ AND %@ AND %@",areaStr,typeStr,sexStr,ageStr];
+
+    filterDoneStr = [NSString stringWithFormat:@"%@ AND %@ AND %@ AND %@ AND %@",areaStr,typeStr,sexStr,ageStr,srcStr];
     return filterDoneStr;
 }
 
