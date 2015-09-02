@@ -11,6 +11,7 @@
 #import "MBProgressHUD.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import <QuartzCore/QuartzCore.h>
 
 
 @interface MemberSetView ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,MBProgressHUDDelegate>
@@ -69,6 +70,8 @@
         [userPhoto getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)
          {
              if (!error) {
+                 _userPhotoButton.layer.cornerRadius=10;
+                 _userPhotoButton.layer.masksToBounds=YES;
                  [_userPhotoButton setBackgroundImage:[UIImage imageWithData:imageData] forState:UIControlStateNormal];
              }
          }];

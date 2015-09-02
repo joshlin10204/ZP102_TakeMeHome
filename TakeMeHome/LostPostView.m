@@ -41,6 +41,7 @@
 
 - (IBAction)addPhotoBtnPressed:(id)sender {
     
+    lostPhotoBtnTag=((UIView*)sender).tag;
     
     
     UIAlertController *alertController = [UIAlertController new];
