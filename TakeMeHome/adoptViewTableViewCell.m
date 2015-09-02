@@ -23,6 +23,9 @@
     self.labelSex.layer.cornerRadius = 10;
     self.labelSex.layer.masksToBounds = true;
     
+    self.labelType.backgroundColor = [UIColor sunflowerColor];
+    self.labelType.layer.cornerRadius = 10;
+    self.labelType.layer.masksToBounds = true;
 
     
 
@@ -35,6 +38,9 @@
     
     _imgViewIcon.layer.cornerRadius = 10;
     _imgViewIcon.layer.masksToBounds = true;
+    
+    _labelType.layer.cornerRadius = 10;
+    _labelType.layer.masksToBounds = true;
     
     
     

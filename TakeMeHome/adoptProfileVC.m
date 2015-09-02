@@ -10,16 +10,26 @@
 #import "adoptDetailTableVC.h"
 #import "aboutMeVC.h"
 #import "SDWebImage/UIImageView+WebCache.h"
+#import "HMSegmentedControl.h"
+#import "FUIButton.h"
+#import "UIColor+FlatUI.h"
 #import "adoptView.h"
 
-@interface adoptProfileVC ()
+#import <QuartzCore/QuartzCore.h>
+
+@interface adoptProfileVC ()<UIScrollViewDelegate>
 {
-    NSString *getPetId;
     NSArray *getAnimailProfile;
 }
+
+@property (weak, nonatomic) IBOutlet FUIButton *closeBtn;
+@property (weak, nonatomic) IBOutlet FUIButton *favoriteBtn;
+
 @property (weak, nonatomic) IBOutlet UIView *aboutMeVC;
 @property (weak, nonatomic) IBOutlet UIView *detailVC;
 @property (weak, nonatomic) IBOutlet UIImageView *petImgView;
+@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) HMSegmentedControl *segmentedControl;
 
 @end
 
@@ -28,6 +38,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    //[self setSegmentedControlSettings];
+    //[self setProfileAndAboutView];
+    [self btnSettings];
+    
     _detailVC.hidden = false;
     _aboutMeVC.hidden = true;
     
@@ -35,22 +50,32 @@
 
     [self.petImgView sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:nil];
     
-//    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60.0];
-//    
-//    NSOperationQueue *queue = [NSOperationQueue currentQueue];
-//    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-//        //
-//        //NSString *content = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-//        
-//        NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-//        jsonArray = [jsonArray objectAtIndex:0];
-//        NSString *picStr = [jsonArray valueForKey:@"album_file"];
-//         //[self.petImgView sd_setImageWithURL:[NSURL URLWithString:picStr] placeholderImage:nil];
-//        NSLog(@"1");
-//    }];
-    
-   
+}
 
+- (void)btnSettings{
+    if ( [[getAnimailProfile valueForKey:ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY] isEqualToString:@"Y"] ) {
+        //已加入最愛
+        _favoriteBtn.buttonColor = [UIColor alizarinColor];
+        _favoriteBtn.shadowColor = [UIColor pomegranateColor];
+        [_favoriteBtn setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+    }else{
+        _favoriteBtn.buttonColor = [UIColor cloudsColor];
+        _favoriteBtn.shadowColor = [UIColor silverColor];
+        [_favoriteBtn setTitleColor:[UIColor alizarinColor] forState:UIControlStateNormal];
+    }
+    
+    _favoriteBtn.shadowHeight = 5.0f;
+    _favoriteBtn.cornerRadius = 10.0f;
+    
+    
+    
+    _closeBtn.buttonColor = [UIColor cloudsColor];
+    _closeBtn.shadowColor = [UIColor silverColor];
+    _closeBtn.shadowHeight = 5.0f;
+    _closeBtn.cornerRadius = 10.0f;
+    
+    [_closeBtn setTitleColor:[UIColor alizarinColor] forState:UIControlStateNormal];
+    [_closeBtn setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
 }
 - (IBAction)segmentChange:(id)sender {
     UISegmentedControl *segmentC = sender;
@@ -75,8 +100,40 @@
     getAnimailProfile = animalProfileArray;
 }
 
-- (void)getLabelID:(NSString*)Id{
-    getPetId = Id;
+- (IBAction)favoriteBtnPressed:(FUIButton*)button {
+    NSString *documentsDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSString *fullFileName = [documentsDirectory stringByAppendingPathComponent:SAVE_PLIST_FILE_NAME];
+    //load file
+    NSArray *plistArray = [[NSArray alloc]initWithContentsOfFile:fullFileName];
+    
+    if (button.buttonColor == [UIColor cloudsColor]) {
+        //加入最愛
+        button.buttonColor = [UIColor alizarinColor];
+        button.shadowColor = [UIColor pomegranateColor];
+        [button setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+        [getAnimailProfile setValue:@"Y" forKey:ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY];
+        NSString *selectAnimalId = [getAnimailProfile valueForKey:ANIMAL_ID_FILTER_KEY];
+        for (NSDictionary *tmp in plistArray) {
+            if ([tmp[ANIMAL_ID_FILTER_KEY] isEqualToString:selectAnimalId]) {
+                [tmp setValue:@"Y" forKey:ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY];
+            }
+        }
+    }else{
+        //取消最愛
+        button.buttonColor = [UIColor cloudsColor];
+        button.shadowColor = [UIColor silverColor];
+        [button setTitleColor:[UIColor alizarinColor] forState:UIControlStateNormal];
+        [getAnimailProfile setValue:@"N" forKey:ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY];
+        NSString *selectAnimalId = [getAnimailProfile valueForKey:ANIMAL_ID_FILTER_KEY];
+        for (NSDictionary *tmp in plistArray) {
+            if ([tmp[ANIMAL_ID_FILTER_KEY] isEqualToString:selectAnimalId]) {
+                [tmp setValue:@"N" forKey:ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY];
+            }
+        }
+    }
+    
+    [plistArray writeToFile:fullFileName atomically:YES];
+    
 }
 
 - (IBAction)exitBtnPressed:(id)sender {
@@ -91,13 +148,11 @@
 
     if ([segue.identifier isEqualToString:@"profileSegue"]){
         adoptDetailTableVC *myEmbedTVC = segue.destinationViewController;
-        myEmbedTVC.getID = getPetId;
         [myEmbedTVC setAnimalProfile:getAnimailProfile];
         
     }
     if ([segue.identifier isEqualToString:@"aboutMeSegue"]){
         aboutMeVC *myEmbedVC = segue.destinationViewController;
-        myEmbedVC.getID = getPetId;
         [myEmbedVC setAnimalProfile:getAnimailProfile];
     }
     

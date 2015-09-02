@@ -12,7 +12,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *labelName;
 
 
-- (void)getLabelID:(NSString*)Id;
 
 - (void)setAnimalProfile:(NSArray*)animalProfile;
 

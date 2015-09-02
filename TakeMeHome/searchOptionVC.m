@@ -13,6 +13,7 @@
 
 #import "FUIButton.h"
 #import "FUIAlertView.h"
+#import "HHAlertView.h"
 #import "UIColor+FlatUI.h"
 #import "UIFont+FlatUI.h"
 #import "UIColor+Hex.h"
@@ -27,7 +28,8 @@
 
 @interface searchOptionVC ()<UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate>
 {
-
+    
+    UIView *maskView;
     UIPickerView *areaPickView;
     NSArray *areaArray ;
     NSString *getAreaNumStr;
@@ -217,6 +219,7 @@
     NSString *typeStr;
     NSString *sexStr;
     NSString *ageStr;
+    NSString *srcStr;
     
     NSInteger searchIndex;
     
@@ -232,10 +235,13 @@
     }
     
     
+    //前面兩項動物以及公母皆是兩個字   後兩項年齡及來源為4字
     for (int i = searchIndex ; i <= (options.length - 2); i+=2) {
+  
         NSString *subStr = [options substringWithRange:NSMakeRange(i, 2)];
         NSString *firstStr = [subStr substringWithRange:NSMakeRange(0, 1)];
         NSString *secondStr = [subStr substringWithRange:NSMakeRange(1, 1)];
+
         
         //種類
         if ([subStr containsString:@"貓"] || [subStr containsString:@"狗"]) {
@@ -268,10 +274,23 @@
                 secondStr = @"CHILD";
             }
             ageStr = [NSString stringWithFormat:@"((%@ == '%@') OR (%@ == '%@'))",ANIMAL_AGE_FILTER_KEY,firstStr,ANIMAL_AGE_FILTER_KEY,secondStr];
+        
+        //政府或是一般民眾
+        }else if ([options containsString:@"民"] || [options containsString:@"政"]){
+            if ([options containsString:@"民"]) {
+                firstStr = Non_GOVERNMENT_SRC_KEY;
+            }
+            if ([options containsString:@"政"]) {
+                secondStr = GOVERNMENT_SRC_KEY;
+            }
+            srcStr =  [NSString stringWithFormat:@"((%@ == '%@') OR (%@ == '%@'))",ANIMAL_RESOURCE_FILTER_KEY,firstStr,ANIMAL_RESOURCE_FILTER_KEY,secondStr];
         }
+
+        
     }
 
-    filterDoneStr = [NSString stringWithFormat:@"%@ AND %@ AND %@ AND %@",areaStr,typeStr,sexStr,ageStr];
+
+    filterDoneStr = [NSString stringWithFormat:@"%@ AND %@ AND %@ AND %@ AND %@",areaStr,typeStr,sexStr,ageStr,srcStr];
     return filterDoneStr;
 }
 
@@ -309,15 +328,39 @@
             return false;
         }
         userOptionsStr = [NSString stringWithFormat:@"%@%@",userOptionsStr,[getUserOptionsArray objectAtIndex:i - BUTTON_OPTIONS_TAG + 1]];
-        
-        
+
     }
     
     
     return userOptionsStr;
 }
 
+- (UIView *)addmaskView
+{
+    if (!maskView) {
+        maskView = [[UIView alloc] initWithFrame:self.view.window.frame];
+        [maskView setBackgroundColor:[UIColor blackColor]];
+        [maskView setAlpha:0.2];
+    }
+    return maskView;
+    
+}
+
+
 - (void)showAlertView:(NSString*)msg{
+    [self.view.window addSubview:self.addmaskView];
+    [[HHAlertView shared]showAlertWithStyle:HHAlertStyleWraning
+                                     inView:self.view.window
+                                      Title:nil
+                                     detail:@"請確認欄位是否有勾選"
+                               cancelButton:nil
+                                   Okbutton:@"確定"
+                                      block:^(HHAlertButton buttonindex) {
+                                          [maskView removeFromSuperview];
+                                      }
+     ];
+
+    /*
     FUIAlertView *alertView = [[FUIAlertView alloc] initWithTitle:@"有資料沒填到哦"
                                                           message:msg
                                                          delegate:nil
@@ -334,6 +377,7 @@
     alertView.defaultButtonFont = [UIFont boldFlatFontOfSize:16];
     alertView.defaultButtonTitleColor = [UIColor asbestosColor];
     [alertView show];
+     */
 }
 
 - (void)setAreaPickerView{

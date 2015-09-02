@@ -12,6 +12,7 @@
 #import "FUIAlertView.h"
 #import "MBProgressHUD.h"
 #import "adoptView.h"
+#import "HHAlertView.h"
 
 
 #import <Parse/Parse.h>
@@ -23,6 +24,9 @@
     UIPickerView *areaPickView;
     NSArray *areaArray ;
     NSString *getAreaNumStr;
+    UIView   *maskView;
+    NSMutableArray *getphotoImgArray;
+    PFFile *imageFile;
     
 }
 @property (weak, nonatomic) IBOutlet UITextField *areaTxtField;
@@ -47,7 +51,27 @@
     [super viewDidLoad];
     //btn setting
     [self BtnsSetting];
+    getphotoImgArray = [NSMutableArray new];
+    //如果user有放照片 則觸發此notification
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(addImgData:) name:USER_POST_PHOTO_NOTIFICATION object:nil];
 }
+
+- (void)addImgData:(NSNotification*)notify{
+    
+    NSData *imageData = UIImagePNGRepresentation(notify.object);
+    NSString *imgfileNameStr = [NSString stringWithFormat:@"%ld.png",(unsigned long)imageData.hash];
+    imageFile = [PFFile fileWithName:imgfileNameStr data:imageData];
+    
+
+    [getphotoImgArray insertObject:imageFile atIndex:0];
+    if (getphotoImgArray.count >= 2) {
+        //僅能放2張img 之前po過的就del掉
+        [getphotoImgArray removeObjectAtIndex:2];
+    }
+
+    //NSLog(@"%@",notify.object);
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -88,8 +112,22 @@
 }
 
 - (void)pushDataToParse{
-    PFObject *postAdopt = [PFObject objectWithClassName:ADOPT_PETS_PARSE_TABLE_NAME];
-    postAdopt[AREA_PARSE_TITLE] = _areaTxtField.text;
+    
+    if ([_sexTxtField.text isEqualToString:@"公"]) {//公
+        _sexTxtField.text = @"M";
+    }else{
+        _sexTxtField.text = @"F";
+    }
+    
+    if ([_ageTxtField.text isEqualToString:@"成年"]) {
+        _ageTxtField.text = @"ADULT";
+    }else{
+        _ageTxtField.text = @"CHILD";
+    }
+    
+    //PFObject *postAdopt = [PFObject objectWithClassName:ADOPT_PETS_PARSE_TABLE_NAME];
+    PFObject *postAdopt = [PFObject objectWithClassName:@"testAdoptPhotoSetting3"];
+    postAdopt[AREA_PARSE_TITLE] = getAreaNumStr;
     postAdopt[TYPE_PARSE_TITLE] = _typeTxtField.text;
     postAdopt[SEX_PARSE_TITLE] = _sexTxtField.text;
     postAdopt[AGE_PARSE_TITLE] = _ageTxtField.text;
@@ -101,14 +139,17 @@
     postAdopt[HOW_TO_CONTACT_PARSE_TITLE] = _howToContactTxtField.text;
     postAdopt[FOUND_PARSE_TITLE] = _foundTxtFiled.text;
     postAdopt[TRAIT_PARSE_TITLE] = _traitTxtField.text;
-
+    postAdopt[USER_POST_IMG_PHOTO] = imageFile;
+    postAdopt[USER_ICON_PARSE_TITLE] = @"";
+    //postAdopt[USER_ICON_PARSE_TITLE] = @"1";
     
+
     
     [postAdopt saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             // push to other view
             adoptView *nextVC = [self.storyboard instantiateViewControllerWithIdentifier:@"adoptView"];
-            nextVC.getUserOptionsFilterDoneStr = [NSString stringWithFormat:@"(animal_area_pkid == '%@') AND (animal_kind == '%@') AND (animal_sex == '%@') AND (animal_age == '%@')",_areaTxtField.text,_typeTxtField.text,_sexTxtField.text,_ageTxtField.text];
+            nextVC.getUserOptionsFilterDoneStr = [NSString stringWithFormat:@"(animal_area_pkid == '%@') AND (animal_kind == '%@') AND (animal_sex == '%@') AND (animal_age == '%@')",getAreaNumStr,_typeTxtField.text,_sexTxtField.text,_ageTxtField.text];
             [self.navigationController pushViewController:nextVC animated:true];
         } else {
             // stay here and do alert
@@ -116,7 +157,33 @@
     }];
 }
 
+
+
+//建立一個霧透的背景
+- (UIView *)addmaskView
+{
+    if (!maskView) {
+        maskView = [[UIView alloc] initWithFrame:self.view.window.frame];
+        [maskView setBackgroundColor:[UIColor blackColor]];
+        [maskView setAlpha:0.2];
+    }
+    return maskView;
+    
+}
+
 - (void)doAlert{
+    [self.view.window addSubview:self.addmaskView];
+    [[HHAlertView shared]showAlertWithStyle:HHAlertStyleWraning
+                                     inView:self.view.window
+                                      Title:nil
+                                     detail:@"請確認必填欄位"
+                               cancelButton:nil
+                                   Okbutton:@"確定"
+                                    block:^(HHAlertButton buttonindex) {
+                                        [maskView removeFromSuperview];
+                                    }
+     ];
+    /*
     FUIAlertView *alertView = [[FUIAlertView alloc] initWithTitle:@"請確認必填欄位"
                                                           message:nil
                                                          delegate:nil cancelButtonTitle:@"確定"
@@ -129,6 +196,7 @@
     alertView.defaultButtonShadowColor = [UIColor asbestosColor];
     alertView.defaultButtonTitleColor = [UIColor asbestosColor];
     [alertView show];
+     */
 }
 
 - (void)setAreaPickerVIew{

@@ -21,6 +21,6 @@
 @property (nonatomic , strong) NSString *animal_id;
 @property (nonatomic , strong) NSString *animal_place;
 @property (nonatomic , strong) NSString *animal_favorite;
-
+@property (nonatomic , strong) NSString *animal_rsc;
 
 @end

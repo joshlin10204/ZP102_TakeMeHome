@@ -9,10 +9,16 @@
 #import "indexAdoptVC.h"
 #import "searchOptionVC.h"
 #import "adoptView.h"
+#import <Parse/Parse.h>
+#import "HHAlertView.h"
 
 
 @interface indexAdoptVC ()
+{
 
+     UIView   *maskView;
+
+}
 @end
 
 @implementation indexAdoptVC
@@ -87,5 +93,57 @@
     [self presentViewController:targetViewController animated:true completion:nil];
     
 }
+
+- (IBAction)postBtnPressed:(id)sender {
+    id targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"postViewVC"];
+    [self.navigationController pushViewController:targetViewController animated:true];
+
+    
+    /*
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser)
+    {
+        // do stuff with the user
+        id targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"postViewVC"];
+        [self.navigationController pushViewController:targetViewController animated:true];
+    }
+    else
+    {
+        [self.view addSubview:self.addmaskView];
+        [[HHAlertView shared]showAlertWithStyle:HHAlertStyleWraning
+                                         inView:self.view
+                                          Title:@"提醒"
+                                         detail:@"訪客無法使用"
+                                   cancelButton:@"註冊" // index = 1
+                                       Okbutton:@"確定" //index = 0
+                                          block:^(HHAlertButton buttonindex) {
+                                              NSLog(@"%d",buttonindex);
+                                              [maskView removeFromSuperview];
+                                              if (buttonindex == 1) { //preseed regitst
+                                                  UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"" bundle:nil];
+                                                  id targetViewController = [storyboard instantiateViewControllerWithIdentifier:@""];
+                                                  [self.navigationController pushViewController:targetViewController animated:true];
+                                              }
+                                          }
+         ];
+        
+        
+    }
+*/
+
+}
+
+- (UIView *)addmaskView
+{
+    if (!maskView) {
+        maskView = [[UIView alloc] initWithFrame:self.view.frame];
+        [maskView setBackgroundColor:[UIColor blackColor]];
+        [maskView setAlpha:0.2];
+    }
+    return maskView;
+    
+}
+
+
 
 @end

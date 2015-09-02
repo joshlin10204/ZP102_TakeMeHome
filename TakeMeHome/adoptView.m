@@ -11,27 +11,30 @@
 #import "adoptProfileVC.h"
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "Animal.h"
-
-#import "MXSegmentedPager.h"
-
 #import <QuartzCore/QuartzCore.h>
+#import <Parse/Parse.h>
+#import "postDetailTVC.h"
+#import "MBProgressHUD.h"
 
-#define cellDistance 50
+
 #define JSON_GET_HTTP_WEBSITE @"http://data.coa.gov.tw/Service/OpenData/AnimalOpenData.aspx"
 #define DOWNLOAD_JSON_SUCCESS_NOTIFICATION @"downloadJsonSuccessNotification"
+#define DOWNLOAD_PARSE_SUCCESS_NOTIFICATION @"downloadParseSuccessNotification"
 
 
-@interface adoptView ()<UITableViewDataSource,UITableViewDelegate,MXSegmentedPagerDelegate, MXSegmentedPagerDataSource>
+
+@interface adoptView ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSArray *plistArray;
     NSMutableArray *filtterArray;
-    NSString *fullFileName ;
+    //NSString *fullFileName ;
+    NSString *fullFilePathName;
     NSMutableArray * animalsArray;
     UIRefreshControl *refresh;
+    MBProgressHUD *hud;
 
 }
 @property (strong, nonatomic) IBOutlet UITableView *petTableView;
-@property (nonatomic, strong) MXSegmentedPager  * segmentedPager;
 @end
 
 @implementation adoptView
@@ -42,102 +45,103 @@
     //tableView settings
     [self tableControlSetting];
     
-    self.view.backgroundColor = UIColor.whiteColor;
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [self.view addSubview:self.segmentedPager];
-    self.segmentedPager.segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
-    self.segmentedPager.segmentedControl.selectionIndicatorColor = [UIColor orangeColor];
-    self.segmentedPager.segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;
-    self.segmentedPager.segmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName : [UIColor orangeColor]};
+    //每次進來都重新抓資料
+    [self downloadJsonFile:JSON_GET_HTTP_WEBSITE];
     
-    //Register UItableView as page
-    [self.segmentedPager.pager registerClass:[UITextView class] forPageReuseIdentifier:@"TextPage"];
-////////////////////////////////////////////////////
+    //JsonFile抓好後 再抓parse file
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(downloadParseFile) name:DOWNLOAD_JSON_SUCCESS_NOTIFICATION object:nil];
+    
+    //parse file 抓好後  再去分析user要搜尋的條件
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showUserFilterDoneResult) name:DOWNLOAD_PARSE_SUCCESS_NOTIFICATION object:nil];
     
     
     
     //如果有存檔 就讀存檔
     //如果有更新  就提醒user要更新 <<---政府api沒有提供此功能  也許每2天重新再載
+    /*
     NSFileManager *manager = [NSFileManager defaultManager];
     NSString *documentsDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     fullFileName = [documentsDirectory stringByAppendingPathComponent:SAVE_PLIST_FILE_NAME];
 
     if (!([manager fileExistsAtPath:fullFileName])) {
         //沒存檔  抓下來存檔
-        [self linkJsonFile:JSON_GET_HTTP_WEBSITE];
+        [self downloadJsonFile:JSON_GET_HTTP_WEBSITE];
     }else{
         plistArray =[[NSArray alloc]initWithContentsOfFile:fullFileName];
         [self showUserFilterDoneResult];
     }
     
-
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(doFilter) name:DOWNLOAD_JSON_SUCCESS_NOTIFICATION object:nil];
     
+    //get Parse File
+    [self downloadParseFile];
+    plistArray =[[NSArray alloc]initWithContentsOfFile:fullFileName];
+    [self showUserFilterDoneResult];
+    //
+    */
 }
 
-
-- (void)viewWillLayoutSubviews {
-    self.segmentedPager.frame = (CGRect){
-        .origin.x       = 0.f,
-        .origin.y       = 64.f,
-        .size.width     = self.view.frame.size.width,
-        .size.height    = self.view.frame.size.height - 64.f
-    };
-    [super viewWillLayoutSubviews];
-}
-
-
-
-#pragma -mark Properties
-
-- (MXSegmentedPager *)segmentedPager {
-    if (!_segmentedPager) {
-        
-        // Set a segmented pager
-        _segmentedPager = [[MXSegmentedPager alloc] init];
-        _segmentedPager.delegate    = self;
-        _segmentedPager.dataSource  = self;
-    }
-    return _segmentedPager;
-}
-
-- (UITableView *)tableView {
-    if (!self.petTableView) {
-        //Add a table page
-        _petTableView = [[UITableView alloc] init];
-    }
-    return _petTableView;
-}
-
-
-
-#pragma -mark <MXSegmentedPagerDelegate>
-
-- (void)segmentedPager:(MXSegmentedPager *)segmentedPager didSelectViewWithTitle:(NSString *)title {
-    NSLog(@"%@ page selected.", title);
-}
-
-#pragma -mark <MXSegmentedPagerDataSource>
-
-- (NSInteger)numberOfPagesInSegmentedPager:(MXSegmentedPager *)segmentedPager {
-    return 2;
-}
-
-- (NSString *)segmentedPager:(MXSegmentedPager *)segmentedPager titleForSectionAtIndex:(NSInteger)index {
-
-    return [@[@"1", @"2"] objectAtIndex:index];
-  
-}
-
-- (UIView *)segmentedPager:(MXSegmentedPager *)segmentedPager viewForPageAtIndex:(NSInteger)index {
-
-    return [@[self.tableView, self.tableView] objectAtIndex:index];
+- (void)downloadParseFile{
+    //
+    NSMutableArray __block *saveParseArray = [NSMutableArray new];
+    NSMutableDictionary __block *saveDictionary = [NSMutableDictionary new];
     
     
+    PFQuery *query = [PFQuery queryWithClassName:@"testAdoptPhotoSetting3"];
    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %d scores.", objects.count);
+            // Do something with the found objects
+            for (PFObject *tmp in objects) {
+                NSLog(@"%@",tmp.objectId);
+                [saveDictionary setObject:tmp.objectId forKey:ANIMAL_ID_FILTER_KEY];
+                [saveDictionary setObject:tmp[MIX_TYPE_PARSE_TITLE] forKey:ANIMAL_BODYTYPE_FILTER_KEY];
+                [saveDictionary setObject:tmp[SEX_PARSE_TITLE] forKey:ANIMAL_SEX_FILTER_KEY];
+                [saveDictionary setObject:tmp[AREA_PARSE_TITLE] forKey:ANIMAL_AREA_PKID_FILTER_KEY];
+                [saveDictionary setObject:tmp[TYPE_PARSE_TITLE] forKey:ANIMAL_KIND_FILTER_KEY];
+                [saveDictionary setObject:tmp[AGE_PARSE_TITLE] forKey:ANIMAL_AGE_FILTER_KEY];
+                [saveDictionary setObject:tmp[COLOR_PARSE_TITLE] forKey:@"animal_colour"];
+                [saveDictionary setObject:tmp[STERILIZATION_PARSE_TITLE] forKey:@"animal_sterilization"];
+                [saveDictionary setObject:tmp[BACTERIN_PARSE_TITLE] forKey:@"animal_bacterin"];
+                [saveDictionary setObject:tmp[FOUND_PARSE_TITLE] forKey:@"animal_foundplace"];
+                [saveDictionary setObject:tmp[TRAIT_PARSE_TITLE] forKey:@"animal_remark"];
+                [saveDictionary setObject:tmp[CONTACT_PARSE_TITLE] forKey:ANIMAL_CONTACT_FILTER_KEY];
+                [saveDictionary setObject:tmp[HOW_TO_CONTACT_PARSE_TITLE] forKey:ANIMAL_HOW_TO_CONTACT_FILTER_KEY];
+                [saveDictionary setObject:tmp[USER_ICON_PARSE_TITLE] forKey:ANIMAL_USER_POST_ICON_FILTER_KEY];
+                [saveDictionary setObject:tmp[USER_POST_IMG_PHOTO] forKey:ANIMAL_ALBUM_FILE_FILTER_KEY];
+                [saveParseArray insertObject:saveDictionary atIndex:0];
+                saveDictionary = [NSMutableDictionary new];
+            }
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+        
+        NSArray *analyseArray = [self analysieJsonFile:saveParseArray resource:Non_GOVERNMENT_SRC_KEY];
+        //save json file
+        [self saveJsonFileToPlistFile:analyseArray source:Non_GOVERNMENT_SRC_KEY];
+        
+        //
+//        NSArray *analysieArray = [[NSArray alloc]initWithArray:saveParseArray];
+//        analysieArray = [self analysieJsonFile:analysieArray resource:Non_GOVERNMENT_SRC_KEY];
+        //[analysieArray writeToFile:fullFileName atomically:true];
+
+        [[NSNotificationCenter defaultCenter]postNotificationName:DOWNLOAD_PARSE_SUCCESS_NOTIFICATION object:nil];
+        
+    }];
 }
 
 
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    plistArray = [[NSArray alloc]initWithContentsOfFile:fullFilePathName];
+    [self showUserFilterDoneResult];
+}
 
 - (void)showUserFilterDoneResult{
     filtterArray = [self getFilterDoneArray];
@@ -172,9 +176,9 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
     adoptViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"adoptViewCell" forIndexPath:indexPath];
-    
+    NSString *imgStr;
     NSArray *theCellArray = [filtterArray objectAtIndex:indexPath.row];
     
    
@@ -182,8 +186,28 @@
     cell.labelSex.text = [theCellArray valueForKey:ANIMAL_SEX_FILTER_KEY];
     cell.labelType.text = [theCellArray valueForKey:ANIMAL_BODYTYPE_FILTER_KEY];
     cell.labelAge.text = [theCellArray valueForKey:ANIMAL_AGE_FILTER_KEY];
+    if ([[theCellArray valueForKey:ANIMAL_RESOURCE_FILTER_KEY]isEqualToString:Non_GOVERNMENT_SRC_KEY]) {
+        PFFile *photoImg = [theCellArray valueForKey:ANIMAL_ALBUM_FILE_FILTER_KEY];
+        imgStr = photoImg.url;
+    }else{
+        imgStr = [theCellArray valueForKey:ANIMAL_ALBUM_FILE_FILTER_KEY];
+    }
     
-    NSString *imgStr = [theCellArray valueForKey:ANIMAL_ALBUM_FILE_FILTER_KEY];
+    
+    if ([cell.labelSex.text isEqualToString:@"M"]) {
+        cell.labelSex.text = @"公";
+    }else if ([cell.labelSex.text isEqualToString:@"F"]){
+        cell.labelSex.text = @"母";
+    }else{
+        cell.labelSex.text = @"未填";
+    }
+    
+    if ([cell.labelAge.text isEqualToString:@"CHILD"]) {
+        cell.labelAge.text = @"幼年";
+    }else{
+        cell.labelAge.text = @"成年";
+    }
+    
     
     cell.btnFavirite.tag = indexPath.row;
     if ([[theCellArray valueForKey:ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY]isEqualToString:@"N"]) {
@@ -203,6 +227,7 @@
     cell.imgViewIcon.image = [UIImage imageNamed:@"taiwanFlag.png"];
     
     
+
     [cell.imgViewPhoto sd_setImageWithURL:[NSURL URLWithString:imgStr]
                              placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
 
@@ -239,10 +264,6 @@
     return bounds.height * 2/3;
   }
 
-
-- (IBAction)backToAdoptView:(UIStoryboardSegue*)segue{
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ( !([segue.identifier isEqualToString:@"searchSegue"])) {
         adoptProfileVC *nextVC = [segue destinationViewController];
@@ -254,7 +275,7 @@
         
         for (NSArray *tmpArray in plistArray) {
             if ([[tmpArray valueForKey:ANIMAL_ID_FILTER_KEY] isEqualToString:selectIdNum]) {
-                [nextVC getLabelID:[selectArray valueForKey:ANIMAL_ID_FILTER_KEY]];
+                //[nextVC getLabelID:[selectArray valueForKey:ANIMAL_ID_FILTER_KEY]];
                 [nextVC setAnimalProfile:tmpArray];
             }
         }
@@ -265,7 +286,7 @@
     NSLog(@"die");
 }
 
-- (void)linkJsonFile:(NSString*)urlStr{
+- (void)downloadJsonFile:(NSString*)urlStr{
     NSURL *url = [NSURL URLWithString:urlStr];
     NSArray __block *jsonArray;
     //     ^^^^^^^^^因為在block內呼叫 所以前面要加__block
@@ -275,8 +296,7 @@
     
     NSOperationQueue *queue = [NSOperationQueue currentQueue];
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        //
-        
+
         if (data != nil){
             jsonArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         }else{
@@ -284,24 +304,23 @@
         }
         
         //analyse json file （拿到的json有多筆重複 重複應刪除）
-        NSArray *analyseArray = [self analysieJsonFile:jsonArray];
+        NSArray *analyseArray = [self analysieJsonFile:jsonArray resource:GOVERNMENT_SRC_KEY];
         
         //save json file
-        [self saveJsonFileToPlistFile:analyseArray];
-        
+        [self saveJsonFileToPlistFile:analyseArray source:GOVERNMENT_SRC_KEY];
+        /*
         //array改為由local端讀取
         plistArray =[[NSArray alloc]initWithContentsOfFile:fullFileName];
         
-        
-        
-        
         //table view 重新reload
         [_petTableView reloadData];
+         */
+        [[NSNotificationCenter defaultCenter]postNotificationName:DOWNLOAD_JSON_SUCCESS_NOTIFICATION object:nil];
     }];
     
 }
 
-- (NSArray*)analysieJsonFile:(NSArray*)array{
+- (NSArray*)analysieJsonFile:(NSArray*)array resource:(NSString*)rsc{
     NSMutableArray *modifyArray = [NSMutableArray new];
 
     for (NSMutableDictionary *animal in array) {
@@ -309,6 +328,21 @@
         if (!([[modifyArray valueForKey:ANIMAL_ID_FILTER_KEY] containsObject:getAnimalId])) {
             //新增 最愛欄位
             [animal setValue:@"N" forKey:ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY];
+            //新增 來源欄位（民眾或是私人）
+            [animal setValue:rsc forKey:ANIMAL_RESOURCE_FILTER_KEY];
+            
+            if ([rsc isEqualToString:GOVERNMENT_SRC_KEY]) {
+                //體型改為中文
+                if ([animal[ANIMAL_BODYTYPE_FILTER_KEY] isEqualToString:@"MINI"]) {
+                    [animal setValue:@"迷你" forKey:ANIMAL_BODYTYPE_FILTER_KEY];
+                }else if ([animal[ANIMAL_BODYTYPE_FILTER_KEY] isEqualToString:@"SMALL"]){
+                    [animal setValue:@"小型" forKey:ANIMAL_BODYTYPE_FILTER_KEY];
+                }else if ([animal[ANIMAL_BODYTYPE_FILTER_KEY] isEqualToString:@"MEDIUM"]){
+                    [animal setValue:@"中型" forKey:ANIMAL_BODYTYPE_FILTER_KEY];
+                }else if ([animal[ANIMAL_BODYTYPE_FILTER_KEY] isEqualToString:@"BIG"]){
+                    [animal setValue:@"大型" forKey:ANIMAL_BODYTYPE_FILTER_KEY];
+                }
+            }
             [modifyArray addObject:animal];
         }
     }
@@ -317,18 +351,25 @@
 }
 
 
-- (void)saveJsonFileToPlistFile:(NSArray*)array{
+- (void)saveJsonFileToPlistFile:(NSArray*)array source:(NSString*)src{
     //Get Document Path
-    
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     
     //Prepare full path
-    NSString *fullFilePathName = [documentsDirectory stringByAppendingPathComponent:SAVE_PLIST_FILE_NAME];
+    fullFilePathName = [documentsDirectory stringByAppendingPathComponent:SAVE_PLIST_FILE_NAME];
     NSMutableArray *getJsonArray = [NSMutableArray arrayWithArray:array];
+
+    
+    //如果是non gov 代表第二次拿到plistFile 所以應讀檔
+    if ([src isEqualToString:Non_GOVERNMENT_SRC_KEY]) {
+        NSArray *getPlistArray = [NSArray arrayWithContentsOfFile:fullFilePathName];
+        [getJsonArray addObjectsFromArray:getPlistArray];
+    }
     
     //save file
     [getJsonArray writeToFile:fullFilePathName atomically:true];
+    plistArray = [[NSArray alloc]initWithArray:getJsonArray];
     
     NSLog(@"HOME: %@",NSHomeDirectory());
 }
@@ -348,6 +389,7 @@
         myAnimal.animal_kind = [[plistArray objectAtIndex:i]valueForKey:ANIMAL_KIND_FILTER_KEY];
         myAnimal.animal_place = [[plistArray objectAtIndex:i]valueForKey:ANIMAL_PLACE_FILTER_KEY];
         myAnimal.animal_favorite = [[plistArray objectAtIndex:i]valueForKey:ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY];
+        myAnimal.animal_rsc = [[plistArray objectAtIndex:i]valueForKey:ANIMAL_RESOURCE_FILTER_KEY];
         
         [animalsArray addObject:myAnimal];
         //myAnimal.resourceStr = [[plistArray objectAtIndex:i]valueForKey:@"animal_age"];
@@ -410,13 +452,13 @@
         }
     }
     
-    [plistArray writeToFile:fullFileName atomically:YES];
+    [plistArray writeToFile:fullFilePathName atomically:YES];
 }
 
 - (IBAction)favoriteBtnPressed:(id)sender {
     
     //load file
-    plistArray =[[NSArray alloc]initWithContentsOfFile:fullFileName];
+    plistArray =[[NSArray alloc]initWithContentsOfFile:fullFilePathName];
     filtterArray = [NSMutableArray new];
     for (NSDictionary *tmp in plistArray) {
         if ([tmp[ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY] isEqualToString:@"Y"]) {
