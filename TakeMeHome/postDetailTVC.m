@@ -26,6 +26,7 @@
     NSString *getAreaNumStr;
     UIView   *maskView;
     NSMutableArray *getphotoImgArray;
+    PFFile *imageFile;
     
 }
 @property (weak, nonatomic) IBOutlet UITextField *areaTxtField;
@@ -56,12 +57,18 @@
 }
 
 - (void)addImgData:(NSNotification*)notify{
-    [getphotoImgArray insertObject:notify.object atIndex:0];
+    
+    NSData *imageData = UIImagePNGRepresentation(notify.object);
+    NSString *imgfileNameStr = [NSString stringWithFormat:@"%ld.png",(unsigned long)imageData.hash];
+    imageFile = [PFFile fileWithName:imgfileNameStr data:imageData];
+    
+
+    [getphotoImgArray insertObject:imageFile atIndex:0];
     if (getphotoImgArray.count >= 2) {
         //僅能放2張img 之前po過的就del掉
         [getphotoImgArray removeObjectAtIndex:2];
     }
-    
+
     //NSLog(@"%@",notify.object);
 }
 
@@ -118,7 +125,8 @@
         _ageTxtField.text = @"CHILD";
     }
     
-    PFObject *postAdopt = [PFObject objectWithClassName:ADOPT_PETS_PARSE_TABLE_NAME];
+    //PFObject *postAdopt = [PFObject objectWithClassName:ADOPT_PETS_PARSE_TABLE_NAME];
+    PFObject *postAdopt = [PFObject objectWithClassName:@"testAdoptPhotoSetting3"];
     postAdopt[AREA_PARSE_TITLE] = getAreaNumStr;
     postAdopt[TYPE_PARSE_TITLE] = _typeTxtField.text;
     postAdopt[SEX_PARSE_TITLE] = _sexTxtField.text;
@@ -131,8 +139,9 @@
     postAdopt[HOW_TO_CONTACT_PARSE_TITLE] = _howToContactTxtField.text;
     postAdopt[FOUND_PARSE_TITLE] = _foundTxtFiled.text;
     postAdopt[TRAIT_PARSE_TITLE] = _traitTxtField.text;
-    //postAdopt[USER_ICON_PARSE_TITLE] = getphotoImgArray;
-    postAdopt[USER_ICON_PARSE_TITLE] = @"1";
+    postAdopt[USER_POST_IMG_PHOTO] = imageFile;
+    postAdopt[USER_ICON_PARSE_TITLE] = @"";
+    //postAdopt[USER_ICON_PARSE_TITLE] = @"1";
     
 
     

@@ -89,7 +89,7 @@
     NSMutableDictionary __block *saveDictionary = [NSMutableDictionary new];
     
     
-    PFQuery *query = [PFQuery queryWithClassName:ADOPT_PETS_PARSE_TABLE_NAME];
+    PFQuery *query = [PFQuery queryWithClassName:@"testAdoptPhotoSetting3"];
    
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -112,7 +112,7 @@
                 [saveDictionary setObject:tmp[CONTACT_PARSE_TITLE] forKey:ANIMAL_CONTACT_FILTER_KEY];
                 [saveDictionary setObject:tmp[HOW_TO_CONTACT_PARSE_TITLE] forKey:ANIMAL_HOW_TO_CONTACT_FILTER_KEY];
                 [saveDictionary setObject:tmp[USER_ICON_PARSE_TITLE] forKey:ANIMAL_USER_POST_ICON_FILTER_KEY];
-                
+                [saveDictionary setObject:tmp[USER_POST_IMG_PHOTO] forKey:ANIMAL_ALBUM_FILE_FILTER_KEY];
                 [saveParseArray insertObject:saveDictionary atIndex:0];
                 saveDictionary = [NSMutableDictionary new];
             }
@@ -178,7 +178,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     adoptViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"adoptViewCell" forIndexPath:indexPath];
-    
+    NSString *imgStr;
     NSArray *theCellArray = [filtterArray objectAtIndex:indexPath.row];
     
    
@@ -186,8 +186,13 @@
     cell.labelSex.text = [theCellArray valueForKey:ANIMAL_SEX_FILTER_KEY];
     cell.labelType.text = [theCellArray valueForKey:ANIMAL_BODYTYPE_FILTER_KEY];
     cell.labelAge.text = [theCellArray valueForKey:ANIMAL_AGE_FILTER_KEY];
+    if ([[theCellArray valueForKey:ANIMAL_RESOURCE_FILTER_KEY]isEqualToString:Non_GOVERNMENT_SRC_KEY]) {
+        PFFile *photoImg = [theCellArray valueForKey:ANIMAL_ALBUM_FILE_FILTER_KEY];
+        imgStr = photoImg.url;
+    }else{
+        imgStr = [theCellArray valueForKey:ANIMAL_ALBUM_FILE_FILTER_KEY];
+    }
     
-    NSString *imgStr = [theCellArray valueForKey:ANIMAL_ALBUM_FILE_FILTER_KEY];
     
     if ([cell.labelSex.text isEqualToString:@"M"]) {
         cell.labelSex.text = @"公";
@@ -222,6 +227,7 @@
     cell.imgViewIcon.image = [UIImage imageNamed:@"taiwanFlag.png"];
     
     
+
     [cell.imgViewPhoto sd_setImageWithURL:[NSURL URLWithString:imgStr]
                              placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
 
