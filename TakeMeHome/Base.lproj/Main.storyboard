@@ -278,7 +278,7 @@
         <!--Add Account View Controller-->
         <scene sceneID="JIE-pH-65r">
             <objects>
-                <viewController id="Goq-iD-PQc" customClass="AddAccountViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddAccountView" id="Goq-iD-PQc" customClass="AddAccountViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wio-nU-BYe"/>
                         <viewControllerLayoutGuide type="bottom" id="KJR-mH-r2z"/>
@@ -374,6 +374,6 @@
         <image name="visitButton" width="236" height="236"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oN7-Aa-G4j"/>
+        <segue reference="53a-E7-Hgc"/>
     </inferredMetricsTieBreakers>
 </document>

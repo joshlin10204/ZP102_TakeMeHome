@@ -6,13 +6,13 @@
 //  Copyright (c) 2015年 Josh. All rights reserved.
 //
 
+#import "LostPostLocalChoiceView.h"
+#import "HHAlertView.h"
+
 #import "LostPostTableView.h"
 #import "LostMapView.h"
 #import "LostPostView.h"
 #import "MBProgressHUD.h"
-#import "LostPostLocalChoiceView.h"
-#import "HHAlertView.h"
-
 
 
 
@@ -22,7 +22,7 @@
     PFUser *currentUser;
 
     
-    
+    //使用者位置
     CLLocationManager *locationManager;
     CLLocation*currentLocation;
     
@@ -144,7 +144,7 @@
         {
             lostAddress=notify.object;
             if (lostAddress.length<1) {
-                _lostLocalText.text=@"目前所在位置";
+                _lostLocalText.text=@"目前位置";
             }
             else
             {
@@ -262,7 +262,7 @@
     }
     else
     {
-    //顯示Loading圖示
+    //顯示Loading圖示及收鍵盤
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
@@ -273,7 +273,7 @@
 
         
     
-    //儲存至Parse
+    //儲存至Parse準備
     PFObject *lostPostData = [PFObject objectWithClassName:@"LostPets"];
     lostPostData[@"LostDate"] = _lostDateText.text;
     lostPostData[@"LostPetsName"] = _lostPetNameText.text;
@@ -285,7 +285,7 @@
     lostPostData[@"ContactEmail"] = _contactEmail.text;
     lostPostData[@"ContactPhoneNumber"] = _contactPhoneNumber.text;
         
-    //儲存走失的位置
+    //儲存走失的位置準備
         if (checkLocal==false) {
             CLLocationDegrees userLocalLatitude = currentLocation.coordinate.latitude;
             CLLocationDegrees userLocalLongitude = currentLocation.coordinate.longitude;
@@ -310,13 +310,16 @@
                     PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:placemark.location.coordinate.latitude
                                                                longitude:placemark.location.coordinate.longitude];
                     lostPostData[@"LostLocation"] =point;
+                    lostPostData[@"LostlocalAddres"]=_lostLocalText.text;
+
                     }
                 }];
         
         }
 
-    //準備上傳照片
-        if (prepareLostPhotoFirst!=nil) {
+    //上傳照片準備
+        if (prepareLostPhotoFirst!=nil)
+        {
             NSData *imageData1 = UIImagePNGRepresentation(prepareLostPhotoFirst);
             PFFile *imageFile1 = [PFFile fileWithName:@"lostPetPhoto_01.jpeg" data:imageData1];
             lostPostData[@"LostPetsPhotoFirst"] = imageFile1;
@@ -332,11 +335,12 @@
 
    
     //上傳資料及換頁
-    [lostPostData saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    [lostPostData saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+    {
         if (succeeded)
         {
             // The object has been saved
-            [lostPostData save];
+//            [lostPostData save];
             
             //與使用者建立關聯
             PFRelation *relation = [currentUser relationForKey:@"lostPost"];

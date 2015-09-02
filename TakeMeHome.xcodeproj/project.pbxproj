@@ -26,6 +26,7 @@
 		035CD2971B665AFE00AEC20B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035CD2961B665AFE00AEC20B /* CoreLocation.framework */; };
 		037126771B724074000F546E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 037126761B724074000F546E /* Images.xcassets */; };
 		037D04CE1B94C2330079E806 /* LostInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 037D04CD1B94C2330079E806 /* LostInfoView.m */; };
+		0389DE891B956F15004E0209 /* LostInfoTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0389DE881B956F15004E0209 /* LostInfoTableView.m */; };
 		03A1BB0D1B90B8FD00DD2EFF /* MemberSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03A1BB0C1B90B8FD00DD2EFF /* MemberSetting.storyboard */; };
 		03B9E7A31B889F10002D340D /* WawaSC.otf in Resources */ = {isa = PBXBuildFile; fileRef = 03B9E7A21B889F10002D340D /* WawaSC.otf */; };
 		03BD5A651B6142380054F861 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BD5A641B6142380054F861 /* main.m */; };
@@ -148,6 +149,8 @@
 		037126761B724074000F546E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TakeMeHome/Images.xcassets; sourceTree = "<group>"; };
 		037D04CC1B94C2330079E806 /* LostInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostInfoView.h; sourceTree = "<group>"; };
 		037D04CD1B94C2330079E806 /* LostInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LostInfoView.m; sourceTree = "<group>"; };
+		0389DE871B956F15004E0209 /* LostInfoTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostInfoTableView.h; sourceTree = "<group>"; };
+		0389DE881B956F15004E0209 /* LostInfoTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LostInfoTableView.m; sourceTree = "<group>"; };
 		03A1BB0C1B90B8FD00DD2EFF /* MemberSetting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MemberSetting.storyboard; sourceTree = "<group>"; };
 		03B9E7A21B889F10002D340D /* WawaSC.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = WawaSC.otf; sourceTree = "<group>"; };
 		03BD5A5F1B6142380054F861 /* TakeMeHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakeMeHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -369,6 +372,8 @@
 				03F5A6981B921753003F22A9 /* LostInfoCell.xib */,
 				037D04CC1B94C2330079E806 /* LostInfoView.h */,
 				037D04CD1B94C2330079E806 /* LostInfoView.m */,
+				0389DE871B956F15004E0209 /* LostInfoTableView.h */,
+				0389DE881B956F15004E0209 /* LostInfoTableView.m */,
 			);
 			name = LostInfo;
 			sourceTree = "<group>";
@@ -930,6 +935,7 @@
 				A6D3E7251B6A6F550066DD7B /* navigationBtn.m in Sources */,
 				A61E92011B8E25D200EEE74B /* indexAdoptVC.m in Sources */,
 				A6DA89961B7B1076000F8B7B /* SDWebImageDownloader.m in Sources */,
+				0389DE891B956F15004E0209 /* LostInfoTableView.m in Sources */,
 				A6DCB2EE1B902C30002A3EB6 /* postViewVC.m in Sources */,
 				A6D6DEBA1B7C786700DBCFBD /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				A6DA89A01B7B1076000F8B7B /* UIView+WebCacheOperation.m in Sources */,

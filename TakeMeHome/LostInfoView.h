@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+#import "BaseViewController.h"
 
-@interface LostInfoView : UIViewController
-@property(weak,nonatomic)NSArray *lostPostInfo;
+
+@interface LostInfoView : BaseViewController
+@property(weak,nonatomic)PFObject *lostPostInfo;
+#define LOST_NEW_PHOTO_FIRST_NOTIFICATION @"LOST_PHOTO_FIRST_NOTIFICATION"
+#define LOST_NEW_PHOTO_SECOND_NOTIFICATION @"LOST_PHOTO_SECOND_NOTIFICATION"
+#define LOST_POST_INFO_NOTIFICATION @"LOST_POST_INFO_NOTIFICATION"
 
 @end

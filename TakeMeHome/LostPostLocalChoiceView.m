@@ -89,8 +89,6 @@
             MKPointAnnotation *annotation=[MKPointAnnotation new];
             //MKPointAnnotation
             annotation.coordinate=placemark.location.coordinate;
-            annotation.title=@"遺失地點";
-            annotation.subtitle=@"他是一隻狗";
             [_lostMapView addAnnotation: annotation ];
         }
     

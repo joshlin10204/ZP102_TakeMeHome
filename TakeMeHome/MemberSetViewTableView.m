@@ -21,7 +21,7 @@
     //走失文章資料
     NSArray * lostPostData;
     
-    NSArray * choicelostPost;
+    PFObject * choicelostPost;
 
 }
 @property (nonatomic, strong) MXSegmentedPager  * segmentedPager;
