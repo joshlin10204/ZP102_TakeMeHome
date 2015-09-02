@@ -105,6 +105,10 @@
 		A6DA899E1B7B1076000F8B7B /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DA898C1B7B1076000F8B7B /* UIImageView+HighlightedWebCache.m */; };
 		A6DA899F1B7B1076000F8B7B /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DA898E1B7B1076000F8B7B /* UIImageView+WebCache.m */; };
 		A6DA89A01B7B1076000F8B7B /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DA89901B7B1076000F8B7B /* UIView+WebCacheOperation.m */; };
+		A6DBEDC11B970CFC004E6405 /* AdoptInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6DBEDC01B970CFC004E6405 /* AdoptInfoCell.xib */; };
+		A6DBEDC41B970F75004E6405 /* adoptTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DBEDC31B970F75004E6405 /* adoptTableViewCell.m */; };
+		A6DBEDC91B972203004E6405 /* editViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DBEDC51B972203004E6405 /* editViewVC.m */; };
+		A6DBEDCA1B972203004E6405 /* editDetailTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DBEDC61B972203004E6405 /* editDetailTVC.m */; };
 		A6DCB2EE1B902C30002A3EB6 /* postViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DCB2ED1B902C30002A3EB6 /* postViewVC.m */; };
 		A6DCB2F11B902CB2002A3EB6 /* postDetailTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DCB2F01B902CB2002A3EB6 /* postDetailTVC.m */; };
 /* End PBXBuildFile section */
@@ -281,6 +285,13 @@
 		A6DA898E1B7B1076000F8B7B /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		A6DA898F1B7B1076000F8B7B /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		A6DA89901B7B1076000F8B7B /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		A6DBEDC01B970CFC004E6405 /* AdoptInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdoptInfoCell.xib; sourceTree = "<group>"; };
+		A6DBEDC21B970F75004E6405 /* adoptTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = adoptTableViewCell.h; sourceTree = "<group>"; };
+		A6DBEDC31B970F75004E6405 /* adoptTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = adoptTableViewCell.m; sourceTree = "<group>"; };
+		A6DBEDC51B972203004E6405 /* editViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = editViewVC.m; sourceTree = "<group>"; };
+		A6DBEDC61B972203004E6405 /* editDetailTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = editDetailTVC.m; sourceTree = "<group>"; };
+		A6DBEDC71B972203004E6405 /* editViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = editViewVC.h; sourceTree = "<group>"; };
+		A6DBEDC81B972203004E6405 /* editDetailTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = editDetailTVC.h; sourceTree = "<group>"; };
 		A6DCB2EC1B902C30002A3EB6 /* postViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = postViewVC.h; sourceTree = "<group>"; };
 		A6DCB2ED1B902C30002A3EB6 /* postViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = postViewVC.m; sourceTree = "<group>"; };
 		A6DCB2EF1B902CB2002A3EB6 /* postDetailTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = postDetailTVC.h; sourceTree = "<group>"; };
@@ -388,6 +399,7 @@
 				03F5A68E1B91F409003F22A9 /* MemberSetViewTableView.m */,
 				03D2A0161B93366D001A7567 /* UserInfoTableView.h */,
 				03D2A0171B93366D001A7567 /* UserInfoTableView.m */,
+				A6DBEDBF1B970CC2004E6405 /* AdoptInfo */,
 				037D04C41B94AA6B0079E806 /* LostInfo */,
 			);
 			name = MemberSetting;
@@ -702,6 +714,20 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		A6DBEDBF1B970CC2004E6405 /* AdoptInfo */ = {
+			isa = PBXGroup;
+			children = (
+				A6DBEDC01B970CFC004E6405 /* AdoptInfoCell.xib */,
+				A6DBEDC21B970F75004E6405 /* adoptTableViewCell.h */,
+				A6DBEDC31B970F75004E6405 /* adoptTableViewCell.m */,
+				A6DBEDC71B972203004E6405 /* editViewVC.h */,
+				A6DBEDC51B972203004E6405 /* editViewVC.m */,
+				A6DBEDC81B972203004E6405 /* editDetailTVC.h */,
+				A6DBEDC61B972203004E6405 /* editDetailTVC.m */,
+			);
+			name = AdoptInfo;
+			sourceTree = "<group>";
+		};
 		A6DCB2EB1B902BDD002A3EB6 /* postView */ = {
 			isa = PBXGroup;
 			children = (
@@ -819,6 +845,7 @@
 				A6D3E7381B6A8FDE0066DD7B /* settingButton.png in Resources */,
 				03A1BB0D1B90B8FD00DD2EFF /* MemberSetting.storyboard in Resources */,
 				037126771B724074000F546E /* Images.xcassets in Resources */,
+				A6DBEDC11B970CFC004E6405 /* AdoptInfoCell.xib in Resources */,
 				A69865B11B72539A0065C4E5 /* theDog2.jpg in Resources */,
 				03BD5A731B6142380054F861 /* LaunchScreen.xib in Resources */,
 				03B9E7A31B889F10002D340D /* WawaSC.otf in Resources */,
@@ -905,6 +932,7 @@
 				03BD5A681B6142380054F861 /* AppDelegate.m in Sources */,
 				A69865C41B72549E0065C4E5 /* adoptDetailTableVC.m in Sources */,
 				A6DA89911B7B1076000F8B7B /* MKAnnotationView+WebCache.m in Sources */,
+				A6DBEDC91B972203004E6405 /* editViewVC.m in Sources */,
 				A69865B41B72539A0065C4E5 /* BaseViewController.m in Sources */,
 				A6DA899F1B7B1076000F8B7B /* UIImageView+WebCache.m in Sources */,
 				037D04CE1B94C2330079E806 /* LostInfoView.m in Sources */,
@@ -927,10 +955,12 @@
 				03D2A0181B93366D001A7567 /* UserInfoTableView.m in Sources */,
 				A6DA899C1B7B1076000F8B7B /* UIImage+MultiFormat.m in Sources */,
 				A6D6DEB91B7C786700DBCFBD /* TPKeyboardAvoidingTableView.m in Sources */,
+				A6DBEDC41B970F75004E6405 /* adoptTableViewCell.m in Sources */,
 				032BF2921B8D9D18001BF5CD /* LostMoreInformationTableView.m in Sources */,
 				032566C91B7DEE4400DAD13B /* LostPostView.m in Sources */,
 				A6DA89981B7B1076000F8B7B /* SDWebImageManager.m in Sources */,
 				A6DA89951B7B1076000F8B7B /* SDWebImageDecoder.m in Sources */,
+				A6DBEDCA1B972203004E6405 /* editDetailTVC.m in Sources */,
 				032BF2971B8D9D83001BF5CD /* LostMapView.m in Sources */,
 				A6D3E7251B6A6F550066DD7B /* navigationBtn.m in Sources */,
 				A61E92011B8E25D200EEE74B /* indexAdoptVC.m in Sources */,

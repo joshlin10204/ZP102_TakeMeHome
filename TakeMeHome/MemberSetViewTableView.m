@@ -13,6 +13,8 @@
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "LostInfoView.h"
 
+#import "adoptTableViewCell.h"
+#import "editViewVC.h"
 
 
 @interface MemberSetViewTableView ()<MXSegmentedPagerDelegate,MXSegmentedPagerDataSource,UITableViewDelegate,UITableViewDataSource>
@@ -20,8 +22,12 @@
     PFUser *currentUser ;
     //走失文章資料
     NSArray * lostPostData;
-    
     PFObject * choicelostPost;
+    
+    
+    //領養文章資料
+    NSArray *adoptPostData;
+    PFObject *choiceAdoptPost;
 
 }
 @property (nonatomic, strong) MXSegmentedPager  * segmentedPager;
@@ -42,6 +48,12 @@
     
     //Parse關聯 取得使用者PO的走失文章
     PFRelation *relation = [currentUser relationForKey:@"lostPost"];
+    
+    //Parse關聯 取得使用者PO的走失文章
+    PFRelation *relationAdopt = [currentUser relationForKey:@"myAdoptPost"];
+    
+    
+    //Josh
     PFQuery *quert=[relation query];
     [quert  orderByDescending:@"createdAt"];
     //依照createdAt的最新時間排序
@@ -59,7 +71,23 @@
         }
     }];
     
-
+    //Nigel
+    PFQuery *quertAdopt=[relationAdopt query];
+    [quertAdopt  orderByDescending:@"createdAt"];
+    //依照createdAt的最新時間排序
+    [quertAdopt findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            // There was an error
+            NSLog(@"error:%@",error);
+        } else {
+            // objects has all the Posts the current user liked.
+            [[relationAdopt query]  orderByDescending:@"createdAt"];
+            adoptPostData = objects;
+            NSLog(@"Success!! :  %@",[objects objectAtIndex:0]);
+            NSLog(@"objects!! :  %@",objects[0]);
+            [_adoptInfoTableView reloadData];//重新載入Tableview
+        }
+    }];
 
 
 
@@ -175,7 +203,14 @@
     if([tableView isEqual:_adoptInfoTableView])
     {
         NSLog(@" _adoptInfoTableView 選擇 ：%ld" ,(long)indexPath.row);
-
+        choiceAdoptPost = adoptPostData[indexPath.row];
+        NSLog(@"%@",choiceAdoptPost);
+        
+        id nextVC = [self.storyboard instantiateViewControllerWithIdentifier:@"editViewVC"];
+        editViewVC *editVC = nextVC;
+        editVC.adoptData = choiceAdoptPost;
+        [self.navigationController pushViewController:nextVC animated:YES];
+        
     }
     else
     {
@@ -207,7 +242,7 @@
     if([tableView isEqual:_adoptInfoTableView])
     {
     
-        return 5;
+        return adoptPostData.count;
     }
     
     else
@@ -218,28 +253,35 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    //Nigel
+    static NSString *adoptID = @"AdoptInfoCell";
+    adoptTableViewCell *adoptCell = [tableView dequeueReusableCellWithIdentifier:adoptID];
     
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    
+    //Josh
     static NSString *lostCellID = @"LostInfoCell";
     LostInfoCell *lostCell = [tableView dequeueReusableCellWithIdentifier:lostCellID];
     
     if([tableView isEqual:_adoptInfoTableView])
     {
-        if (cell == nil)
+        if (adoptCell == nil)
         {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:adoptID];
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:adoptID owner:self options:nil];
+            adoptCell = [nib objectAtIndex:0];
         }
         
+        _adoptInfoTableView.rowHeight = adoptCell.frame.size.height;
+        PFFile *adoptPetsPhoto = adoptPostData[indexPath.row][@"user_takePhoto"];
+        NSString *photoStr = adoptPetsPhoto.url;
+        [adoptCell.imgView sd_setImageWithURL:[NSURL URLWithString:photoStr] placeholderImage:[UIImage imageNamed:@"noPhotoImage"]];
+
         
-        cell.textLabel.text=@"adopt";
-        return cell;
+        //cell.textLabel.text=@"adopt";
+        return adoptCell;
 
     
     }
-    else
+    else //Josh
     {
         if (lostCell == nil)
         {
