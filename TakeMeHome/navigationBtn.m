@@ -51,19 +51,19 @@
     [items addObject:item1];
     CTPopoutMenuItem * item2 = [[CTPopoutMenuItem alloc]initWithTitle:@"領養" image:[UIImage imageNamed:@"adopt.png"]];
     [items addObject:item2];
-    CTPopoutMenuItem * item3 = [[CTPopoutMenuItem alloc]initWithTitle:@"附近生活" image:[UIImage imageNamed:@"lifeButton.png"]];
+    CTPopoutMenuItem * item3 = [[CTPopoutMenuItem alloc]initWithTitle:@"附近生活" image:[UIImage imageNamed:@"lifeBttonNavi.png"]];
     [items addObject:item3];
     CTPopoutMenuItem * item4 = [[CTPopoutMenuItem alloc]initWithTitle:@"個人資料" image:[UIImage imageNamed:@"memberSetting.png"]];
     [items addObject:item4];
-    CTPopoutMenuItem * item5 = [[CTPopoutMenuItem alloc]initWithTitle:@"設定" image:[UIImage imageNamed:@"settingButton.png"]];
+    CTPopoutMenuItem * item5 = [[CTPopoutMenuItem alloc]initWithTitle:@"設定" image:[UIImage imageNamed:@"settingButtonNavi.png"]];
     [items addObject:item5];
-    CTPopoutMenuItem * item6 = [[CTPopoutMenuItem alloc]initWithTitle:@"通知" image:[UIImage imageNamed:nil]];
+    CTPopoutMenuItem * item6 = [[CTPopoutMenuItem alloc]initWithTitle:@"首頁" image:[UIImage imageNamed:nil]];
     [items addObject:item6];
     
     
     
     
-    self.popMenu = [[CTPopoutMenu alloc]initWithTitle:@"點擊大頭兩下回到首頁" message:nil items:items];
+    self.popMenu = [[CTPopoutMenu alloc]initWithTitle:nil message:nil items:items];
     self.popMenu.delegate = self;
     
 }
@@ -149,8 +149,8 @@
         case 4: //設定
             NSLog(@"%d",index);
             break;
-        case 5: //通知
-            NSLog(@"%d",index);
+        case 5: //回首頁
+            [self navigationPushOrPop:[MainViewController class] storyBoardName:@"Main" identifier:@"MainView"];
             break;
             
     }

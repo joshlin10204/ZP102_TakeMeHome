@@ -53,14 +53,19 @@
     [super viewDidLoad];
     //btn setting
     [self BtnsSetting];
-    NSLog(@"%@",self.adoptData);
+    [self areaArrSettings];
+    //NSLog(@"%@",self.adoptData);
     currentUser = [PFUser currentUser];
     NSString *userName = currentUser[@"name"];
     NSString *userContactMethod = currentUser[@"email"];
+    NSInteger index =[self.adoptData[@"area"] integerValue];
+    NSString *areaStr = [areaArray objectAtIndex:index-1];
+    
+    
     _contactTxtField.text = userName;
     _howToContactTxtField.text = userContactMethod;
     _ageTxtField.text = self.adoptData[@"age"];
-    _areaTxtField.text = self.adoptData[@"area"];
+    _areaTxtField.text = @"";
     _bacterinTxtField.text = self.adoptData[@"bacterin"];
     _colorTxtField.text = self.adoptData[@"color"];
     _foundTxtFiled.text = self.adoptData[@"found"];
@@ -159,66 +164,64 @@
     
     PFQuery *queryPostAdopt = [PFQuery queryWithClassName:ADOPT_PETS_PARSE_TABLE_NAME];
     [queryPostAdopt getObjectInBackgroundWithId:self.adoptData.objectId block:^(PFObject *postAdopt ,NSError *err){
-        postAdopt[AREA_PARSE_TITLE] = getAreaNumStr;
-        postAdopt[TYPE_PARSE_TITLE] = _typeTxtField.text;
-        postAdopt[SEX_PARSE_TITLE] = _sexTxtField.text;
-        postAdopt[AGE_PARSE_TITLE] = _ageTxtField.text;
-        postAdopt[MIX_TYPE_PARSE_TITLE] = _mixTypeTxtField.text;
-        postAdopt[COLOR_PARSE_TITLE] = _colorTxtField.text;
-        postAdopt[STERILIZATION_PARSE_TITLE] = _sterilizationTxtField.text;
-        postAdopt[BACTERIN_PARSE_TITLE] = _bacterinTxtField.text;
-        postAdopt[CONTACT_PARSE_TITLE] = _contactTxtField.text;
-        postAdopt[HOW_TO_CONTACT_PARSE_TITLE] = _howToContactTxtField.text;
-        postAdopt[FOUND_PARSE_TITLE] = _foundTxtFiled.text;
-        postAdopt[TRAIT_PARSE_TITLE] = _traitTxtField.text;
+        if (!err) {
+            postAdopt[AREA_PARSE_TITLE] = getAreaNumStr;
+            postAdopt[TYPE_PARSE_TITLE] = _typeTxtField.text;
+            postAdopt[SEX_PARSE_TITLE] = _sexTxtField.text;
+            postAdopt[AGE_PARSE_TITLE] = _ageTxtField.text;
+            postAdopt[MIX_TYPE_PARSE_TITLE] = _mixTypeTxtField.text;
+            postAdopt[COLOR_PARSE_TITLE] = _colorTxtField.text;
+            postAdopt[STERILIZATION_PARSE_TITLE] = _sterilizationTxtField.text;
+            postAdopt[BACTERIN_PARSE_TITLE] = _bacterinTxtField.text;
+            postAdopt[CONTACT_PARSE_TITLE] = _contactTxtField.text;
+            postAdopt[HOW_TO_CONTACT_PARSE_TITLE] = _howToContactTxtField.text;
+            postAdopt[FOUND_PARSE_TITLE] = _foundTxtFiled.text;
+            postAdopt[TRAIT_PARSE_TITLE] = _traitTxtField.text;
+            
+            if (imageFile != nil) {
+                postAdopt[USER_ICON_PARSE_TITLE] =  userIcon;
+            }
+            if (imageFile != nil) {
+                postAdopt[USER_POST_IMG_PHOTO_PARSE_TITLE] = imageFile;
+            }
+            
+            [postAdopt save];
+            
+            
+            [MBProgressHUD hideHUDForView:self.view.window animated:YES];
+            
+            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"adopt" bundle:nil];
+            
+            adoptView *nextVC = [storyBoard instantiateViewControllerWithIdentifier:@"adoptView"];
+            nextVC.getUserOptionsFilterDoneStr = [NSString stringWithFormat:@"(animal_area_pkid == '%@') AND (animal_kind == '%@') AND (animal_sex == '%@') AND (animal_age == '%@')",getAreaNumStr,_typeTxtField.text,_sexTxtField.text,_ageTxtField.text];
+            [self.navigationController pushViewController:nextVC animated:true];
+        }else{
+            [self.view.window addSubview:self.addmaskView];
+            [[HHAlertView shared]
+             showAlertWithStyle:HHAlertStyleWraning
+             inView:self.view.window
+             Title:@"注意"
+             detail:@"請檢查您的網路狀況"
+             cancelButton:nil
+             Okbutton:@"關閉"
+             block:^(HHAlertButton buttonindex) {
+                 [maskView removeFromSuperview];
 
-        if (imageFile != nil) {
-            postAdopt[USER_ICON_PARSE_TITLE] =  userIcon;
+             }];
         }
-        if (imageFile != nil) {
-            postAdopt[USER_POST_IMG_PHOTO_PARSE_TITLE] = imageFile;
-        }
-        
-        [postAdopt save];
-        
-        
-        //PFRelation *relation = [currentUser relationForKey:@"myAdoptPost"];
-        //[relation addObject:postAdopt];
-        //[currentUser save];
-        
-        
-        [MBProgressHUD hideHUDForView:self.view.window animated:YES];
-        
-        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"adopt" bundle:nil];
-        
-        adoptView *nextVC = [storyBoard instantiateViewControllerWithIdentifier:@"adoptView"];
-        nextVC.getUserOptionsFilterDoneStr = [NSString stringWithFormat:@"(animal_area_pkid == '%@') AND (animal_kind == '%@') AND (animal_sex == '%@') AND (animal_age == '%@')",getAreaNumStr,_typeTxtField.text,_sexTxtField.text,_ageTxtField.text];
-        [self.navigationController pushViewController:nextVC animated:true];
-        
-//        [postAdopt saveInBackgroundWithBlock:^(BOOL succeeded, NSError * error){
-//            if (succeeded) {
-//                NSLog(@"succeed:%@",postAdopt);
-//                
-//                PFRelation *relation = [currentUser relationForKey:@"myAdoptPost"];
-//                [relation addObject:postAdopt];
-//                [currentUser save];
-//                
-//                adoptView *nextVC = [self.storyboard instantiateViewControllerWithIdentifier:@"adoptView"];
-//                nextVC.getUserOptionsFilterDoneStr = [NSString stringWithFormat:@"(animal_area_pkid == '%@') AND (animal_kind == '%@') AND (animal_sex == '%@') AND (animal_age == '%@')",getAreaNumStr,_typeTxtField.text,_sexTxtField.text,_ageTxtField.text];
-//                [self.navigationController pushViewController:nextVC animated:true];
-//                
-//            } else {
-//                NSLog(@"error happens:%@",error.userInfo);
-//            }
-//            [MBProgressHUD hideHUDForView:self.view animated:YES];
-//        }];
-
     }];
     
     
     
 }
 
+
+- (void)areaArrSettings{
+    areaArray = [NSArray arrayWithObjects:
+                 @"",@"臺北市",@"新北市",@"基隆市",@"宜蘭縣",@"桃園縣",@"新竹縣",@"新竹市",@"苗栗縣",
+                 @"臺中市",@"彰化縣",@"南投縣",@"雲林縣",@"嘉義縣",@"嘉義市",@"臺南市",@"臺南市",
+                 @"高雄市",@"屏東縣",@"花蓮縣",@"臺東縣",@"澎湖縣",@"金門縣",@"連江縣",nil];
+}
 
 
 //建立一個霧透的背景
@@ -268,11 +271,6 @@
     
     [self.areaTxtField setInputView:areaPickView];
     [areaPickView setBackgroundColor:[UIColor colorWithRed: 1.0 green: 1.0 blue: 1.0 alpha: 1.0]];
-    
-    areaArray = [NSArray arrayWithObjects:
-                 @"",@"臺北市",@"新北市",@"基隆市",@"宜蘭縣",@"桃園縣",@"新竹縣",@"新竹市",@"苗栗縣",
-                 @"臺中市",@"彰化縣",@"南投縣",@"雲林縣",@"嘉義縣",@"嘉義市",@"臺南市",@"臺南市",
-                 @"高雄市",@"屏東縣",@"花蓮縣",@"臺東縣",@"澎湖縣",@"金門縣",@"連江縣",nil];
     
     CGFloat screenWidth = self.view.frame.size.width;
     UIToolbar *toolBar= [[UIToolbar alloc] initWithFrame:CGRectMake(0,0,screenWidth,44)];

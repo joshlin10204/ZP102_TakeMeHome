@@ -23,6 +23,6 @@
 @property (nonatomic , strong) NSString *animal_favorite;
 @property (nonatomic , strong) NSString *animal_rsc;
 @property (nonatomic , strong) NSString *animal_user_post_icon;
-
+@property (nonatomic , strong) NSString *animal_contact;
 
 @end

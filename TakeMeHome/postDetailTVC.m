@@ -14,7 +14,7 @@
 #import "adoptView.h"
 #import "HHAlertView.h"
 
-
+#import <QuartzCore/QuartzCore.h>
 #import <Parse/Parse.h>
 
 @interface postDetailTVC ()
@@ -47,11 +47,18 @@
 @end
 
 @implementation postDetailTVC
+{
+
+    BOOL takePhoto;
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //btn setting
+    //base setting
     [self BtnsSetting];
+    [self txtViewSetting];
+    
     
     currentUser = [PFUser currentUser];
     NSString *userName = currentUser[@"name"];
@@ -71,6 +78,13 @@
     
 }
 
+- (void)txtViewSetting{
+    
+    _traitTxtField.layer.cornerRadius = 10.0;
+    _traitTxtField.layer.borderColor = [[UIColor lightGrayColor]CGColor];
+    _traitTxtField.layer.borderWidth = 1.0;
+}
+
 - (void)addImgData:(NSNotification*)notify{
     
     NSData *imageData = UIImagePNGRepresentation(notify.object);
@@ -83,7 +97,7 @@
         //僅能放2張img 之前po過的就del掉
         [getphotoImgArray removeObjectAtIndex:2];
     }
-
+    takePhoto = true;
     //NSLog(@"%@",notify.object);
 }
 
@@ -112,16 +126,13 @@
     
     if (_areaTxtField.text.length == 0 || _sexTxtField.text.length == 0 ||
         _ageTxtField.text.length == 0 ||  _contactTxtField.text.length == 0 ||
-        _howToContactTxtField.text.length == 0) {
-        [self doAlert];
+        _howToContactTxtField.text.length == 0 ) {
+        [self doAlert:@"請確認必填欄位"];
+    }else if (takePhoto == false){
+        [self doAlert:@"照片至少放一張"];
     }else{
-        HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-        [self.navigationController.view addSubview:HUD];
-        
-        HUD.delegate = self;
-        HUD.labelText = @"Loading";
-        
-        [HUD showWhileExecuting:@selector(pushDataToParse) onTarget:self withObject:nil animated:YES];
+        [MBProgressHUD showHUDAddedTo:self.view.window animated:YES];
+        [self pushDataToParse];
     }
 
 }
@@ -171,6 +182,7 @@
             [relation addObject:postAdopt];
             [currentUser save];
             
+            [MBProgressHUD hideHUDForView:self.view.window animated:YES];
             adoptView *nextVC = [self.storyboard instantiateViewControllerWithIdentifier:@"adoptView"];
             nextVC.getUserOptionsFilterDoneStr = [NSString stringWithFormat:@"(animal_area_pkid == '%@') AND (animal_kind == '%@') AND (animal_sex == '%@') AND (animal_age == '%@')",getAreaNumStr,_typeTxtField.text,_sexTxtField.text,_ageTxtField.text];
             [self.navigationController pushViewController:nextVC animated:true];
@@ -196,12 +208,12 @@
     
 }
 
-- (void)doAlert{
+- (void)doAlert:(NSString*)msg{
     [self.view.window addSubview:self.addmaskView];
     [[HHAlertView shared]showAlertWithStyle:HHAlertStyleWraning
                                      inView:self.view.window
                                       Title:nil
-                                     detail:@"請確認必填欄位"
+                                     detail:msg
                                cancelButton:nil
                                    Okbutton:@"確定"
                                     block:^(HHAlertButton buttonindex) {
