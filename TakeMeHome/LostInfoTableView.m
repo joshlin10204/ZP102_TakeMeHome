@@ -14,6 +14,8 @@
 #import <MapKit/MapKit.h>
 #import <Parse/Parse.h>
 #import "LostPostLocalChoiceView.h"
+#import "SSBouncyButton.h"
+#import "UIColor+FlatUI.h"
 
 
 @interface LostInfoTableView ()<UITextFieldDelegate,MKMapViewDelegate,CLLocationManagerDelegate,MBProgressHUDDelegate>
@@ -51,6 +53,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *contactPhoneNumber;
 @property (weak, nonatomic) IBOutlet UILabel *lostLocalText;
 
+@property (weak, nonatomic) IBOutlet SSBouncyButton *okBtn;
+@property (weak, nonatomic) IBOutlet SSBouncyButton *cancelBtn;
+
 
 @end
 
@@ -59,6 +64,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
   
+    [self btnSettings];
+    
     _lostOtherText.layer.borderWidth = 0.25;
     _lostOtherText.layer.cornerRadius=10.0f;
     _lostOtherText.layer.borderColor=[[UIColor lightGrayColor] CGColor];
@@ -420,4 +427,22 @@
 }
 #pragma mark - Table view data source
 
+
+
+- (void)btnSettings{
+
+    _okBtn.adjustsImageWhenHighlighted = NO;
+    _okBtn.tintColor = [UIColor turquoiseColor];
+    _okBtn.cornerRadius = SSBouncyButtonDefaultCornerRadius;
+    _okBtn.titleLabel.font = [UIFont systemFontOfSize:SSBouncyButtonDefaultTitleLabelFontSize];
+    [_okBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    [_okBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected | UIControlStateHighlighted];
+    
+    _cancelBtn.adjustsImageWhenHighlighted = NO;
+    _cancelBtn.tintColor = [UIColor alizarinColor];
+    _cancelBtn.cornerRadius = SSBouncyButtonDefaultCornerRadius;
+    _cancelBtn.titleLabel.font = [UIFont systemFontOfSize:SSBouncyButtonDefaultTitleLabelFontSize];
+    [_cancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    [_cancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected | UIControlStateHighlighted];
+}
 @end

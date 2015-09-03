@@ -143,15 +143,17 @@
     NetworkStatus netStatus = [[note object] currentReachabilityStatus];
     
     NSLog(@"Net Status: %d",netStatus);
-    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.height;
-    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.width;
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
     
     
     if (!alertLabel) {
-        alertLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0 , screenWidth, screenHeight/5)];
+        alertLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0 , screenWidth, screenHeight/8)];
         alertLabel.backgroundColor = [UIColor alizarinColor];
         alertLabel.text = @"請確認您的網路狀態哦!!";
-        //alertLabel.alignmentRectInsets = ;
+        alertLabel.textColor = [UIColor whiteColor];
+        alertLabel.textAlignment = NSTextAlignmentCenter;
+        alertLabel.alpha = 0.9;
     }
     
     UIView *test =  self.window.subviews.lastObject;

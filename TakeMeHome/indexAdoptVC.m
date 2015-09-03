@@ -109,7 +109,7 @@
     
     
     
-    PFUser *currentUser = [PFUser currentUser];
+    currentUser = [PFUser currentUser];
     if (currentUser)
     {
         // do stuff with the user
@@ -130,7 +130,7 @@
                                               [maskView removeFromSuperview];
                                               if (buttonindex == 1) { //preseed regitst
                                                   UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                                                  id targetViewController = [storyboard instantiateViewControllerWithIdentifier:@""];
+                                                  id targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"AddAccountView"];
                                                   [self.navigationController pushViewController:targetViewController animated:true];
                                               }
                                           }
