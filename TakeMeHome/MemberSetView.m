@@ -112,7 +112,7 @@
         
     }];
     //使用相簿裡的照片
-    UIAlertAction *pickPhoto=[UIAlertAction actionWithTitle:@"從選擇相簿" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    UIAlertAction *pickPhoto=[UIAlertAction actionWithTitle:@"從相簿選擇" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         //開啟相簿
         imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         imagePicker.mediaTypes = @[(NSString*)kUTTypeImage];
