@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mWz-2e-tAP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mWz-2e-tAP">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -20,21 +20,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsX-Ay-5mC">
-                                <rect key="frame" x="0.0" y="60" width="600" height="300"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Search">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="searchBtnPressed:" destination="mWz-2e-tAP" eventType="touchUpInside" id="sLV-V4-NkZ"/>
-                                </connections>
-                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackGroud" translatesAutoresizingMaskIntoConstraints="NO" id="PaA-GL-KVY">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dwj-F1-qEm">
-                                <rect key="frame" x="0.0" y="360" width="600" height="240"/>
-                                <color key="backgroundColor" red="0.46440366039999997" green="1" blue="0.4463161839" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="po文">
+                                <rect key="frame" x="37" y="300" width="525" height="150"/>
+                                <state key="normal" backgroundImage="ShareAdopt">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -42,20 +33,52 @@
                                     <action selector="postBtnPressed:" destination="mWz-2e-tAP" eventType="touchUpInside" id="EZ4-HG-ibR"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsX-Ay-5mC">
+                                <rect key="frame" x="37" y="100" width="525" height="150"/>
+                                <state key="normal" backgroundImage="AdoptPets">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="searchBtnPressed:" destination="mWz-2e-tAP" eventType="touchUpInside" id="sLV-V4-NkZ"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Lock" translatesAutoresizingMaskIntoConstraints="NO" id="Rdl-GR-hwi">
+                                <rect key="frame" x="37" y="255" width="87.5" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Rdl-GR-hwi" secondAttribute="height" multiplier="31:32" id="KAB-zF-DGc"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Dwj-F1-qEm" firstAttribute="top" secondItem="fsX-Ay-5mC" secondAttribute="bottom" id="3Kb-Ws-FUz"/>
-                            <constraint firstItem="elV-DL-HMd" firstAttribute="top" secondItem="Dwj-F1-qEm" secondAttribute="bottom" id="5a1-t9-LGH"/>
-                            <constraint firstAttribute="trailing" secondItem="fsX-Ay-5mC" secondAttribute="trailing" id="8b3-QV-gYK"/>
-                            <constraint firstAttribute="height" secondItem="fsX-Ay-5mC" secondAttribute="height" multiplier="2" id="PmI-XF-Ui5"/>
-                            <constraint firstAttribute="trailing" secondItem="Dwj-F1-qEm" secondAttribute="trailing" id="Wql-2O-OBQ"/>
-                            <constraint firstItem="Dwj-F1-qEm" firstAttribute="leading" secondItem="96x-J0-3wT" secondAttribute="leading" id="fl2-05-4qg"/>
-                            <constraint firstItem="fsX-Ay-5mC" firstAttribute="leading" secondItem="96x-J0-3wT" secondAttribute="leading" id="mfl-n3-0Ol"/>
-                            <constraint firstItem="fsX-Ay-5mC" firstAttribute="top" secondItem="hhN-Bs-5ws" secondAttribute="bottom" multiplier="2" constant="20" id="oei-DI-qWs"/>
+                            <constraint firstAttribute="width" secondItem="fsX-Ay-5mC" secondAttribute="width" multiplier="8/7" id="CfX-z1-0oY"/>
+                            <constraint firstAttribute="centerX" secondItem="fsX-Ay-5mC" secondAttribute="centerX" id="DSV-LD-xh6"/>
+                            <constraint firstItem="Dwj-F1-qEm" firstAttribute="top" secondItem="96x-J0-3wT" secondAttribute="centerYWithinMargins" id="EKU-Zw-MJ5"/>
+                            <constraint firstAttribute="height" secondItem="PaA-GL-KVY" secondAttribute="height" id="GfH-qA-H7f"/>
+                            <constraint firstItem="Dwj-F1-qEm" firstAttribute="width" secondItem="Rdl-GR-hwi" secondAttribute="width" multiplier="6/1" id="Gwv-7g-VVJ"/>
+                            <constraint firstItem="Dwj-F1-qEm" firstAttribute="top" secondItem="fsX-Ay-5mC" secondAttribute="bottom" id="HF7-ZQ-xG1"/>
+                            <constraint firstAttribute="width" secondItem="PaA-GL-KVY" secondAttribute="width" id="HIf-Pm-Qg0"/>
+                            <constraint firstItem="fsX-Ay-5mC" firstAttribute="top" secondItem="96x-J0-3wT" secondAttribute="centerYWithinMargins" multiplier="1/3" id="MpJ-kv-WWQ"/>
+                            <constraint firstAttribute="height" secondItem="fsX-Ay-5mC" secondAttribute="height" multiplier="4/1" id="RrN-Wm-i6G"/>
+                            <constraint firstAttribute="height" secondItem="Dwj-F1-qEm" secondAttribute="height" multiplier="4/1" id="SDw-OE-zlD"/>
+                            <constraint firstAttribute="centerY" secondItem="PaA-GL-KVY" secondAttribute="centerY" id="ThF-EO-gbp"/>
+                            <constraint firstItem="Rdl-GR-hwi" firstAttribute="centerY" secondItem="Dwj-F1-qEm" secondAttribute="top" id="aac-Ia-O9a"/>
+                            <constraint firstItem="Dwj-F1-qEm" firstAttribute="leading" secondItem="Rdl-GR-hwi" secondAttribute="leading" id="l7S-jI-bdy"/>
+                            <constraint firstAttribute="width" secondItem="Dwj-F1-qEm" secondAttribute="width" multiplier="8/7" id="maq-eK-u8z"/>
+                            <constraint firstAttribute="centerX" secondItem="PaA-GL-KVY" secondAttribute="centerX" id="uKG-TP-ily"/>
+                            <constraint firstAttribute="centerX" secondItem="Dwj-F1-qEm" secondAttribute="centerX" id="xoV-j8-6Kx"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="HF7-ZQ-xG1"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="Iel-JL-W9G"/>
+                    <connections>
+                        <outlet property="lockImage" destination="Rdl-GR-hwi" id="jWu-ms-cik"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9TJ-BF-ci5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1944,6 +1967,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AdoptPets" width="314" height="167"/>
+        <image name="BackGroud" width="375" height="667"/>
+        <image name="Lock" width="62" height="64"/>
+        <image name="ShareAdopt" width="314" height="167"/>
         <image name="addPhotoBtn" width="200" height="200"/>
         <image name="taiwanFlag.png" width="250" height="250"/>
     </resources>

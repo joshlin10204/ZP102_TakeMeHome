@@ -17,8 +17,10 @@
 {
 
      UIView   *maskView;
+    PFUser *currentUser;
 
 }
+@property (weak, nonatomic) IBOutlet UIImageView *lockImage;
 @end
 
 @implementation indexAdoptVC
@@ -26,7 +28,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-   
+    currentUser = [PFUser currentUser];
+    if (currentUser)
+    {
+        _lockImage.hidden=YES;
+    }
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(UserPressedOkBtn:) name:USER_PRESSED_OK_BTN_NOTIFICATION object:nil];
     
@@ -94,7 +100,10 @@
     
 }
 
-- (IBAction)postBtnPressed:(id)sender {
+- (IBAction)postBtnPressed:(id)sender
+{
+    
+    
     id targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"postViewVC"];
     [self.navigationController pushViewController:targetViewController animated:true];
 

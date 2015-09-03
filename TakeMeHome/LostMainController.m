@@ -14,8 +14,10 @@
 @interface LostMainController ()
 {
     UIView   *maskView;
+    PFUser *currentUser;
 
 }
+@property (weak, nonatomic) IBOutlet UIImageView *lockImage;
 
 @end
 
@@ -24,6 +26,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    currentUser = [PFUser currentUser];
+    if (currentUser)
+    {
+        _lockImage.hidden=YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,7 +39,6 @@
 }
 - (IBAction)lostPostBtnPressed:(id)sender
 {
-    PFUser *currentUser = [PFUser currentUser];
     if (currentUser)
     {
 
