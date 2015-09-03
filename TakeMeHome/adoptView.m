@@ -170,7 +170,7 @@
         imgStr = [theCellArray valueForKey:ANIMAL_ALBUM_FILE_FILTER_KEY];
         imgIconStr = [theCellArray valueForKey:ANIMAL_USER_POST_ICON_FILTER_KEY];
         [cell.imgViewIcon sd_setImageWithURL:[NSURL URLWithString:imgIconStr]
-                             placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+                             placeholderImage:[UIImage imageNamed:@"noPhotoImage"]];
     }else{
         cell.labelName.text =[theCellArray valueForKey:ANIMAL_PLACE_FILTER_KEY];
         imgStr = [theCellArray valueForKey:ANIMAL_ALBUM_FILE_FILTER_KEY];
@@ -209,7 +209,7 @@
 
 
     [cell.imgViewPhoto sd_setImageWithURL:[NSURL URLWithString:imgStr]
-                             placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+                             placeholderImage:[UIImage imageNamed:@"noPhotoImage"]];
 
 
 

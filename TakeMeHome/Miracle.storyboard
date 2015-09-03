@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cgU-zG-6SR">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Setting IndexVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="miracleIndex" id="BYZ-38-t0r" customClass="settingIndexVC" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="settingIndexVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -44,10 +46,184 @@
             </objects>
             <point key="canvasLocation" x="245" y="279"/>
         </scene>
+        <!--Setting IndexTVC-->
+        <scene sceneID="Rqa-5o-CV2">
+            <objects>
+                <tableViewController storyboardIdentifier="miracleIndex" id="cgU-zG-6SR" customClass="settingIndexTVC" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="w6a-l7-fHE">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="fl8-M7-laK">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="6DN-v4-cGq">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6DN-v4-cGq" id="0PX-cv-F6L">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="隱私權聲明" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMq-uU-M8g">
+                                                    <rect key="frame" x="11" y="11" width="85" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="AMq-uU-M8g" firstAttribute="leading" secondItem="0PX-cv-F6L" secondAttribute="leadingMargin" constant="3" id="GLY-Xf-gnF"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="AMq-uU-M8g" secondAttribute="bottom" constant="3" id="Rmi-vA-31w"/>
+                                                <constraint firstItem="AMq-uU-M8g" firstAttribute="top" secondItem="0PX-cv-F6L" secondAttribute="topMargin" constant="3" id="e6g-en-Mb7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="vnZ-3u-wga" kind="show" id="KvK-rd-e5E"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="cgU-zG-6SR" id="Rgi-fp-qMo"/>
+                            <outlet property="delegate" destination="cgU-zG-6SR" id="lHr-vy-ocw"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2ZF-fp-5HD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="245" y="1017"/>
+        </scene>
+        <!--Privacy-->
+        <scene sceneID="bmT-MK-KeU">
+            <objects>
+                <viewController id="vnZ-3u-wga" customClass="privacy" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hbf-75-EU4"/>
+                        <viewControllerLayoutGuide type="bottom" id="KGd-BW-APB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sLj-J0-quZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J83-qn-9dE">
+                                <rect key="frame" x="0.0" y="64" width="600" height="469"/>
+                                <color key="backgroundColor" red="0.97254908084869385" green="0.96862751245498657" blue="0.89803928136825562" alpha="1" colorSpace="deviceRGB"/>
+                                <mutableString key="text">TakeMeHome（以下簡稱本站）非常尊重並保護您的隱私權。請您務必詳細閱讀以下「隱私權聲明」內容。
+
+一、 適用範圍：
+
+1.本隱私權聲明適用於您與本站（包括透過電話、官網，下亦會稱「我們」）使用服務、購買產品、瀏覽網頁、註冊網路帳號、參與各項活動（例如參加宣傳活動、贈獎活動或遊戲、訂閱電子報等），所涉及之個人資料蒐集、處理與利用行為。
+2. 未來所有可能衍生，屬於本站並包括使用本站所提供金流、物流與資訊流平台之所有網站、實體等服務；
+3. 請注意當您經由本網站連結至第三人所管理、經營之網站時，您必須依照各該第三人所經營之網站所為之個人資料蒐集及該網站之隱私權政策規定處理，與本站無涉，本站不負任何保證或連帶責任，亦非本聲明之適用範圍。
+
+二、 蒐集的資料類型、蒐集目的及使用方式：
+
+1. 本站蒐集、處理及利用您的個人資料之目的，係為提供完成第一條內容之順利執行（以下稱「特定目的」），我們將視業務或活動性質請您提供必要的個人資料，並在該特定目的範圍內處理及利用您的個人資料，俾利提供服務給您。
+2. 蒐集個人資料類別:
+(1) 識別類：姓名、 地址、聯絡電話、電子郵件信箱；
+(2) 其他: 往來電子郵件、網站留言等。
+
+3. 承上述本站所告知可能之個人資料類別之蒐集範圍，當您於本站網站註冊成為會員時，我們會詢問您的姓名、住址、電話號碼、手機號碼、電子郵件地址或其他任何可辨識資料本人者等資料；在您購買產品、參與各項活動（例如參加宣傳活動、贈獎活動、訂閱電子報等）等服務時，我們可能會視不同服務需要，詢問您的聯絡方式、付款資料。您在註冊成為會員並登入各項服務後，我們就能識別您的身分並提供您第一條所載服務。您可以自由選擇是否提供及提供哪些種類之個人資料給我們；但若該特定資料欄位係屬必填者，如您選擇不提供該等資料時，將可能無法繼續使用相關服務。
+
+三、 個人資料分享政策：
+我們已採用適當技術及組織安全措施，保障您的個人資料免遭遺失或任何非法處理形式。除下列情況用戶資料有可能提供予相關之單位外，本站不向任何人公開、提供用戶的個人識別資料或與第三人分享您的個人資料或作其他用途：
+1. 取得您的書面同意。
+2. 依法律規定或者為契約履行之需。
+3. 配合司法單位、主管機關依職權或職務需要之調查或使用之需。
+4. 當您違反中華民國法律或本站相關服務條款等而需向第三方提供您的個人資料時。
+5. 為提供您要求的產品或服務，於達成目的內而需向第三方提供您個人資料之情形（包括但不限於寄送贈品、帳單、宅配等）。
+6. 基於公共利益或為維護和改進網站服務所需。
+
+四、 個人資料利用期間與地區：
+1. 本站所蒐集之個人資料，根據蒐集目的，並於處理及利用過程，將遵循中華民國之個人資料保護法之規定，不會移做其他用途，個人資料的處理與利用期間除法律另有規定外，應以完成上述原特定目的之必要期間為限，惟本站得保留個人資料以供日後核對使用。
+2. 本站僅允許代表本站處理個人資料而需要知悉該等資訊的員工、協力廠商和代理人存取資料，前開相關人員均須遵守與本站間嚴格之契約保密義務以維護您個人資料之保有隱私權益。
+3. 本站執行業務及伺服器主機所在地，不僅限台灣地區。
+4. 除個人資料保護法及相關法令另有規定外，僅限於本站內部使用，不會移轉給第三方處理。但為履行原特定目的之必要，本站得於特定目的內提供予協力廠商(協力廠商名單詳見本網站公告處)使用。
+
+五、 個人資料權利行使方式：
+在本站保有您的個人資料期間，您可以行使下述權利:
+1. 查詢或請求閱覽您的個人資料。
+2. 請求製給您的個人資料複製本。
+3. 請求補充或更正您的個人資料。
+4. 請求停止蒐集、處理或利用您的個人資料。
+5. 請求刪除您的個人資料。
+
+除法令要求保留之用戶個人資料外，您亦得隨時要求刪除、停止處理及利用您的個人資料，惟您應知悉一旦提出前開需求，本站有權暫停或終止您的用戶帳號，或拒絕您使用本站之全部或一部份的服務。
+
+六、 Cookies的運用：
+1. 本站網站會在您的瀏覽器上寫入cookies並讀取記錄瀏覽者的 IP 位址、瀏覽紀錄，以提供更優化之服務。若您不願接受cookie的寫入，您可將使用中之瀏覽器設定為拒絕cookie的寫入，但也因此會使網站某些功能無法正常執行。
+2. 本站會依據以下目的及情況下，在瀏覽器中寫入並讀取 Cookies︰
+(1) 為提供更好、更個人化的服務；
+(2) 統計分析瀏覽模式，做為改善服務的參考；
+(3) 追蹤宣導廣告或參加行銷活動情形。
+
+七、 隱私權聲明之修改：
+本站有權於任何時間基於需要而適時修改或變更本隱私權聲明內容，並公布於本站，建議您隨時注意相關修改與變更。您於任何修改或變更之後繼續使用本服務，將視為您已經閱讀、瞭解且同意已完成之相關修改與變更。如果您不同意本政策的內容，您應立即停止使用本服務。
+
+八、 與我們聯絡：
+1.如果若您對本站隱私權聲明或個人資料行使權利有任何疑問，可至本站https://www.facebook.com/ZP102TakeMeHome)上找尋到我們的免費聯絡方式。
+2.請使用電子郵件聯繫，以確認收到本站寄出的回覆信件，方為修改成功。
+
+九、 修訂日期：2015/9/3</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eI6-a5-zBj">
+                                <rect key="frame" x="0.0" y="533" width="600" height="67"/>
+                                <color key="backgroundColor" red="0.7450980544090271" green="0.97254908084869385" blue="0.78039222955703735" alpha="1" colorSpace="deviceRGB"/>
+                                <state key="normal" title="確定">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="okBtnPressed:" destination="vnZ-3u-wga" eventType="touchUpInside" id="UDR-M8-4bs"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="隱私權聲明" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xH-qw-xUc">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <color key="backgroundColor" red="0.9490196704864502" green="0.68235296010971069" blue="0.54901963472366333" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="bFc-9W-OaE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="eI6-a5-zBj" secondAttribute="trailing" id="0EA-lU-bsk"/>
+                            <constraint firstItem="9xH-qw-xUc" firstAttribute="leading" secondItem="sLj-J0-quZ" secondAttribute="leadingMargin" id="1EF-KD-bWt"/>
+                            <constraint firstItem="9xH-qw-xUc" firstAttribute="top" secondItem="hbf-75-EU4" secondAttribute="bottom" constant="20" id="2Aa-xk-dqC"/>
+                            <constraint firstItem="KGd-BW-APB" firstAttribute="top" secondItem="eI6-a5-zBj" secondAttribute="bottom" id="5ZG-wW-YQP"/>
+                            <constraint firstAttribute="trailing" secondItem="9xH-qw-xUc" secondAttribute="trailing" id="GNh-DC-5vN"/>
+                            <constraint firstItem="9xH-qw-xUc" firstAttribute="top" secondItem="hbf-75-EU4" secondAttribute="bottom" id="HTS-Yg-2hj"/>
+                            <constraint firstItem="eI6-a5-zBj" firstAttribute="top" secondItem="J83-qn-9dE" secondAttribute="bottom" id="TDU-Un-aPp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9xH-qw-xUc" secondAttribute="trailing" id="UAV-iN-x1r"/>
+                            <constraint firstItem="J83-qn-9dE" firstAttribute="top" secondItem="9xH-qw-xUc" secondAttribute="bottom" id="csz-Uo-uIE"/>
+                            <constraint firstItem="eI6-a5-zBj" firstAttribute="height" secondItem="sLj-J0-quZ" secondAttribute="height" multiplier="1/9" id="nIV-t7-g5Z"/>
+                            <constraint firstItem="J83-qn-9dE" firstAttribute="leading" secondItem="sLj-J0-quZ" secondAttribute="leading" id="nyI-9n-YPP"/>
+                            <constraint firstItem="eI6-a5-zBj" firstAttribute="leading" secondItem="sLj-J0-quZ" secondAttribute="leading" id="tJF-3m-F8j"/>
+                            <constraint firstItem="J83-qn-9dE" firstAttribute="top" secondItem="sLj-J0-quZ" secondAttribute="top" id="v6x-Wc-xsM"/>
+                            <constraint firstAttribute="trailing" secondItem="J83-qn-9dE" secondAttribute="trailing" id="wcz-l2-Rwu"/>
+                            <constraint firstItem="9xH-qw-xUc" firstAttribute="leading" secondItem="sLj-J0-quZ" secondAttribute="leading" id="wvV-kb-tv7"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="1EF-KD-bWt"/>
+                                <exclude reference="2Aa-xk-dqC"/>
+                                <exclude reference="UAV-iN-x1r"/>
+                                <exclude reference="v6x-Wc-xsM"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ITC-kO-iZk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="897" y="1017"/>
+        </scene>
         <!--Broadcast View Controller-->
         <scene sceneID="XMZ-Ev-DLt">
             <objects>
-                <viewController id="yVx-Nf-BCp" customClass="BroadcastViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settings" id="yVx-Nf-BCp" customClass="BroadcastViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g9t-gb-bZS"/>
                         <viewControllerLayoutGuide type="bottom" id="g5m-d6-6gA"/>

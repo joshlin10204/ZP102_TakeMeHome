@@ -85,6 +85,8 @@
 		A667C5D11B985BCC00051B40 /* veterinarian.png in Resources */ = {isa = PBXBuildFile; fileRef = A667C5C11B985BCC00051B40 /* veterinarian.png */; };
 		A667C5D61B985C1A00051B40 /* mapzone.m in Sources */ = {isa = PBXBuildFile; fileRef = A667C5D31B985C1A00051B40 /* mapzone.m */; };
 		A667C5D71B985C1A00051B40 /* mkav.m in Sources */ = {isa = PBXBuildFile; fileRef = A667C5D51B985C1A00051B40 /* mkav.m */; };
+		A667C5DB1B9886A500051B40 /* privacy.m in Sources */ = {isa = PBXBuildFile; fileRef = A667C5DA1B9886A500051B40 /* privacy.m */; };
+		A667C5E11B988BF000051B40 /* settingIndexTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A667C5E01B988BF000051B40 /* settingIndexTVC.m */; };
 		A67D878B1B8AEDD20081E259 /* taiwanFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = A67D878A1B8AEDD20081E259 /* taiwanFlag.png */; };
 		A69865B01B72539A0065C4E5 /* theDog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69865A91B72539A0065C4E5 /* theDog.jpg */; };
 		A69865B11B72539A0065C4E5 /* theDog2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69865AA1B72539A0065C4E5 /* theDog2.jpg */; };
@@ -259,6 +261,10 @@
 		A667C5D31B985C1A00051B40 /* mapzone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mapzone.m; sourceTree = "<group>"; };
 		A667C5D41B985C1A00051B40 /* mkav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mkav.h; sourceTree = "<group>"; };
 		A667C5D51B985C1A00051B40 /* mkav.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mkav.m; sourceTree = "<group>"; };
+		A667C5D91B9886A500051B40 /* privacy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = privacy.h; sourceTree = "<group>"; };
+		A667C5DA1B9886A500051B40 /* privacy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = privacy.m; sourceTree = "<group>"; };
+		A667C5DF1B988BF000051B40 /* settingIndexTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingIndexTVC.h; sourceTree = "<group>"; };
+		A667C5E01B988BF000051B40 /* settingIndexTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = settingIndexTVC.m; sourceTree = "<group>"; };
 		A67D878A1B8AEDD20081E259 /* taiwanFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taiwanFlag.png; sourceTree = "<group>"; };
 		A69865A91B72539A0065C4E5 /* theDog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = theDog.jpg; sourceTree = "<group>"; };
 		A69865AA1B72539A0065C4E5 /* theDog2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = theDog2.jpg; sourceTree = "<group>"; };
@@ -535,12 +541,11 @@
 			isa = PBXGroup;
 			children = (
 				10384DF41B7249B800B56916 /* Miracle.storyboard */,
-				10384DF11B72499600B56916 /* settingIndexVC.h */,
-				10384DF21B72499600B56916 /* settingIndexVC.m */,
-				10384DE81B72485800B56916 /* BroadcastViewController.h */,
-				10384DE91B72485800B56916 /* BroadcastViewController.m */,
-				10384DEB1B72489C00B56916 /* PushViewController.h */,
-				10384DEC1B72489C00B56916 /* PushViewController.m */,
+				A667C5DF1B988BF000051B40 /* settingIndexTVC.h */,
+				A667C5E01B988BF000051B40 /* settingIndexTVC.m */,
+				A667C5D91B9886A500051B40 /* privacy.h */,
+				A667C5DA1B9886A500051B40 /* privacy.m */,
+				A667C5D81B98867500051B40 /* ex */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -601,6 +606,19 @@
 				A667C5C11B985BCC00051B40 /* veterinarian.png */,
 			);
 			name = imgs;
+			sourceTree = "<group>";
+		};
+		A667C5D81B98867500051B40 /* ex */ = {
+			isa = PBXGroup;
+			children = (
+				10384DF11B72499600B56916 /* settingIndexVC.h */,
+				10384DF21B72499600B56916 /* settingIndexVC.m */,
+				10384DE81B72485800B56916 /* BroadcastViewController.h */,
+				10384DE91B72485800B56916 /* BroadcastViewController.m */,
+				10384DEB1B72489C00B56916 /* PushViewController.h */,
+				10384DEC1B72489C00B56916 /* PushViewController.m */,
+			);
+			name = ex;
 			sourceTree = "<group>";
 		};
 		A69865A81B7253830065C4E5 /* Adopt */ = {
@@ -1032,6 +1050,7 @@
 				A6DA899D1B7B1076000F8B7B /* UIImage+WebP.m in Sources */,
 				0329F7D11B8C45A200D4B11D /* LostPostLocalChoiceView.m in Sources */,
 				A6DA899A1B7B1076000F8B7B /* UIButton+WebCache.m in Sources */,
+				A667C5DB1B9886A500051B40 /* privacy.m in Sources */,
 				03BD5A6B1B6142380054F861 /* ViewController.m in Sources */,
 				A6D9AFEC1B834EBD00C08A55 /* Animal.m in Sources */,
 				A69865B81B7254530065C4E5 /* myFavoriteVC.m in Sources */,
@@ -1059,6 +1078,7 @@
 				A6DA89941B7B1076000F8B7B /* SDWebImageCompat.m in Sources */,
 				032566CF1B7DEF1200DAD13B /* LostMainController.m in Sources */,
 				A667C5D61B985C1A00051B40 /* mapzone.m in Sources */,
+				A667C5E11B988BF000051B40 /* settingIndexTVC.m in Sources */,
 				032566CA1B7DEE4400DAD13B /* LostPostTableView.m in Sources */,
 				A6DA899B1B7B1076000F8B7B /* UIImage+GIF.m in Sources */,
 				03F5A68F1B91F409003F22A9 /* MemberSetViewTableView.m in Sources */,
