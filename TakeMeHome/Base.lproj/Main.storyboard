@@ -190,6 +190,9 @@
                                 <state key="normal" title="LifeButton" image="lifeButton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="lifeButtonPressed:" destination="Rs4-gk-Mq4" eventType="touchUpInside" id="UKJ-hq-Tgl"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxm-KM-zGw">
                                 <rect key="frame" x="225" y="225" width="150" height="150"/>

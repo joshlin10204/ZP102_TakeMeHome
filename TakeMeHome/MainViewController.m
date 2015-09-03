@@ -195,6 +195,12 @@
     [self.navigationController pushViewController:targetViewController animated:true];
     
 }
+- (IBAction)lifeButtonPressed:(id)sender {
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"life" bundle:nil];
+    id targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"mapzone"];
+    [self menuBtnPress:nil];
+    [self.navigationController pushViewController:targetViewController animated:true];
+}
 //前往個人資料
 - (IBAction)MemberSettingButtonPressed:(id)sender {
     PFUser *currentUser = [PFUser currentUser];

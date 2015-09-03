@@ -47,6 +47,8 @@
     }
 
 }
+- (IBAction)Trainstation1:(id)sender {
+}
 
 //按下訪客按鈕
 - (IBAction)visitLogInPressed:(id)sender {
