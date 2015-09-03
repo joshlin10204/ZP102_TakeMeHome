@@ -13,6 +13,10 @@
 #import "HHAlertView.h"
 
 
+
+
+
+
 @interface indexAdoptVC ()
 {
 
@@ -104,11 +108,7 @@
 {
     
     
-    id targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"postViewVC"];
-    [self.navigationController pushViewController:targetViewController animated:true];
-
     
-    /*
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser)
     {
@@ -129,7 +129,7 @@
                                               NSLog(@"%d",buttonindex);
                                               [maskView removeFromSuperview];
                                               if (buttonindex == 1) { //preseed regitst
-                                                  UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"" bundle:nil];
+                                                  UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                                   id targetViewController = [storyboard instantiateViewControllerWithIdentifier:@""];
                                                   [self.navigationController pushViewController:targetViewController animated:true];
                                               }
@@ -138,7 +138,7 @@
         
         
     }
-*/
+
 
 }
 

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 Josh. All rights reserved.
 //
 
-#import "postDetailTVC.h"
+#import "editDetailTVC.h"
 #import "SSBouncyButton.h"
 #import "UIColor+FlatUI.h"
 #import "FUIAlertView.h"
@@ -14,10 +14,10 @@
 #import "adoptView.h"
 #import "HHAlertView.h"
 
-#import <QuartzCore/QuartzCore.h>
-#import <Parse/Parse.h>
 
-@interface postDetailTVC ()
+
+
+@interface editDetailTVC ()
 <UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate,MBProgressHUDDelegate>
 {
 	MBProgressHUD *HUD;
@@ -43,29 +43,37 @@
 @property (weak, nonatomic) IBOutlet UITextField *foundTxtFiled;
 @property (weak, nonatomic) IBOutlet UITextView *traitTxtField;
 @property (weak, nonatomic) IBOutlet SSBouncyButton *OKbtn;
+@property (weak, nonatomic) IBOutlet SSBouncyButton *cancelBtn;
 
 @end
 
-@implementation postDetailTVC
-{
-
-    BOOL takePhoto;
-    
-}
+@implementation editDetailTVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //base setting
+    //btn setting
     [self BtnsSetting];
-    [self txtViewSetting];
-    
-    
+    [self areaArrSettings];
+    //NSLog(@"%@",self.adoptData);
     currentUser = [PFUser currentUser];
     NSString *userName = currentUser[@"name"];
     NSString *userContactMethod = currentUser[@"email"];
+    NSInteger index =[self.adoptData[@"area"] integerValue];
+    NSString *areaStr = [areaArray objectAtIndex:index-1];
+    
+    
     _contactTxtField.text = userName;
     _howToContactTxtField.text = userContactMethod;
-
+    _ageTxtField.text = self.adoptData[@"age"];
+    _areaTxtField.text = @"";
+    _bacterinTxtField.text = self.adoptData[@"bacterin"];
+    _colorTxtField.text = self.adoptData[@"color"];
+    _foundTxtFiled.text = self.adoptData[@"found"];
+    _mixTypeTxtField.text = self.adoptData[@"mixType"];
+    _sexTxtField.text = self.adoptData[@"sex"];
+    _sterilizationTxtField.text = self.adoptData[@"sterilization"];
+    _traitTxtField.text = self.adoptData[@"trait"];
+    _typeTxtField.text = self.adoptData[@"type"];
     
     //NSLog(@"currentUser: %@",currentUser);
     //getphotoImgArray = [NSMutableArray new];
@@ -76,13 +84,6 @@
     
     
     
-}
-
-- (void)txtViewSetting{
-    
-    _traitTxtField.layer.cornerRadius = 10.0;
-    _traitTxtField.layer.borderColor = [[UIColor lightGrayColor]CGColor];
-    _traitTxtField.layer.borderWidth = 1.0;
 }
 
 - (void)addImgData:(NSNotification*)notify{
@@ -97,7 +98,7 @@
         //僅能放2張img 之前po過的就del掉
         [getphotoImgArray removeObjectAtIndex:2];
     }
-    takePhoto = true;
+
     //NSLog(@"%@",notify.object);
 }
 
@@ -116,6 +117,14 @@
     [_OKbtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
     [_OKbtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected | UIControlStateHighlighted];
     
+    _cancelBtn.adjustsImageWhenHighlighted = NO;
+    _cancelBtn.tintColor = [UIColor alizarinColor];
+    _cancelBtn.cornerRadius = SSBouncyButtonDefaultCornerRadius;
+    _cancelBtn.titleLabel.font = [UIFont systemFontOfSize:SSBouncyButtonDefaultTitleLabelFontSize];
+    [_cancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    [_cancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected | UIControlStateHighlighted];
+    
+    
 }
 
 - (IBAction)submitBtn:(UIButton*)button {
@@ -126,11 +135,10 @@
     
     if (_areaTxtField.text.length == 0 || _sexTxtField.text.length == 0 ||
         _ageTxtField.text.length == 0 ||  _contactTxtField.text.length == 0 ||
-        _howToContactTxtField.text.length == 0 ) {
-        [self doAlert:@"請確認必填欄位"];
-    }else if (takePhoto == false){
-        [self doAlert:@"照片至少放一張"];
+        _howToContactTxtField.text.length == 0) {
+        [self doAlert];
     }else{
+        
         [MBProgressHUD showHUDAddedTo:self.view.window animated:YES];
         [self pushDataToParse];
     }
@@ -138,6 +146,7 @@
 }
 
 - (void)pushDataToParse{
+    
     
     if ([_sexTxtField.text isEqualToString:@"公"]) {//公
         _sexTxtField.text = @"M";
@@ -153,47 +162,66 @@
     //拿po文者的大頭貼
     PFFile *userIcon = currentUser[@"userPhoto"];
     
-    PFObject *postAdopt = [PFObject objectWithClassName:ADOPT_PETS_PARSE_TABLE_NAME];
-    postAdopt[AREA_PARSE_TITLE] = getAreaNumStr;
-    postAdopt[TYPE_PARSE_TITLE] = _typeTxtField.text;
-    postAdopt[SEX_PARSE_TITLE] = _sexTxtField.text;
-    postAdopt[AGE_PARSE_TITLE] = _ageTxtField.text;
-    postAdopt[MIX_TYPE_PARSE_TITLE] = _mixTypeTxtField.text;
-    postAdopt[COLOR_PARSE_TITLE] = _colorTxtField.text;
-    postAdopt[STERILIZATION_PARSE_TITLE] = _sterilizationTxtField.text;
-    postAdopt[BACTERIN_PARSE_TITLE] = _bacterinTxtField.text;
-    postAdopt[CONTACT_PARSE_TITLE] = _contactTxtField.text;
-    postAdopt[HOW_TO_CONTACT_PARSE_TITLE] = _howToContactTxtField.text;
-    postAdopt[FOUND_PARSE_TITLE] = _foundTxtFiled.text;
-    postAdopt[TRAIT_PARSE_TITLE] = _traitTxtField.text;
-    if (imageFile != nil) {
-        postAdopt[USER_ICON_PARSE_TITLE] =  userIcon;
-    }
-    if (imageFile != nil) {
-        postAdopt[USER_POST_IMG_PHOTO_PARSE_TITLE] = imageFile;
-    }
-    
-    
-    [postAdopt saveInBackgroundWithBlock:^(BOOL succeeded, NSError * error){
-        if (succeeded) {
-            NSLog(@"succeed:%@",postAdopt);
+    PFQuery *queryPostAdopt = [PFQuery queryWithClassName:ADOPT_PETS_PARSE_TABLE_NAME];
+    [queryPostAdopt getObjectInBackgroundWithId:self.adoptData.objectId block:^(PFObject *postAdopt ,NSError *err){
+        if (!err) {
+            postAdopt[AREA_PARSE_TITLE] = getAreaNumStr;
+            postAdopt[TYPE_PARSE_TITLE] = _typeTxtField.text;
+            postAdopt[SEX_PARSE_TITLE] = _sexTxtField.text;
+            postAdopt[AGE_PARSE_TITLE] = _ageTxtField.text;
+            postAdopt[MIX_TYPE_PARSE_TITLE] = _mixTypeTxtField.text;
+            postAdopt[COLOR_PARSE_TITLE] = _colorTxtField.text;
+            postAdopt[STERILIZATION_PARSE_TITLE] = _sterilizationTxtField.text;
+            postAdopt[BACTERIN_PARSE_TITLE] = _bacterinTxtField.text;
+            postAdopt[CONTACT_PARSE_TITLE] = _contactTxtField.text;
+            postAdopt[HOW_TO_CONTACT_PARSE_TITLE] = _howToContactTxtField.text;
+            postAdopt[FOUND_PARSE_TITLE] = _foundTxtFiled.text;
+            postAdopt[TRAIT_PARSE_TITLE] = _traitTxtField.text;
             
-            PFRelation *relation = [currentUser relationForKey:@"myAdoptPost"];
-            [relation addObject:postAdopt];
-            [currentUser save];
+            if (imageFile != nil) {
+                postAdopt[USER_ICON_PARSE_TITLE] =  userIcon;
+            }
+            if (imageFile != nil) {
+                postAdopt[USER_POST_IMG_PHOTO_PARSE_TITLE] = imageFile;
+            }
+            
+            [postAdopt save];
+            
             
             [MBProgressHUD hideHUDForView:self.view.window animated:YES];
-            adoptView *nextVC = [self.storyboard instantiateViewControllerWithIdentifier:@"adoptView"];
+            
+            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"adopt" bundle:nil];
+            
+            adoptView *nextVC = [storyBoard instantiateViewControllerWithIdentifier:@"adoptView"];
             nextVC.getUserOptionsFilterDoneStr = [NSString stringWithFormat:@"(animal_area_pkid == '%@') AND (animal_kind == '%@') AND (animal_sex == '%@') AND (animal_age == '%@')",getAreaNumStr,_typeTxtField.text,_sexTxtField.text,_ageTxtField.text];
             [self.navigationController pushViewController:nextVC animated:true];
-            
-        } else {
-            NSLog(@"error happens:%@",error.userInfo);
+        }else{
+            [self.view.window addSubview:self.addmaskView];
+            [[HHAlertView shared]
+             showAlertWithStyle:HHAlertStyleWraning
+             inView:self.view.window
+             Title:@"注意"
+             detail:@"請檢查您的網路狀況"
+             cancelButton:nil
+             Okbutton:@"關閉"
+             block:^(HHAlertButton buttonindex) {
+                 [maskView removeFromSuperview];
+
+             }];
         }
     }];
     
+    
+    
 }
 
+
+- (void)areaArrSettings{
+    areaArray = [NSArray arrayWithObjects:
+                 @"",@"臺北市",@"新北市",@"基隆市",@"宜蘭縣",@"桃園縣",@"新竹縣",@"新竹市",@"苗栗縣",
+                 @"臺中市",@"彰化縣",@"南投縣",@"雲林縣",@"嘉義縣",@"嘉義市",@"臺南市",@"臺南市",
+                 @"高雄市",@"屏東縣",@"花蓮縣",@"臺東縣",@"澎湖縣",@"金門縣",@"連江縣",nil];
+}
 
 
 //建立一個霧透的背景
@@ -208,12 +236,12 @@
     
 }
 
-- (void)doAlert:(NSString*)msg{
+- (void)doAlert{
     [self.view.window addSubview:self.addmaskView];
     [[HHAlertView shared]showAlertWithStyle:HHAlertStyleWraning
                                      inView:self.view.window
                                       Title:nil
-                                     detail:msg
+                                     detail:@"請確認必填欄位"
                                cancelButton:nil
                                    Okbutton:@"確定"
                                     block:^(HHAlertButton buttonindex) {
@@ -243,11 +271,6 @@
     
     [self.areaTxtField setInputView:areaPickView];
     [areaPickView setBackgroundColor:[UIColor colorWithRed: 1.0 green: 1.0 blue: 1.0 alpha: 1.0]];
-    
-    areaArray = [NSArray arrayWithObjects:
-                 @"",@"臺北市",@"新北市",@"基隆市",@"宜蘭縣",@"桃園縣",@"新竹縣",@"新竹市",@"苗栗縣",
-                 @"臺中市",@"彰化縣",@"南投縣",@"雲林縣",@"嘉義縣",@"嘉義市",@"臺南市",@"臺南市",
-                 @"高雄市",@"屏東縣",@"花蓮縣",@"臺東縣",@"澎湖縣",@"金門縣",@"連江縣",nil];
     
     CGFloat screenWidth = self.view.frame.size.width;
     UIToolbar *toolBar= [[UIToolbar alloc] initWithFrame:CGRectMake(0,0,screenWidth,44)];
@@ -341,6 +364,9 @@
     [self presentViewController:optionsAlert animated:YES completion:nil];
 }
 
+- (IBAction)btnCancelPressed:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 @end

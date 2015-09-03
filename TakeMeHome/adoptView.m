@@ -121,6 +121,7 @@
 
 - (void)showUserFilterDoneResult{
     filtterArray = [self getFilterDoneArray];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
     //table view reload
     [_petTableView reloadData];
 }
@@ -152,24 +153,26 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
     adoptViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"adoptViewCell" forIndexPath:indexPath];
     NSString *imgStr;
     NSString *imgIconStr;
     NSArray *theCellArray = [filtterArray objectAtIndex:indexPath.row];
     
    
-    cell.labelName.text =[theCellArray valueForKey:ANIMAL_PLACE_FILTER_KEY];
+    
+
     cell.labelSex.text = [theCellArray valueForKey:ANIMAL_SEX_FILTER_KEY];
     cell.labelType.text = [theCellArray valueForKey:ANIMAL_BODYTYPE_FILTER_KEY];
     cell.labelAge.text = [theCellArray valueForKey:ANIMAL_AGE_FILTER_KEY];
     
     if ([[theCellArray valueForKey:ANIMAL_RESOURCE_FILTER_KEY]isEqualToString:Non_GOVERNMENT_SRC_KEY]) {
+        cell.labelName.text =[theCellArray valueForKey:ANIMAL_CONTACT_FILTER_KEY];
         imgStr = [theCellArray valueForKey:ANIMAL_ALBUM_FILE_FILTER_KEY];
         imgIconStr = [theCellArray valueForKey:ANIMAL_USER_POST_ICON_FILTER_KEY];
         [cell.imgViewIcon sd_setImageWithURL:[NSURL URLWithString:imgIconStr]
                              placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     }else{
+        cell.labelName.text =[theCellArray valueForKey:ANIMAL_PLACE_FILTER_KEY];
         imgStr = [theCellArray valueForKey:ANIMAL_ALBUM_FILE_FILTER_KEY];
         cell.imgViewIcon.image = [UIImage imageNamed:@"taiwanFlag.png"];
     }
@@ -362,6 +365,7 @@
         myAnimal.animal_id = [[plistArray objectAtIndex:i]valueForKey:ANIMAL_ID_FILTER_KEY];
         myAnimal.album_file = [[plistArray objectAtIndex:i]valueForKey:ANIMAL_ALBUM_FILE_FILTER_KEY];
         myAnimal.animal_kind = [[plistArray objectAtIndex:i]valueForKey:ANIMAL_KIND_FILTER_KEY];
+        myAnimal.animal_contact = [[plistArray objectAtIndex:i]valueForKey:ANIMAL_CONTACT_FILTER_KEY];
         if ([[[plistArray objectAtIndex:i]valueForKey:ANIMAL_RESOURCE_FILTER_KEY]isEqualToString:Non_GOVERNMENT_SRC_KEY]) {
             myAnimal.animal_place = [[plistArray objectAtIndex:i]valueForKey:ANIMAL_CONTACT_FILTER_KEY];
         }else{
