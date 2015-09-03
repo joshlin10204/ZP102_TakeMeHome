@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Reachability.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+{
+
+    Reachability *googleReach;
+
+}
 
 @property (strong, nonatomic) UIWindow *window;
 

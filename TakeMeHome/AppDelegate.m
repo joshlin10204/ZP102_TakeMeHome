@@ -10,7 +10,16 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <Parse/Parse.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+#import "UIColor+FlatUI.h"
+
+
 @interface AppDelegate ()
+{
+
+    UILabel * alertLabel;
+
+}
+
 
 @end
 
@@ -29,6 +38,16 @@
         [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
     
     [self registerAPNS];
+    
+    
+    if(googleReach==nil)
+    {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkReachabilityChanged:) name:kReachabilityChangedNotification object:nil];
+        
+        googleReach=[Reachability reachabilityWithHostName:@"google.com"] ;
+        [googleReach startNotifier];
+    }
+    
     
 //    [Parse setApplicationId:@"parseAppId" clientKey:@"parseClientKey"];
 //    [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
@@ -114,6 +133,51 @@
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
     NSLog(@"APNS Register Fail : %@" ,error.description);
+    
+}
+
+- (void) networkReachabilityChanged:(NSNotification*)note
+{
+    //Reachability *curReach=[note object];
+    
+    NetworkStatus netStatus = [[note object] currentReachabilityStatus];
+    
+    NSLog(@"Net Status: %d",netStatus);
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.height;
+    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.width;
+    
+    
+    if (!alertLabel) {
+        alertLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0 , screenWidth, screenHeight/5)];
+        alertLabel.backgroundColor = [UIColor alizarinColor];
+        alertLabel.text = @"請確認您的網路狀態哦!!";
+        //alertLabel.alignmentRectInsets = ;
+    }
+    
+    UIView *test =  self.window.subviews.lastObject;
+   
+    NSLog(@"TEST = %@",test);
+    
+    
+    
+    switch (netStatus) {
+        case NotReachable:
+             [test addSubview:alertLabel];
+            NSLog(@"no");
+            break;
+        case ReachableViaWiFi:
+            [alertLabel removeFromSuperview];
+            NSLog(@"WIFI");
+            break;
+        case ReachableViaWWAN:
+            [alertLabel removeFromSuperview];
+            NSLog(@"3G");
+            break;
+            
+        default:
+            break;
+    }
+    
     
 }
 
