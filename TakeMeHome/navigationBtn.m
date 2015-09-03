@@ -12,6 +12,7 @@
 #import "LostMainController.h"
 #import "MainViewController.h"
 
+#define degreesToRadians(x) ((x) * (M_PI / 180.0))
 
 @implementation navigationBtn
 
@@ -72,7 +73,7 @@
     CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
     CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
     CGFloat NaviBtnWidth = screenWidth / 4;
-    self.naviBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, screenHeight-30, NaviBtnWidth, NaviBtnWidth)];
+    self.naviBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, screenHeight * 0.9, NaviBtnWidth, NaviBtnWidth)];
     
     //self.naviBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 20, 80, 80)];
     
@@ -193,6 +194,7 @@
 }
 
 
+
 - (void)getSender:(UIPanGestureRecognizer*)recognizer getPositionX:(CGFloat)coordX getPositionY:(CGFloat)coordY {
     
     UIViewController *viewController = [self.delegate attachedViewController];
@@ -204,6 +206,7 @@
     
     BOOL rightBorder = FALSE ;
     BOOL downBorder = FALSE;
+    
     
     
     
@@ -220,18 +223,23 @@
         //top or down
         if (downBorder == false) { //top
             //top有上面的電信資料 高度為20
+            recognizer.view.transform =  CGAffineTransformMakeRotation(degreesToRadians(180));
             recognizer.view.center = CGPointMake(recognizer.view.center.x,
                                                  40);
+            //recognizer.view.frame = CGRectMake(0, screenHeight * 0.9, NaviBtnWidth, NaviBtnWidth)];
         }else{ //down
+            recognizer.view.transform =  CGAffineTransformMakeRotation(degreesToRadians(0));
             recognizer.view.center = CGPointMake(recognizer.view.center.x,
                                                  borderHeight-20);
         }
     }else{
         //right or left
         if (rightBorder == true) {
+            recognizer.view.transform =  CGAffineTransformMakeRotation(degreesToRadians(270));
             recognizer.view.center = CGPointMake(borderWidth-20,
                                                  recognizer.view.center.y);
         }else{//left
+            recognizer.view.transform =  CGAffineTransformMakeRotation(degreesToRadians(90));
             recognizer.view.center = CGPointMake(20,
                                                  recognizer.view.center.y);
         }

@@ -65,6 +65,7 @@
 		A61E91FE1B8E239700EEE74B /* adopt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A61E91FD1B8E239700EEE74B /* adopt.storyboard */; };
 		A61E92011B8E25D200EEE74B /* indexAdoptVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A61E92001B8E25D200EEE74B /* indexAdoptVC.m */; };
 		A65527DF1B7B7B8100675D97 /* containerSearchTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A65527DE1B7B7B8100675D97 /* containerSearchTVC.m */; };
+		A667C5AD1B98246200051B40 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A667C5AC1B98246200051B40 /* Reachability.m */; };
 		A67D878B1B8AEDD20081E259 /* taiwanFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = A67D878A1B8AEDD20081E259 /* taiwanFlag.png */; };
 		A69865B01B72539A0065C4E5 /* theDog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69865A91B72539A0065C4E5 /* theDog.jpg */; };
 		A69865B11B72539A0065C4E5 /* theDog2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69865AA1B72539A0065C4E5 /* theDog2.jpg */; };
@@ -216,6 +217,8 @@
 		A61E92001B8E25D200EEE74B /* indexAdoptVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = indexAdoptVC.m; sourceTree = "<group>"; };
 		A65527DD1B7B7B8100675D97 /* containerSearchTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = containerSearchTVC.h; sourceTree = "<group>"; };
 		A65527DE1B7B7B8100675D97 /* containerSearchTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = containerSearchTVC.m; sourceTree = "<group>"; };
+		A667C5AB1B98246200051B40 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		A667C5AC1B98246200051B40 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		A67D878A1B8AEDD20081E259 /* taiwanFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taiwanFlag.png; sourceTree = "<group>"; };
 		A69865A91B72539A0065C4E5 /* theDog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = theDog.jpg; sourceTree = "<group>"; };
 		A69865AA1B72539A0065C4E5 /* theDog2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = theDog2.jpg; sourceTree = "<group>"; };
@@ -309,6 +312,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03D204BB1B7303BE003457CA /* SystemConfiguration.framework in Frameworks */,
 				A60A73531B87242500AE8847 /* DOFavoriteButton.framework in Frameworks */,
 				032566D61B80FAA700DAD13B /* UIKit.framework in Frameworks */,
 				032566D41B80FA9A00DAD13B /* Foundation.framework in Frameworks */,
@@ -316,7 +320,6 @@
 				03D204C11B7303E3003457CA /* libsqlite3.dylib in Frameworks */,
 				03D204BF1B7303D5003457CA /* Social.framework in Frameworks */,
 				03D204BD1B7303C9003457CA /* Accounts.framework in Frameworks */,
-				03D204BB1B7303BE003457CA /* SystemConfiguration.framework in Frameworks */,
 				03D204B71B7303A6003457CA /* Security.framework in Frameworks */,
 				03D204B51B730399003457CA /* QuartzCore.framework in Frameworks */,
 				035CD2971B665AFE00AEC20B /* CoreLocation.framework in Frameworks */,
@@ -594,6 +597,8 @@
 				A69865C71B7254C60065C4E5 /* adoptView.m */,
 				A69865C81B7254C60065C4E5 /* adoptViewTableViewCell.h */,
 				A69865C91B7254C60065C4E5 /* adoptViewTableViewCell.m */,
+				A667C5AB1B98246200051B40 /* Reachability.h */,
+				A667C5AC1B98246200051B40 /* Reachability.m */,
 			);
 			name = adoptView;
 			sourceTree = "<group>";
@@ -980,6 +985,7 @@
 				0389DE891B956F15004E0209 /* LostInfoTableView.m in Sources */,
 				A6DCB2EE1B902C30002A3EB6 /* postViewVC.m in Sources */,
 				A6D6DEBA1B7C786700DBCFBD /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
+				A667C5AD1B98246200051B40 /* Reachability.m in Sources */,
 				A6DA89A01B7B1076000F8B7B /* UIView+WebCacheOperation.m in Sources */,
 				A69865C01B7254870065C4E5 /* aboutMeVC.m in Sources */,
 				10384DEA1B72485800B56916 /* BroadcastViewController.m in Sources */,
