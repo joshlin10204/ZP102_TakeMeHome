@@ -69,10 +69,15 @@
 }
 
 -(void)setNaviBtnSetting{
-    self.naviBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 20, 50, 50)];
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+    CGFloat NaviBtnWidth = screenWidth / 4;
+    self.naviBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, screenHeight-30, NaviBtnWidth, NaviBtnWidth)];
+    
+    //self.naviBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 20, 80, 80)];
     
     
-    UIImage *naviBtnImg = [UIImage imageNamed:@"img.png"];
+    UIImage *naviBtnImg = [UIImage imageNamed:@"naviOwl.png"];
     [self.naviBtn setImage:naviBtnImg forState:UIControlStateNormal];
     [self.naviBtn addTarget:self action:@selector(showGrid) forControlEvents:UIControlEventTouchUpInside];
     

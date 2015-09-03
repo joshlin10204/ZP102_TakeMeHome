@@ -111,6 +111,9 @@
 		A6DBEDCA1B972203004E6405 /* editDetailTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DBEDC61B972203004E6405 /* editDetailTVC.m */; };
 		A6DCB2EE1B902C30002A3EB6 /* postViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DCB2ED1B902C30002A3EB6 /* postViewVC.m */; };
 		A6DCB2F11B902CB2002A3EB6 /* postDetailTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DCB2F01B902CB2002A3EB6 /* postDetailTVC.m */; };
+		A6EACB7C1B97F26F008DFC0F /* naviOwl.png in Resources */ = {isa = PBXBuildFile; fileRef = A6EACB7B1B97F26F008DFC0F /* naviOwl.png */; };
+		A6EACB7F1B97F909008DFC0F /* naviOwl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6EACB7D1B97F909008DFC0F /* naviOwl@2x.png */; };
+		A6EACB801B97F909008DFC0F /* naviOwl@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6EACB7E1B97F909008DFC0F /* naviOwl@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -296,6 +299,9 @@
 		A6DCB2ED1B902C30002A3EB6 /* postViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = postViewVC.m; sourceTree = "<group>"; };
 		A6DCB2EF1B902CB2002A3EB6 /* postDetailTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = postDetailTVC.h; sourceTree = "<group>"; };
 		A6DCB2F01B902CB2002A3EB6 /* postDetailTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = postDetailTVC.m; sourceTree = "<group>"; };
+		A6EACB7B1B97F26F008DFC0F /* naviOwl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = naviOwl.png; sourceTree = "<group>"; };
+		A6EACB7D1B97F909008DFC0F /* naviOwl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "naviOwl@2x.png"; sourceTree = "<group>"; };
+		A6EACB7E1B97F909008DFC0F /* naviOwl@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "naviOwl@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -651,6 +657,9 @@
 		A6D3E7301B6A8E290066DD7B /* imgs */ = {
 			isa = PBXGroup;
 			children = (
+				A6EACB7B1B97F26F008DFC0F /* naviOwl.png */,
+				A6EACB7D1B97F909008DFC0F /* naviOwl@2x.png */,
+				A6EACB7E1B97F909008DFC0F /* naviOwl@3x.png */,
 				A6D3E7261B6A71750066DD7B /* img.png */,
 				A6D3E72E1B6A88380066DD7B /* adopt.png */,
 				A6D3E7311B6A8FDE0066DD7B /* memberSetting.png */,
@@ -832,6 +841,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A60A73551B87257200AE8847 /* heart.png in Resources */,
+				A6EACB7C1B97F26F008DFC0F /* naviOwl.png in Resources */,
 				A6D3E7271B6A71750066DD7B /* img.png in Resources */,
 				A6D3E72F1B6A88380066DD7B /* adopt.png in Resources */,
 				A69865B01B72539A0065C4E5 /* theDog.jpg in Resources */,
@@ -839,12 +849,14 @@
 				0340056D1B8DF4010052EB6D /* Lost.storyboard in Resources */,
 				A61E91FE1B8E239700EEE74B /* adopt.storyboard in Resources */,
 				03DC79EE1B6555140042E8E2 /* Main.storyboard in Resources */,
+				A6EACB801B97F909008DFC0F /* naviOwl@3x.png in Resources */,
 				A67D878B1B8AEDD20081E259 /* taiwanFlag.png in Resources */,
 				A6D3E7361B6A8FDE0066DD7B /* lost.png in Resources */,
 				03F5A69A1B921753003F22A9 /* LostInfoCell.xib in Resources */,
 				A6D3E7381B6A8FDE0066DD7B /* settingButtonNavi.png in Resources */,
 				03A1BB0D1B90B8FD00DD2EFF /* MemberSetting.storyboard in Resources */,
 				037126771B724074000F546E /* Images.xcassets in Resources */,
+				A6EACB7F1B97F909008DFC0F /* naviOwl@2x.png in Resources */,
 				A6DBEDC11B970CFC004E6405 /* AdoptInfoCell.xib in Resources */,
 				A69865B11B72539A0065C4E5 /* theDog2.jpg in Resources */,
 				03BD5A731B6142380054F861 /* LaunchScreen.xib in Resources */,
