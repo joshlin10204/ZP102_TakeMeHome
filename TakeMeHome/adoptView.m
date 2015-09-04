@@ -50,11 +50,7 @@
     //每次進來都重新抓資料
     [self downloadJsonFile:JSON_GET_HTTP_WEBSITE];
     
-    //JsonFile抓好後 再抓parse file
-//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(downloadParseFile) name:DOWNLOAD_JSON_SUCCESS_NOTIFICATION object:nil];
-    
-    //parse file 抓好後  再去分析user要搜尋的條件
-//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showUserFilterDoneResult) name:DOWNLOAD_PARSE_SUCCESS_NOTIFICATION object:nil];
+
 
 }
 
@@ -73,6 +69,7 @@
             // Do something with the found objects
             for (PFObject *tmp in objects) {
                 NSLog(@"%@",tmp.objectId);
+                [saveDictionary setObject:tmp.createdAt forKey:ANIMAL_DATA_UPDATE_TIME_FILTER_KEY];
                 [saveDictionary setObject:tmp.objectId forKey:ANIMAL_ID_FILTER_KEY];
                 [saveDictionary setObject:tmp[MIX_TYPE_PARSE_TITLE] forKey:ANIMAL_BODYTYPE_FILTER_KEY];
                 [saveDictionary setObject:tmp[SEX_PARSE_TITLE] forKey:ANIMAL_SEX_FILTER_KEY];
@@ -170,7 +167,7 @@
         imgStr = [theCellArray valueForKey:ANIMAL_ALBUM_FILE_FILTER_KEY];
         imgIconStr = [theCellArray valueForKey:ANIMAL_USER_POST_ICON_FILTER_KEY];
         [cell.imgViewIcon sd_setImageWithURL:[NSURL URLWithString:imgIconStr]
-                             placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+                             placeholderImage:[UIImage imageNamed:@"noPhotoImage"]];
     }else{
         cell.labelName.text =[theCellArray valueForKey:ANIMAL_PLACE_FILTER_KEY];
         imgStr = [theCellArray valueForKey:ANIMAL_ALBUM_FILE_FILTER_KEY];
@@ -209,7 +206,7 @@
 
 
     [cell.imgViewPhoto sd_setImageWithURL:[NSURL URLWithString:imgStr]
-                             placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+                             placeholderImage:[UIImage imageNamed:@"noPhotoImage"]];
 
 
 
@@ -307,6 +304,10 @@
             //新增 來源欄位（民眾或是私人）
             [animal setValue:rsc forKey:ANIMAL_RESOURCE_FILTER_KEY];
             
+            
+            
+            
+            //如果是政府來源的話
             if ([rsc isEqualToString:GOVERNMENT_SRC_KEY]) {
                 //體型改為中文
                 if ([animal[ANIMAL_BODYTYPE_FILTER_KEY] isEqualToString:@"MINI"]) {
@@ -318,6 +319,15 @@
                 }else if ([animal[ANIMAL_BODYTYPE_FILTER_KEY] isEqualToString:@"BIG"]){
                     [animal setValue:@"大型" forKey:ANIMAL_BODYTYPE_FILTER_KEY];
                 }
+                
+                
+                //拿到的時間是字串  轉成nsdate
+                NSDateFormatter *dateFormate = [[NSDateFormatter alloc]init];
+                [dateFormate setDateFormat:@"YYYY年M月dd日 HH:mm:ss"];
+                NSDate *formateDate =  [dateFormate dateFromString:[animal valueForKey:@"animal_createtime"]];
+                [animal setValue:formateDate forKey:ANIMAL_DATA_UPDATE_TIME_FILTER_KEY];
+                
+                
             }
             [modifyArray addObject:animal];
         }
@@ -376,6 +386,8 @@
         myAnimal.animal_favorite = [[plistArray objectAtIndex:i]valueForKey:ANIMAL_FAVORITE_CUSTOMER_FILTER_KEY];
         myAnimal.animal_rsc = [[plistArray objectAtIndex:i]valueForKey:ANIMAL_RESOURCE_FILTER_KEY];
         myAnimal.animal_user_post_icon = [[plistArray objectAtIndex:i]valueForKey:ANIMAL_USER_POST_ICON_FILTER_KEY];
+        myAnimal.animal_update = [[plistArray objectAtIndex:i]valueForKey:ANIMAL_DATA_UPDATE_TIME_FILTER_KEY];
+        
         
         [animalsArray addObject:myAnimal];
         //myAnimal.resourceStr = [[plistArray objectAtIndex:i]valueForKey:@"animal_age"];
@@ -396,7 +408,14 @@
 //        }
 //    }
     
+    
+    //搜尋完
     filterDoneArray = [animalsArray filteredArrayUsingPredicate:predicate];
+    
+    
+    //依照時間排序（download至plist時  已變成dictinary  順序需排列）
+    NSSortDescriptor *dateSort = [[NSSortDescriptor alloc]initWithKey:ANIMAL_DATA_UPDATE_TIME_FILTER_KEY ascending:NO];
+    [filterDoneArray sortedArrayUsingDescriptors:[NSArray arrayWithObject:dateSort]];
     
     return (NSMutableArray*)filterDoneArray;
     

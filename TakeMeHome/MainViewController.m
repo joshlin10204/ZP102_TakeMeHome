@@ -195,6 +195,12 @@
     [self.navigationController pushViewController:targetViewController animated:true];
     
 }
+- (IBAction)lifeButtonPressed:(id)sender {
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"life" bundle:nil];
+    id targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"mapzone"];
+    [self menuBtnPress:nil];
+    [self.navigationController pushViewController:targetViewController animated:true];
+}
 //前往個人資料
 - (IBAction)MemberSettingButtonPressed:(id)sender {
     PFUser *currentUser = [PFUser currentUser];
@@ -210,17 +216,21 @@
     {
         [self menuBtnPress:nil];
         [self.view addSubview:self.addmaskView];
-        [[HHAlertView shared]
-         showAlertWithStyle:HHAlertStyleWraning
-         inView:self.view
-         Title:@"提醒"
-         detail:@"訪客無法使用"
-         cancelButton:nil
-         Okbutton:@"關閉"
-         block:^(HHAlertButton buttonindex) {
-             [maskView removeFromSuperview];
-             
-         }
+        [[HHAlertView shared]showAlertWithStyle:HHAlertStyleWraning
+                                         inView:self.view
+                                          Title:@"提醒"
+                                         detail:@"訪客無法使用"
+                                   cancelButton:@"註冊" // index = 1
+                                       Okbutton:@"確定" //index = 0
+                                          block:^(HHAlertButton buttonindex) {
+                                              NSLog(@"%d",buttonindex);
+                                              [maskView removeFromSuperview];
+                                              if (buttonindex == 1) { //preseed regitst
+                                                  UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                                  id targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"AddAccountView"];
+                                                  [self.navigationController pushViewController:targetViewController animated:true];
+                                              }
+                                          }
          ];
 
     

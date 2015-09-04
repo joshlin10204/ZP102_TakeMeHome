@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface PushViewController : UIViewController
+@interface PushViewController : BaseViewController
 
 @end

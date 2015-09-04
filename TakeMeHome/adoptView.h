@@ -21,6 +21,7 @@
 #define ANIMAL_HOW_TO_CONTACT_FILTER_KEY @"animal_how_to_contact"
 #define ANIMAL_USER_POST_ICON_FILTER_KEY @"animal_user_post_icon"
 #define ANIMAL_RESOURCE_FILTER_KEY @"animal_rsc"
+#define ANIMAL_DATA_UPDATE_TIME_FILTER_KEY @"animal_update"
 
 
 #define GOVERNMENT_SRC_KEY @"governmentSrcKey"

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface settingIndexVC : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface settingIndexVC : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 
 {
     NSMutableArray *list1;

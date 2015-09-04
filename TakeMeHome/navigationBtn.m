@@ -11,12 +11,22 @@
 #import "indexAdoptVC.h"
 #import "LostMainController.h"
 #import "MainViewController.h"
+#import "mapzone.h"
+#import "settingIndexVC.h"
+#import "AddAccountViewController.h"
+#import "MemberSetView.h"
+#import <Parse/Parse.h>
+#import "HHAlertView.h"
+
 
 #define degreesToRadians(x) ((x) * (M_PI / 180.0))
 
 @implementation navigationBtn
+{
 
-
+    UIView   *maskView;
+    
+}
 
 +(instancetype)shareInstance{
     static dispatch_once_t once;
@@ -147,14 +157,51 @@
             
             
         case 2: //附近生活
-            NSLog(@"%d",index);
+        {
+            [self navigationPushOrPop:[MapzoneViewController class] storyBoardName:@"life" identifier:@"mapzone"];
             break;
+        }
         case 3: //個人資料（訪客點選則出現註冊畫面）
-            NSLog(@"%d",index);
-            break;
+        {
+        
+            PFUser *currentUser = [PFUser currentUser];
+            if (currentUser)
+            {
+                // do stuff with the user
+                [self navigationPushOrPop:[MemberSetView class] storyBoardName:@"MemberSetting" identifier:@"MemberSet"];
+            }else{
+                UIViewController *view = _parentVC;
+                [view.view addSubview:self.addmaskView];
+                [[HHAlertView shared]showAlertWithStyle:HHAlertStyleWraning
+                                                 inView:view.view
+                                                  Title:@"提醒"
+                                                 detail:@"訪客無法使用"
+                                           cancelButton:@"註冊" // index = 1
+                                               Okbutton:@"確定" //index = 0
+                                                  block:^(HHAlertButton buttonindex) {
+                                                      NSLog(@"%d",buttonindex);
+                                                      [maskView removeFromSuperview];
+                                                      if (buttonindex == 1) { //preseed regitst
+                                                         [self navigationPushOrPop:[AddAccountViewController class] storyBoardName:@"Main" identifier:@"AddAccountView"];
+                                                      }
+                                                  }
+                 ];
+                
+                
+            }
+
+            
+            
+        
+         break;
+        }
         case 4: //設定
-            NSLog(@"%d",index);
+        {
+            
+            [self navigationPushOrPop:[settingIndexVC class] storyBoardName:@"Miracle" identifier:@"miracleIndex"];
             break;
+            
+        }
         case 5: //回首頁
             [self navigationPushOrPop:[MainViewController class] storyBoardName:@"Main" identifier:@"MainView"];
             break;
@@ -256,6 +303,17 @@
     NSLog(@"dealloc");
 }
 
+- (UIView *)addmaskView
+{
+    UIViewController *view = _parentVC;
+    if (!maskView) {
+        maskView = [[UIView alloc] initWithFrame:view.view.frame];
+        [maskView setBackgroundColor:[UIColor blackColor]];
+        [maskView setAlpha:0.2];
+        NSLog(@"New maskView");
+    }
+    return maskView;
+}
 
 @end
 

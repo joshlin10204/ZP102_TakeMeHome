@@ -795,7 +795,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7m8-wL-Lzo" id="5yv-o3-pEH">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvF-Fz-xo4">
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvF-Fz-xo4" customClass="SSBouncyButton">
                                                     <rect key="frame" x="8" y="8" width="584" height="28"/>
                                                     <state key="normal" title="編輯完成">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -821,7 +821,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WQl-yM-Ph5" id="sXp-GG-zkA">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rrD-CY-kef">
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rrD-CY-kef" customClass="SSBouncyButton">
                                                     <rect key="frame" x="8" y="8" width="584" height="28"/>
                                                     <state key="normal" title="取消返回">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -852,6 +852,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="800"/>
                     <connections>
+                        <outlet property="cancelBtn" destination="rrD-CY-kef" id="3yT-4t-uK4"/>
                         <outlet property="contactEmail" destination="jXp-Ve-hPs" id="p40-Zs-1mz"/>
                         <outlet property="contactNameText" destination="VdF-x8-aUf" id="oOp-46-bEC"/>
                         <outlet property="contactPhoneNumber" destination="isI-Gn-Ae7" id="Sr0-z9-Psw"/>
@@ -862,6 +863,7 @@
                         <outlet property="lostPetNameText" destination="dcg-Fp-o7U" id="mL9-CO-yAm"/>
                         <outlet property="lostPetSexText" destination="WlL-cu-pKl" id="pcZ-fZ-gRa"/>
                         <outlet property="lostPetVarietyText" destination="fvk-O5-C53" id="lvj-iv-bia"/>
+                        <outlet property="okBtn" destination="vvF-Fz-xo4" id="0qa-JA-Uw0"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1gg-Vp-TI0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1078,11 +1080,11 @@
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="constraints">
-                                                            <exclude reference="lsP-QG-Cuc"/>
-                                                            <exclude reference="X3N-kE-Umi"/>
                                                             <exclude reference="FWz-FC-2tQ"/>
-                                                            <exclude reference="Wfv-YG-ZNm"/>
                                                             <exclude reference="SzF-bZ-b95"/>
+                                                            <exclude reference="Wfv-YG-ZNm"/>
+                                                            <exclude reference="X3N-kE-Umi"/>
+                                                            <exclude reference="lsP-QG-Cuc"/>
                                                         </mask>
                                                     </variation>
                                                 </view>
@@ -1134,10 +1136,10 @@
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="constraints">
-                                                            <exclude reference="iwH-tF-3Jv"/>
-                                                            <exclude reference="IXf-iS-VAq"/>
                                                             <exclude reference="Ant-cf-f8s"/>
+                                                            <exclude reference="IXf-iS-VAq"/>
                                                             <exclude reference="cuy-Ab-9Zk"/>
+                                                            <exclude reference="iwH-tF-3Jv"/>
                                                             <exclude reference="uXG-pw-0V9"/>
                                                         </mask>
                                                     </variation>

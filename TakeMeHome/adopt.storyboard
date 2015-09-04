@@ -615,7 +615,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Srx-kQ-Atg">
-                                <rect key="frame" x="0.0" y="0.0" width="500" height="64"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="rEQ-Fd-ImG"/>
@@ -628,8 +628,8 @@
                                     <segue destination="ba2-jU-ixG" kind="presentation" identifier="searchSegue" modalPresentationStyle="overFullScreen" animates="NO" id="Cur-hc-SMk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="12g-ew-Z1N">
-                                <rect key="frame" x="500" y="0.0" width="108" height="64"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="12g-ew-Z1N">
+                                <rect key="frame" x="600" y="0.0" width="8" height="64"/>
                                 <color key="backgroundColor" red="0.46440366039999997" green="1" blue="0.4463161839" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="DEV-Wu-nsb"/>
@@ -702,7 +702,7 @@
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W9N-BP-813" customClass="FUIButton">
+                                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W9N-BP-813" customClass="FUIButton">
                                                             <rect key="frame" x="424" y="139" width="76" height="76"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="W9N-BP-813" secondAttribute="height" multiplier="1:1" id="9HW-pe-Ljl"/>
@@ -777,7 +777,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.97254908080000002" green="0.67058825489999996" blue="0.68235296010000002" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstItem="Srx-kQ-Atg" firstAttribute="width" secondItem="XjN-kC-Ph8" secondAttribute="width" multiplier="5/6" id="0P4-9h-E9V"/>
+                            <constraint firstItem="Srx-kQ-Atg" firstAttribute="width" secondItem="XjN-kC-Ph8" secondAttribute="width" id="0P4-9h-E9V"/>
                             <constraint firstItem="12g-ew-Z1N" firstAttribute="top" secondItem="XjN-kC-Ph8" secondAttribute="topMargin" id="5eg-au-WdS"/>
                             <constraint firstItem="pjz-Wa-lGQ" firstAttribute="leading" secondItem="XjN-kC-Ph8" secondAttribute="leading" id="DeY-Eh-J7a"/>
                             <constraint firstItem="Srx-kQ-Atg" firstAttribute="top" secondItem="XjN-kC-Ph8" secondAttribute="topMargin" id="Fdp-P0-3yT"/>
@@ -855,7 +855,7 @@
                                     <action selector="exitBtnPressed:" destination="m6J-ZF-bzA" eventType="touchUpInside" id="KDS-x4-C0T"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tk-cF-QOj" customClass="FUIButton">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tk-cF-QOj" customClass="FUIButton">
                                 <rect key="frame" x="509" y="20" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9tk-cF-QOj" secondAttribute="height" multiplier="1:1" id="otD-3k-mDT"/>

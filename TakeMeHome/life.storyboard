@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Mapzone View Controller-->
+        <scene sceneID="j7n-CU-abU">
+            <objects>
+                <viewController storyboardIdentifier="mapzone" id="dJx-Sv-MSc" customClass="MapzoneViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UPJ-l3-6jj"/>
+                        <viewControllerLayoutGuide type="bottom" id="s7A-UU-RdB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="82W-qf-Xcr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5uQ-RT-gR7">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T9l-cj-GzM">
+                                <rect key="frame" x="16" y="160" width="40" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.88734519720000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="T9l-cj-GzM" secondAttribute="height" multiplier="1:1" id="h5u-5T-WhH"/>
+                                </constraints>
+                                <state key="normal" image="transport122.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="Parking2:" destination="dJx-Sv-MSc" eventType="touchUpInside" id="maK-0l-6xH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fur-Kr-Fby">
+                                <rect key="frame" x="16" y="208" width="40" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.88734519720000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Fur-Kr-Fby" secondAttribute="height" multiplier="1:1" id="OwP-oZ-qqe"/>
+                                </constraints>
+                                <state key="normal" image="tree13.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="Park3:" destination="dJx-Sv-MSc" eventType="touchUpInside" id="xJG-Et-191"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMv-6o-tzf">
+                                <rect key="frame" x="16" y="256" width="40" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.88734519720000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="HMv-6o-tzf" secondAttribute="height" multiplier="1:1" id="aNY-AY-A1c"/>
+                                </constraints>
+                                <state key="normal" image="veterinarian.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="Hospital4:" destination="dJx-Sv-MSc" eventType="touchUpInside" id="HuZ-c8-Gdw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvH-5o-pHY">
+                                <rect key="frame" x="16" y="304" width="40" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.88734519720000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="uvH-5o-pHY" secondAttribute="height" multiplier="1:1" id="omC-pI-JkS"/>
+                                </constraints>
+                                <state key="normal" image="pets8.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="Beautysalon5:" destination="dJx-Sv-MSc" eventType="touchUpInside" id="Ldb-NN-hnI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9m-ze-NFz">
+                                <rect key="frame" x="16" y="352" width="40" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.88734519720000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="F9m-ze-NFz" secondAttribute="height" multiplier="1:1" id="nK2-vn-H6Z"/>
+                                </constraints>
+                                <state key="normal" image="man423.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="Petlodging6:" destination="dJx-Sv-MSc" eventType="touchUpInside" id="vQt-pj-gWd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vke-og-JOs">
+                                <rect key="frame" x="16" y="399" width="40" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.88734519720000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Vke-og-JOs" secondAttribute="height" multiplier="1:1" id="pQT-55-HOP"/>
+                                </constraints>
+                                <state key="normal" image="dog25.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="Store7:" destination="dJx-Sv-MSc" eventType="touchUpInside" id="rCo-ee-DY0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mn6-NH-K5Z">
+                                <rect key="frame" x="16" y="447" width="40" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.88734519720000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="0.90000000000000024" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Mn6-NH-K5Z" secondAttribute="height" multiplier="1:1" id="1Uz-7k-Hwd"/>
+                                </constraints>
+                                <state key="normal" image="cutlery22.png">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="Restraunt8:" destination="dJx-Sv-MSc" eventType="touchUpInside" id="k9f-Mo-2HT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Goe-aO-FKx">
+                                <rect key="frame" x="16" y="112" width="40" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.88734519720000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="1nf-wy-etx"/>
+                                    <constraint firstAttribute="width" secondItem="Goe-aO-FKx" secondAttribute="height" multiplier="1:1" id="q8h-yu-HK3"/>
+                                </constraints>
+                                <state key="normal" image="subway1.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="Trainstation1:" destination="dJx-Sv-MSc" eventType="touchUpInside" id="svF-5c-rqI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.78922161440000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="F9m-ze-NFz" firstAttribute="leading" secondItem="Vke-og-JOs" secondAttribute="leading" id="2yQ-0O-m99"/>
+                            <constraint firstItem="T9l-cj-GzM" firstAttribute="leading" secondItem="Fur-Kr-Fby" secondAttribute="leading" id="3Pe-7R-ZKH"/>
+                            <constraint firstItem="T9l-cj-GzM" firstAttribute="leading" secondItem="Goe-aO-FKx" secondAttribute="leading" id="4ry-V0-VBh"/>
+                            <constraint firstItem="uvH-5o-pHY" firstAttribute="leading" secondItem="F9m-ze-NFz" secondAttribute="leading" id="5PI-gP-72d"/>
+                            <constraint firstItem="5uQ-RT-gR7" firstAttribute="bottom" secondItem="s7A-UU-RdB" secondAttribute="top" id="IiL-ok-eVw"/>
+                            <constraint firstItem="Vke-og-JOs" firstAttribute="top" secondItem="F9m-ze-NFz" secondAttribute="bottom" constant="7" id="JML-P3-txa"/>
+                            <constraint firstItem="uvH-5o-pHY" firstAttribute="top" secondItem="HMv-6o-tzf" secondAttribute="bottom" constant="8" symbolic="YES" id="JiB-rE-ne7"/>
+                            <constraint firstItem="Goe-aO-FKx" firstAttribute="trailing" secondItem="T9l-cj-GzM" secondAttribute="trailing" id="L8S-On-9VS"/>
+                            <constraint firstItem="T9l-cj-GzM" firstAttribute="top" secondItem="Goe-aO-FKx" secondAttribute="bottom" constant="8" symbolic="YES" id="NdS-Dg-u3w"/>
+                            <constraint firstItem="5uQ-RT-gR7" firstAttribute="top" secondItem="82W-qf-Xcr" secondAttribute="top" id="Ohp-po-SVc"/>
+                            <constraint firstItem="HMv-6o-tzf" firstAttribute="top" secondItem="Fur-Kr-Fby" secondAttribute="bottom" constant="8" symbolic="YES" id="R1p-eF-HmD"/>
+                            <constraint firstItem="F9m-ze-NFz" firstAttribute="trailing" secondItem="uvH-5o-pHY" secondAttribute="trailing" id="W3o-RW-RHj"/>
+                            <constraint firstItem="s7A-UU-RdB" firstAttribute="top" secondItem="Mn6-NH-K5Z" secondAttribute="bottom" constant="113" id="XMi-f0-JPS"/>
+                            <constraint firstItem="Fur-Kr-Fby" firstAttribute="top" secondItem="T9l-cj-GzM" secondAttribute="bottom" constant="8" symbolic="YES" id="YSu-dU-pEq"/>
+                            <constraint firstItem="Goe-aO-FKx" firstAttribute="leading" secondItem="82W-qf-Xcr" secondAttribute="leadingMargin" id="bf7-qQ-x26"/>
+                            <constraint firstAttribute="trailing" secondItem="5uQ-RT-gR7" secondAttribute="trailing" id="dZ9-XC-PGu"/>
+                            <constraint firstItem="Fur-Kr-Fby" firstAttribute="trailing" secondItem="HMv-6o-tzf" secondAttribute="trailing" id="dnb-hy-fx9"/>
+                            <constraint firstItem="Goe-aO-FKx" firstAttribute="top" secondItem="UPJ-l3-6jj" secondAttribute="bottom" constant="92" id="f4I-Ms-bTS"/>
+                            <constraint firstItem="F9m-ze-NFz" firstAttribute="trailing" secondItem="Vke-og-JOs" secondAttribute="trailing" id="haV-0V-Syb"/>
+                            <constraint firstItem="Mn6-NH-K5Z" firstAttribute="trailing" secondItem="Vke-og-JOs" secondAttribute="trailing" id="kLG-X7-ZA2"/>
+                            <constraint firstItem="Mn6-NH-K5Z" firstAttribute="top" secondItem="Vke-og-JOs" secondAttribute="bottom" constant="8" symbolic="YES" id="luV-JX-AWL"/>
+                            <constraint firstItem="HMv-6o-tzf" firstAttribute="leading" secondItem="uvH-5o-pHY" secondAttribute="leading" id="p9n-x6-khR"/>
+                            <constraint firstItem="HMv-6o-tzf" firstAttribute="trailing" secondItem="uvH-5o-pHY" secondAttribute="trailing" id="sMy-Yc-T5d"/>
+                            <constraint firstItem="5uQ-RT-gR7" firstAttribute="leading" secondItem="82W-qf-Xcr" secondAttribute="leading" id="skx-ij-9oC"/>
+                            <constraint firstItem="F9m-ze-NFz" firstAttribute="top" secondItem="uvH-5o-pHY" secondAttribute="bottom" constant="8" symbolic="YES" id="svz-kJ-VGe"/>
+                            <constraint firstItem="Fur-Kr-Fby" firstAttribute="trailing" secondItem="T9l-cj-GzM" secondAttribute="trailing" id="v0Q-yy-aSP"/>
+                            <constraint firstItem="Fur-Kr-Fby" firstAttribute="leading" secondItem="HMv-6o-tzf" secondAttribute="leading" id="v83-ap-wDg"/>
+                            <constraint firstItem="Mn6-NH-K5Z" firstAttribute="leading" secondItem="Vke-og-JOs" secondAttribute="leading" id="xrD-kn-Syp"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <connections>
+                        <outlet property="theMapView" destination="5uQ-RT-gR7" id="QaM-nv-JYd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ba6-Er-wsQ" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-407" y="513"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cutlery22.png" width="128" height="128"/>
+        <image name="dog25.png" width="128" height="128"/>
+        <image name="man423.png" width="128" height="128"/>
+        <image name="pets8.png" width="128" height="128"/>
+        <image name="subway1.png" width="128" height="128"/>
+        <image name="transport122.png" width="128" height="128"/>
+        <image name="tree13.png" width="128" height="128"/>
+        <image name="veterinarian.png" width="128" height="128"/>
+    </resources>
+</document>
