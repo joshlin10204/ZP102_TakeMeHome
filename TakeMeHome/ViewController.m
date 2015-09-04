@@ -17,7 +17,7 @@
 
 
 
-@interface ViewController ()<MBProgressHUDDelegate>
+@interface ViewController ()<MBProgressHUDDelegate,UITextFieldDelegate>
 {
     UIView   *maskView;
     MBProgressHUD *HUD;
@@ -33,7 +33,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-
+    _accoundText.delegate=self;
+    _passwordText.delegate=self;
 
     
 }
@@ -47,8 +48,7 @@
     }
 
 }
-- (IBAction)Trainstation1:(id)sender {
-}
+
 
 //按下訪客按鈕
 - (IBAction)visitLogInPressed:(id)sender {
@@ -164,7 +164,13 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     }
     return maskView;
 }
-
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    //當有如按下Return key 的時候
+    [textField resignFirstResponder];
+    //使用著第一個點取的元件 稱之為FirstResponder
+    //resignFirstResponder, 當使用者點選的元件是可以輸入文字的時候
+    return false;
+}
 
 
 
