@@ -435,6 +435,11 @@
                 }
          
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    if (locationData.count==0) {
+                        UIImageView *tableBg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"NoHaveLostMapBg.png"]];
+                        [self.lostTableView setBackgroundView:tableBg];
+                        
+                    }
                     [_lostTableView reloadData];
                     [HUD hide:YES];
                     NSLog(@"locationData:%@",locationData);
