@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface BroadcastViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface BroadcastViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 
 {
     NSMutableArray *list1;

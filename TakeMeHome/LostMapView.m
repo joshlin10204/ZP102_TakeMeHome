@@ -61,7 +61,8 @@
     // Do any additional setup after loading the view.
     
     choiceSeachRange=0;
-    
+    UIImageView *tableBg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LostMapBg.png"]];
+    [self.lostTableView setBackgroundView:tableBg];
     
     //Loading圖示
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -210,6 +211,7 @@
     
     LostListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"lostCell" forIndexPath:indexPath];
     cell.tag = indexPath.row;
+    cell.backgroundColor = [UIColor clearColor];
 
     //顯示寵物名字
     cell.locationLabel.text=locationData[indexPath.row][@"LostPetsName"];
@@ -435,6 +437,11 @@
                 }
          
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    if (locationData.count==0) {
+                        UIImageView *tableBg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"NoHaveLostMapBg.png"]];
+                        [self.lostTableView setBackgroundView:tableBg];
+                        
+                    }
                     [_lostTableView reloadData];
                     [HUD hide:YES];
                     NSLog(@"locationData:%@",locationData);
