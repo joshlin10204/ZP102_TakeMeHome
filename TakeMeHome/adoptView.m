@@ -41,7 +41,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    UIImageView *tableBg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"AdoptBg.png"]];
+    [self.petTableView setBackgroundView:tableBg];
+
     //tableView settings
     [self tableControlSetting];
     
@@ -120,6 +122,14 @@
     filtterArray = [self getFilterDoneArray];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     //table view reload
+    
+    //
+    if (filtterArray.count==0) {
+        UIImageView *tableBg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"NoHaveAdoptBackground.png"]];
+        [self.petTableView setBackgroundView:tableBg];
+        
+    }
+    
     [_petTableView reloadData];
 }
 

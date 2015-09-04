@@ -340,7 +340,7 @@
         if (succeeded)
         {
             // The object has been saved
-//            [lostPostData save];
+            [lostPostData save];
             
             //與使用者建立關聯
             PFRelation *relation = [currentUser relationForKey:@"lostPost"];
