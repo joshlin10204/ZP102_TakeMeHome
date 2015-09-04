@@ -11,9 +11,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "mkav.h"
 
-//   subway_station
-
-
+//   AIzaSyC5LqQtPFU2LO8A9NYEvflVpYYvP4xduAc
 
 
 @interface MapzoneViewController ()<CLLocationManagerDelegate,MKMapViewDelegate>
@@ -41,7 +39,7 @@
     
     [self.theMapView removeAnnotations:AnnotationArray];
     
-    NSString * urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%.6f,%.6f&radius=800000&types=train_station&key=AIzaSyBkqRBy38Oogx5EzaUcjhPaO1b74ItIrt0",self.lat,self.lon];
+    NSString * urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%.6f,%.6f&radius=800000&types=train_station&key=AIzaSyC5LqQtPFU2LO8A9NYEvflVpYYvP4xduAc",self.lat,self.lon];
     
     NSURL * url = [NSURL URLWithString:urlString];
     
@@ -92,7 +90,7 @@
     
     [self.theMapView removeAnnotations:AnnotationArray];
     
-    NSString * urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%.6f,%.6f&radius=800000&types=parking&key=AIzaSyBkqRBy38Oogx5EzaUcjhPaO1b74ItIrt0",self.lat,self.lon];
+    NSString * urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%.6f,%.6f&radius=800000&types=parking&key=AIzaSyC5LqQtPFU2LO8A9NYEvflVpYYvP4xduAc",self.lat,self.lon];
     
     NSURL * url = [NSURL URLWithString:urlString];
     
@@ -139,7 +137,7 @@
 
     [self.theMapView removeAnnotations:AnnotationArray];
     
-    NSString * urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%.6f,%.6f&radius=800000&types=park&key=AIzaSyBkqRBy38Oogx5EzaUcjhPaO1b74ItIrt0",self.lat,self.lon];
+    NSString * urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%.6f,%.6f&radius=800000&types=park&key=AIzaSyC5LqQtPFU2LO8A9NYEvflVpYYvP4xduAc",self.lat,self.lon];
     
     NSURL * url = [NSURL URLWithString:urlString];
     
@@ -189,7 +187,7 @@
     NSString * keyword = @"動物";
     NSString * keywordEscape = [keyword stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    NSString * urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%.6f,%.6f&radius=800000&types=veterinary_care&name=%@&key=AIzaSyBkqRBy38Oogx5EzaUcjhPaO1b74ItIrt0",self.lat,self.lon,keywordEscape];
+    NSString * urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%.6f,%.6f&radius=800000&types=veterinary_care&name=%@&key=AIzaSyC5LqQtPFU2LO8A9NYEvflVpYYvP4xduAc",self.lat,self.lon,keywordEscape];
     
     NSURL * url = [NSURL URLWithString:urlString];
     
@@ -238,7 +236,7 @@
     NSString * keyword = @"寵物";
     NSString * keywordEscape = [keyword stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    NSString * urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%.6f,%.6f&radius=800000&types=beauty_salon&name=%@&key=AIzaSyBkqRBy38Oogx5EzaUcjhPaO1b74ItIrt0",self.lat,self.lon,keywordEscape];
+    NSString * urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%.6f,%.6f&radius=800000&types=beauty_salon&name=%@&key=AIzaSyC5LqQtPFU2LO8A9NYEvflVpYYvP4xduAc",self.lat,self.lon,keywordEscape];
     
     NSURL * url = [NSURL URLWithString:urlString];
     
@@ -288,7 +286,7 @@
     NSString * keyword = @"物";
     NSString * keywordEscape = [keyword stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    NSString * urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%.6f,%.6f&radius=800000&name=%@&key=AIzaSyBkqRBy38Oogx5EzaUcjhPaO1b74ItIrt0",self.lat,self.lon,keywordEscape];
+    NSString * urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%.6f,%.6f&radius=800000&name=%@&key=AIzaSyC5LqQtPFU2LO8A9NYEvflVpYYvP4xduAc",self.lat,self.lon,keywordEscape];
     
     NSURL * url = [NSURL URLWithString:urlString];
     
@@ -337,7 +335,7 @@
     NSString * keyword = @"寵物";
     NSString * keywordEscape = [keyword stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    NSString * urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%.6f,%.6f&radius=8000000&types=pet_store&name=%@&key=AIzaSyBkqRBy38Oogx5EzaUcjhPaO1b74ItIrt0",self.lat,self.lon,keywordEscape];
+    NSString * urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%.6f,%.6f&radius=8000000&types=pet_store&name=%@&key=AIzaSyC5LqQtPFU2LO8A9NYEvflVpYYvP4xduAc",self.lat,self.lon,keywordEscape];
     
     NSURL * url = [NSURL URLWithString:urlString];
     
@@ -386,7 +384,7 @@
     NSString * keyword = @"寵物";
     NSString * keywordEscape = [keyword stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    NSString * urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%.6f,%.6f&radius=800000&types=restaurant&name=%@&key=AIzaSyBkqRBy38Oogx5EzaUcjhPaO1b74ItIrt0",self.lat,self.lon,keywordEscape];
+    NSString * urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%.6f,%.6f&radius=800000&types=restaurant&name=%@&key=AIzaSyC5LqQtPFU2LO8A9NYEvflVpYYvP4xduAc",self.lat,self.lon,keywordEscape];
     
     NSURL * url = [NSURL URLWithString:urlString];
     
