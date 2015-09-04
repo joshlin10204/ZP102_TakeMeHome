@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "MailBox.png"
+      "filename" : "LostMapBg.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "MailBox@2x.png"
+      "filename" : "LostMapBg@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "MailBox@3x.png"
+      "filename" : "LostMapBg@3x.png"
     }
   ],
   "info" : {

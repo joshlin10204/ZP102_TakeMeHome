@@ -61,7 +61,8 @@
     // Do any additional setup after loading the view.
     
     choiceSeachRange=0;
-    
+    UIImageView *tableBg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LostMapBg.png"]];
+    [self.lostTableView setBackgroundView:tableBg];
     
     //Loading圖示
     HUD = [[MBProgressHUD alloc] initWithView:self.view];

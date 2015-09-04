@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "NoHaveLostMapBg.png"
+      "filename" : "AdoptBg.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "NoHaveLostMapBg@2x.png"
+      "filename" : "AdoptBg@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "NoHaveLostMapBg@3x.png"
+      "filename" : "AdoptBg@3x.png"
     }
   ],
   "info" : {

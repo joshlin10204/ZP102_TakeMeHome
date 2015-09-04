@@ -20,6 +20,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackGroud" translatesAutoresizingMaskIntoConstraints="NO" id="TXj-8u-nib">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qwK-Rc-oJ5">
                                 <rect key="frame" x="0.0" y="200" width="600" height="400"/>
                                 <connections>
@@ -54,14 +57,18 @@
                         <color key="backgroundColor" red="1" green="0.80000001192092896" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="qwK-Rc-oJ5" firstAttribute="top" secondItem="iCV-7c-acx" secondAttribute="bottom" constant="8" id="BqG-fB-wnx"/>
+                            <constraint firstAttribute="height" secondItem="TXj-8u-nib" secondAttribute="height" id="K10-rf-jWV"/>
                             <constraint firstItem="iCV-7c-acx" firstAttribute="leading" secondItem="ueh-7O-lRm" secondAttribute="leadingMargin" id="MRC-PJ-oD4"/>
                             <constraint firstItem="EWM-1K-Lpj" firstAttribute="top" secondItem="ueh-7O-lRm" secondAttribute="topMargin" id="NVb-5r-qPP"/>
+                            <constraint firstAttribute="centerX" secondItem="TXj-8u-nib" secondAttribute="centerX" id="O8S-mD-jND"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qwK-Rc-oJ5" secondAttribute="trailing" constant="-16" id="Qv3-OK-ORo"/>
                             <constraint firstAttribute="centerX" secondItem="EWM-1K-Lpj" secondAttribute="centerX" id="X72-jf-zyM"/>
                             <constraint firstAttribute="width" secondItem="EWM-1K-Lpj" secondAttribute="width" id="YHQ-AR-EtC"/>
                             <constraint firstItem="EWM-1K-Lpj" firstAttribute="top" secondItem="h82-tc-8hQ" secondAttribute="bottom" id="ZQD-SU-iih"/>
                             <constraint firstAttribute="height" secondItem="iCV-7c-acx" secondAttribute="height" multiplier="8/1" id="ere-fg-Rgy"/>
                             <constraint firstAttribute="height" secondItem="EWM-1K-Lpj" secondAttribute="height" multiplier="15/1" id="hCT-7H-fcr"/>
+                            <constraint firstAttribute="width" secondItem="TXj-8u-nib" secondAttribute="width" id="kMY-4J-BlV"/>
+                            <constraint firstAttribute="centerY" secondItem="TXj-8u-nib" secondAttribute="centerY" id="m3d-OH-ixS"/>
                             <constraint firstItem="qwK-Rc-oJ5" firstAttribute="height" secondItem="ueh-7O-lRm" secondAttribute="height" multiplier="2/3" id="oix-2Q-HUW"/>
                             <constraint firstItem="qwK-Rc-oJ5" firstAttribute="leading" secondItem="ueh-7O-lRm" secondAttribute="leadingMargin" constant="-16" id="qcp-uc-X6Y"/>
                             <constraint firstItem="ONt-iK-BdQ" firstAttribute="top" secondItem="qwK-Rc-oJ5" secondAttribute="bottom" id="slT-8A-Zpg"/>
@@ -1676,6 +1683,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BackGroud" width="375" height="667"/>
         <image name="addPhotoBtn" width="200" height="200"/>
     </resources>
 </document>
