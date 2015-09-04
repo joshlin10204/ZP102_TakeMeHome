@@ -51,7 +51,6 @@
     
     //每次進來都重新抓資料
     [self downloadJsonFile:JSON_GET_HTTP_WEBSITE];
-    
 
 
 }
@@ -161,6 +160,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     adoptViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"adoptViewCell" forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor clearColor];
     NSString *imgStr;
     NSString *imgIconStr;
     NSArray *theCellArray = [filtterArray objectAtIndex:indexPath.row];

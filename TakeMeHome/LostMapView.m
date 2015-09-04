@@ -211,6 +211,7 @@
     
     LostListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"lostCell" forIndexPath:indexPath];
     cell.tag = indexPath.row;
+    cell.backgroundColor = [UIColor clearColor];
 
     //顯示寵物名字
     cell.locationLabel.text=locationData[indexPath.row][@"LostPetsName"];
