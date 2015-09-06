@@ -55,9 +55,69 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection id="fl8-M7-laK">
+                            <tableViewSection headerTitle="小幫手" id="bWX-mM-BHT">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="6DN-v4-cGq">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="jef-03-Lf3">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jef-03-Lf3" id="GOa-81-FgH">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="汪汪老師" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ebf-WW-hpF">
+                                                    <rect key="frame" x="11" y="11" width="68" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" tag="1000" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7SX-yC-JHI">
+                                                    <rect key="frame" x="543" y="8" width="51" height="27"/>
+                                                    <connections>
+                                                        <action selector="naviBtnSwitch:" destination="cgU-zG-6SR" eventType="valueChanged" id="UHU-ry-tTp"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7SX-yC-JHI" firstAttribute="top" secondItem="GOa-81-FgH" secondAttribute="topMargin" id="1Wn-4c-Qkb"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Ebf-WW-hpF" secondAttribute="bottom" constant="3" id="Prq-Wa-71K"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="7SX-yC-JHI" secondAttribute="bottom" id="d7H-ao-jml"/>
+                                                <constraint firstItem="Ebf-WW-hpF" firstAttribute="leading" secondItem="GOa-81-FgH" secondAttribute="leadingMargin" constant="3" id="fZX-FX-6ie"/>
+                                                <constraint firstItem="Ebf-WW-hpF" firstAttribute="top" secondItem="GOa-81-FgH" secondAttribute="topMargin" constant="3" id="osV-BD-jVK"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="7SX-yC-JHI" secondAttribute="trailing" id="rr0-6T-o3X"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="bfN-ib-Ens">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bfN-ib-Ens" id="B52-gV-3nE">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="貓頭鷹老師" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9A-Tz-lB1">
+                                                    <rect key="frame" x="11" y="11" width="85" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" tag="1001" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dGS-N8-WJY">
+                                                    <rect key="frame" x="543" y="8" width="51" height="27"/>
+                                                    <connections>
+                                                        <action selector="naviBtnSwitch:" destination="cgU-zG-6SR" eventType="valueChanged" id="qow-0X-tBs"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="dGS-N8-WJY" secondAttribute="bottom" id="4ni-P4-BcP"/>
+                                                <constraint firstItem="dGS-N8-WJY" firstAttribute="top" secondItem="B52-gV-3nE" secondAttribute="topMargin" id="9lo-VE-74w"/>
+                                                <constraint firstItem="j9A-Tz-lB1" firstAttribute="leading" secondItem="B52-gV-3nE" secondAttribute="leadingMargin" constant="3" id="Ae5-zo-8hN"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="dGS-N8-WJY" secondAttribute="trailing" id="HQv-GN-Lf8"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="j9A-Tz-lB1" secondAttribute="bottom" constant="3" id="bzs-Xk-AkS"/>
+                                                <constraint firstItem="j9A-Tz-lB1" firstAttribute="top" secondItem="B52-gV-3nE" secondAttribute="topMargin" constant="3" id="pAs-b2-0Jx"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="隱私權" id="fl8-M7-laK">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="6DN-v4-cGq">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6DN-v4-cGq" id="0PX-cv-F6L">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -87,6 +147,10 @@
                             <outlet property="delegate" destination="cgU-zG-6SR" id="lHr-vy-ocw"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="naviBtnDog" destination="7SX-yC-JHI" id="ojr-zp-abm"/>
+                        <outlet property="naviBtnOwl" destination="dGS-N8-WJY" id="tKK-Pq-tRU"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ZF-fp-5HD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -107,7 +171,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J83-qn-9dE">
                                 <rect key="frame" x="0.0" y="64" width="600" height="469"/>
                                 <color key="backgroundColor" red="0.97254908084869385" green="0.96862751245498657" blue="0.89803928136825562" alpha="1" colorSpace="deviceRGB"/>
-                                <mutableString key="text">TakeMeHome（以下簡稱本站）非常尊重並保護您的隱私權。請您務必詳細閱讀以下「隱私權聲明」內容。
+                                <string key="text">TakeMeHome（以下簡稱本站）非常尊重並保護您的隱私權。請您務必詳細閱讀以下「隱私權聲明」內容。
 
 一、 適用範圍：
 
@@ -163,7 +227,7 @@
 1.如果若您對本站隱私權聲明或個人資料行使權利有任何疑問，可至本站https://www.facebook.com/ZP102TakeMeHome)上找尋到我們的免費聯絡方式。
 2.請使用電子郵件聯繫，以確認收到本站寄出的回覆信件，方為修改成功。
 
-九、 修訂日期：2015/9/3</mutableString>
+九、 修訂日期：2015/9/3</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>

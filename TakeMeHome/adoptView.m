@@ -334,7 +334,7 @@
                 //拿到的時間是字串  轉成nsdate
                 NSDateFormatter *dateFormate = [[NSDateFormatter alloc]init];
                 [dateFormate setDateFormat:@"YYYY年M月dd日 HH:mm:ss"];
-                NSDate *formateDate =  [dateFormate dateFromString:[animal valueForKey:@"animal_createtime"]];
+                NSDate *formateDate =  [dateFormate dateFromString:[animal valueForKey:ANIMAL_DATA_UPDATE_TIME_FILTER_KEY]];
                 [animal setValue:formateDate forKey:ANIMAL_DATA_UPDATE_TIME_FILTER_KEY];
                 
                 
@@ -426,6 +426,8 @@
     //依照時間排序（download至plist時  已變成dictinary  順序需排列）
     NSSortDescriptor *dateSort = [[NSSortDescriptor alloc]initWithKey:ANIMAL_DATA_UPDATE_TIME_FILTER_KEY ascending:NO];
     [filterDoneArray sortedArrayUsingDescriptors:[NSArray arrayWithObject:dateSort]];
+    
+    
     
     return (NSMutableArray*)filterDoneArray;
     

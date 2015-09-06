@@ -98,6 +98,7 @@
 		A69865C41B72549E0065C4E5 /* adoptDetailTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A69865C31B72549E0065C4E5 /* adoptDetailTableVC.m */; };
 		A69865CA1B7254C60065C4E5 /* adoptView.m in Sources */ = {isa = PBXBuildFile; fileRef = A69865C71B7254C60065C4E5 /* adoptView.m */; };
 		A69865CB1B7254C60065C4E5 /* adoptViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A69865C91B7254C60065C4E5 /* adoptViewTableViewCell.m */; };
+		A6C3F94F1B9C2E8300611CC2 /* DogNavibtn.png in Resources */ = {isa = PBXBuildFile; fileRef = A6C3F94E1B9C2E8300611CC2 /* DogNavibtn.png */; };
 		A6D3E7201B6A6EEE0066DD7B /* CTPopOutMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D3E71F1B6A6EEE0066DD7B /* CTPopOutMenu.m */; };
 		A6D3E7251B6A6F550066DD7B /* navigationBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D3E7241B6A6F550066DD7B /* navigationBtn.m */; };
 		A6D3E7271B6A71750066DD7B /* img.png in Resources */ = {isa = PBXBuildFile; fileRef = A6D3E7261B6A71750066DD7B /* img.png */; };
@@ -284,6 +285,7 @@
 		A69865C71B7254C60065C4E5 /* adoptView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = adoptView.m; sourceTree = "<group>"; };
 		A69865C81B7254C60065C4E5 /* adoptViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = adoptViewTableViewCell.h; sourceTree = "<group>"; };
 		A69865C91B7254C60065C4E5 /* adoptViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = adoptViewTableViewCell.m; sourceTree = "<group>"; };
+		A6C3F94E1B9C2E8300611CC2 /* DogNavibtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DogNavibtn.png; sourceTree = "<group>"; };
 		A6D3E71E1B6A6EEE0066DD7B /* CTPopOutMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPopOutMenu.h; sourceTree = "<group>"; };
 		A6D3E71F1B6A6EEE0066DD7B /* CTPopOutMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPopOutMenu.m; sourceTree = "<group>"; };
 		A6D3E7231B6A6F550066DD7B /* navigationBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = navigationBtn.h; sourceTree = "<group>"; };
@@ -758,6 +760,7 @@
 			isa = PBXGroup;
 			children = (
 				A6EACB7B1B97F26F008DFC0F /* naviOwl.png */,
+				A6C3F94E1B9C2E8300611CC2 /* DogNavibtn.png */,
 				A6EACB7D1B97F909008DFC0F /* naviOwl@2x.png */,
 				A6EACB7E1B97F909008DFC0F /* naviOwl@3x.png */,
 				A6D3E7261B6A71750066DD7B /* img.png */,
@@ -968,6 +971,7 @@
 				A667C5C41B985BCC00051B40 /* pointRed@3x.png in Resources */,
 				A6D3E7381B6A8FDE0066DD7B /* settingButtonNavi.png in Resources */,
 				03A1BB0D1B90B8FD00DD2EFF /* MemberSetting.storyboard in Resources */,
+				A6C3F94F1B9C2E8300611CC2 /* DogNavibtn.png in Resources */,
 				A667C5D11B985BCC00051B40 /* veterinarian.png in Resources */,
 				A6EACB7F1B97F909008DFC0F /* naviOwl@2x.png in Resources */,
 				A6DBEDC11B970CFC004E6405 /* AdoptInfoCell.xib in Resources */,
