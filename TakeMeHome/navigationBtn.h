@@ -22,6 +22,6 @@
 @property (strong,nonatomic)UIViewController* parentVC;
 +(instancetype)shareInstance;
 
-
+- (void)BtnImgSetting:(NSString*)imgName;
 
 @end

@@ -88,7 +88,8 @@
     //self.naviBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 20, 80, 80)];
     
     
-    UIImage *naviBtnImg = [UIImage imageNamed:@"naviOwl.png"];
+    
+    UIImage *naviBtnImg = [UIImage imageNamed:@"DogNavibtn.png"];
     [self.naviBtn setImage:naviBtnImg forState:UIControlStateNormal];
     [self.naviBtn addTarget:self action:@selector(showGrid) forControlEvents:UIControlEventTouchUpInside];
     
@@ -294,10 +295,6 @@
     
     
 }
-
-
-
-
 -(void)dealloc
 {
     NSLog(@"dealloc");
@@ -313,6 +310,14 @@
         NSLog(@"New maskView");
     }
     return maskView;
+}
+
+
+
+- (void)BtnImgSetting:(NSString*)imgName{
+
+    [self.naviBtn setImage:[UIImage imageNamed:imgName] forState:UIControlStateNormal];
+
 }
 
 @end

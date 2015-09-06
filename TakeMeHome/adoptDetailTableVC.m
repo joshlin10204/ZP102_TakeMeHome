@@ -45,7 +45,7 @@
     }else{
         _labelId.text =[animalProfileArray valueForKey:ANIMAL_ID_FILTER_KEY];
     }
- 
+    _labelAge.text = [animalProfileArray valueForKey:ANIMAL_AGE_FILTER_KEY];
     _labelBodyType.text = [animalProfileArray valueForKey:ANIMAL_BODYTYPE_FILTER_KEY];
     _labelColor.text = [animalProfileArray valueForKey:@"animal_colour"];
     _labelSterilization.text = [animalProfileArray valueForKey:@"animal_sterilization"];
@@ -53,9 +53,20 @@
     _labelFoundPlace.text = [animalProfileArray valueForKey:@"animal_foundplace"];
     _labelShelterName.text = [animalProfileArray valueForKey:@"shelter_name"];
     _labelNowPlace.text = [animalProfileArray valueForKey:@"animal_place"];
-    _labelOpendate.text = [animalProfileArray valueForKey:@"animal_opendate"];
-    _labelCloseDate.text = [animalProfileArray valueForKey:@"animal_closeddate"];
-    _labelAge.text = [animalProfileArray valueForKey:ANIMAL_AGE_FILTER_KEY];
+    
+    
+    //垃圾進垃圾出  拿到的資料居然會是2014  更新日期卻在2015  偉哉....= =
+    //_labelOpendate.text = [animalProfileArray valueForKey:@"animal_opendate"];
+    //_labelCloseDate.text = [animalProfileArray valueForKey:@"animal_closeddate"];
+
+    //close在storayborad隱藏  opendate改放最後更新日
+    //原有時間是yyyy MM dd HH mm ss   顯示只要日期即可
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    //NSDate转NSString
+    NSString *dateYMDStr = [dateFormatter stringFromDate:[animalProfileArray valueForKey:ANIMAL_DATA_UPDATE_TIME_FILTER_KEY]];
+     _labelOpendate.text = dateYMDStr;
+    
 
     
 //    for (int i = LABEL_TAG ; i <= LABEL_TAG + 10 ; i++) {
